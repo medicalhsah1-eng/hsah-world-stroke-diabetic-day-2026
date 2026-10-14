@@ -1,102 +1,555 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101d38">
-<meta name="description" content="Pusat Informasi Kesihatan World Stroke & Diabetic Day 2026, Hospital Sultan Abdul Halim.">
-<title>SCAN. KNOW. SAVE. | HSAH 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e5fd6">
+<title>HSAH World Diabetes &amp; World Stroke Day 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#101d38;--navy2:#172746;--blue:#4c91e8;--red:#d84a51;--gold:#d9b96e;--paper:#f1f4f9;--ink:#182744;--muted:#66738a;--white:#fff;--line:#dfe5ee;--green:#28775c}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink);line-height:1.5}
-button,a{font:inherit}button{cursor:pointer}.wrap{width:min(100% - 28px,1000px);margin:auto}
-.hero{background:radial-gradient(circle at 88% 8%,#294a7c 0,transparent 34%),linear-gradient(135deg,var(--navy),#16294a);color:white;padding:24px 0 30px;border-bottom:5px solid var(--red)}
-.brand{display:flex;gap:12px;align-items:center}.brandmark{height:52px;width:52px;border:1px solid #d9b96e;border-radius:15px;display:grid;place-items:center;font-size:27px;flex-shrink:0}.eyebrow{font-size:.72rem;letter-spacing:.09em;font-weight:800;color:#e3c778}.dept{font-size:.8rem;color:#d7dfed}.hero h1{font-size:clamp(2rem,6vw,3.5rem);letter-spacing:.015em;line-height:1.04;margin:28px 0 10px}.hero p{color:#d7dfed;max-width:600px;margin:0}.stripe{display:flex;gap:5px;margin-top:22px}.stripe span{height:5px;border-radius:9px;flex:1}.stripe span:nth-child(1){background:var(--red)}.stripe span:nth-child(2){background:var(--blue)}.stripe span:nth-child(3){background:var(--gold)}
-main{padding:22px 0 40px}.intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:15px}.intro h2{margin:0;font-size:1.45rem}.intro p{margin:4px 0 0;color:var(--muted);font-size:.92rem}.tag{font-size:.73rem;font-weight:800;letter-spacing:.06em;color:#344a70}
-.game-card{background:linear-gradient(135deg,#172746,#243f69);color:#fff;border-radius:22px;padding:clamp(18px,4vw,30px);position:relative;overflow:hidden;box-shadow:0 12px 32px #101d381c}.game-card:after{content:"♥";position:absolute;right:-12px;top:-42px;font-size:190px;color:#ffffff0b;transform:rotate(12deg);pointer-events:none}.game-top{display:flex;gap:14px;align-items:center;position:relative;z-index:1}.trophy{width:58px;height:58px;border-radius:17px;background:#d9b96e20;border:1px solid #d9b96e66;display:grid;place-items:center;font-size:30px}.game-card h2{margin:0;font-size:clamp(1.55rem,4vw,2.2rem)}.gold{color:var(--gold);font-weight:800;font-size:.8rem;letter-spacing:.06em}.game-card p{color:#e5eaf2;max-width:620px;position:relative;z-index:1}.btn{border:0;border-radius:12px;padding:12px 17px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:transform .15s,filter .15s}.btn:active{transform:scale(.98)}.btn-gold{background:var(--gold);color:var(--navy)}.btn-light{background:#fff;color:var(--navy)}.btn-outline{background:transparent;border:1px solid #b8c6da;color:inherit}.game-actions{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 30px}.stat{background:white;border:1px solid var(--line);border-radius:15px;padding:13px}.stat strong{display:block;font-size:.95rem}.stat span{display:block;font-size:.77rem;color:var(--muted);margin-top:3px}
-.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 13px}.section-title h2{margin:0;font-size:1.35rem}.section-title p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
-.booths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.booth{border:1px solid var(--line);border-radius:16px;background:white;padding:15px;text-align:left;min-height:130px;color:var(--ink);display:flex;flex-direction:column;gap:8px;box-shadow:0 3px 10px #101d3805}.booth:hover{border-color:#91a8cb;transform:translateY(-1px)}.booth-head{display:flex;align-items:center;justify-content:space-between}.booth-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#ddeafa;font-size:20px}.booth:nth-child(even) .booth-icon{background:#fbe4e5}.booth-no{font-size:.72rem;color:var(--muted);font-weight:800}.booth strong{font-size:.94rem;line-height:1.25}.booth small{color:var(--muted);font-size:.78rem}
-.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:clamp(16px,4vw,25px);margin-top:16px}.hidden{display:none!important}.progressrow{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.84rem;font-weight:800}.progress{height:6px;background:#e8edf4;border-radius:9px;overflow:hidden;margin:12px 0 20px}.progress>div{height:100%;background:var(--green);width:0;transition:width .2s}.question{font-size:1.2rem;line-height:1.35;margin:0 0 15px}.answers{display:grid;gap:9px}.answer{display:flex;align-items:center;gap:11px;text-align:left;border:1px solid #d0d8e5;background:#fff;border-radius:12px;padding:12px;color:var(--ink)}.letter{border:1px solid #ccd5e2;border-radius:50%;width:29px;height:29px;display:grid;place-items:center;font-size:.8rem;font-weight:800;flex-shrink:0}.answer.correct{background:#e5f4ea;border-color:#28775c}.answer.wrong{background:#fcebe7;border-color:#c65d42}.feedback{margin-top:14px;background:#f1f4f9;border-radius:12px;padding:13px;font-size:.91rem}.result{text-align:center;padding:12px}.result .score{font-size:2.4rem;font-weight:900;color:var(--green)}.resource-box{border:1px solid var(--line);border-radius:15px;padding:15px;background:white;margin-top:10px}.resource-box h3{margin:0 0 4px;font-size:1rem}.resource-box p{margin:0;color:var(--muted);font-size:.87rem}.resource-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.resource-links a{font-size:.84rem;color:#254c84;font-weight:750}.admin-note{background:#fff9e9;border:1px solid #efdfad;border-radius:13px;padding:13px;font-size:.85rem;color:#5b4a21;margin-top:18px}.footer{background:var(--navy);color:#d7dfed;padding:22px 0;font-size:.8rem}.footer strong{color:white}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-dialog{border:0;border-radius:18px;max-width:560px;width:calc(100% - 28px);padding:0;box-shadow:0 20px 80px #0004;color:var(--ink)}dialog::backdrop{background:#0c1730a8}.modal-inner{padding:22px}.modal-inner h2{margin:0 0 5px}.modal-inner p{color:var(--muted);margin:0 0 16px}.modal-inner label{display:block;font-weight:750;font-size:.86rem;margin:12px 0 5px}.modal-inner input,.modal-inner textarea{width:100%;border:1px solid #cbd5e1;border-radius:9px;padding:10px;font:inherit}.modal-inner textarea{min-height:85px}.modal-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
-@media(max-width:620px){.booths{grid-template-columns:repeat(2,minmax(0,1fr))}.booth{min-height:126px;padding:12px}.stats{gap:7px}.stat{padding:10px}.intro{align-items:start;flex-direction:column}.hero{padding-top:18px}.brandmark{height:46px;width:46px}.game-top{align-items:flex-start}.game-card:after{font-size:130px;top:-12px}.footer-inner{flex-direction:column}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+:root{
+  --navy:#0b2a6b; --blue:#1e5fd6; --sky:#3d8bff; --red:#d7262f; --red2:#a71b22;
+  --gold:#f5b82e; --cream:#fff3c4; --white:#fff; --ink:#0d2247; --muted:#5b6b85;
+  --display:"Poppins",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font-family:var(--body);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  background:linear-gradient(180deg,#2a6fe0 0%,var(--blue) 35%,var(--navy) 100%);background-attachment:fixed;min-height:100vh}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.15}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:10px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- Header ---------- */
+.top{position:sticky;top:0;z-index:40;background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:10px 16px;box-shadow:0 3px 0 var(--gold)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{height:44px;width:auto}
+.brand .t{font-family:var(--display);font-weight:800;color:var(--navy);font-size:15px;line-height:1.1}
+.brand .t small{display:block;font-family:var(--body);font-weight:600;color:var(--muted);font-size:11px;letter-spacing:.4px}
+.burger{width:46px;height:46px;border:none;background:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+.burger span{display:block;width:26px;height:3px;background:var(--navy);border-radius:3px}
+.menu{position:absolute;right:12px;top:66px;background:var(--white);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.25);padding:8px;min-width:230px;display:none;border:2px solid var(--gold)}
+.menu.open{display:block}
+.menu a{display:block;padding:12px 14px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px;color:var(--navy)}
+.menu a:hover{background:#fff3c4}
+
+/* ---------- Hero ---------- */
+.hero{text-align:center;padding:30px 20px 10px;color:var(--white)}
+.hero .evcard{display:inline-block;background:var(--white);border-radius:26px;padding:14px;box-shadow:0 14px 0 var(--red2),0 22px 40px rgba(0,0,0,.3)}
+.hero .evcard img{width:min(340px,70vw);height:auto;border-radius:18px}
+.hero h1{font-size:clamp(1.9rem,6vw,3.2rem);font-weight:900;margin:18px 0 4px;text-shadow:0 4px 0 rgba(0,0,0,.2)}
+.hero .motto{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-family:var(--display);font-weight:900;font-size:clamp(1.3rem,4.5vw,2rem);margin:6px 0}
+.hero .motto span:nth-child(1){color:var(--gold)}
+.hero .motto span:nth-child(2){color:var(--white)}
+.hero .motto span:nth-child(3){color:#ff8a8a}
+.hero .theme{display:inline-block;background:var(--gold);color:var(--navy);font-family:var(--display);font-weight:800;font-size:14px;padding:8px 16px;border-radius:14px;transform:rotate(-1.5deg);box-shadow:0 6px 0 var(--red2)}
+.hero p{max-width:560px;margin:16px auto 0;font-size:16px;opacity:.96}
+
+/* ---------- Sticker stage ---------- */
+.stage{position:relative;max-width:1000px;margin:20px auto 0;padding:10px 16px 30px;display:grid;grid-template-columns:repeat(2,1fr);gap:34px 20px;justify-items:center}
+@media(min-width:820px){.stage{grid-template-columns:repeat(3,1fr);gap:50px 30px}}
+.sticker{position:relative;display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--ink);transform:rotate(var(--r,0deg));transition:transform .25s cubic-bezier(.2,.9,.3,1.3);width:100%;max-width:260px}
+.sticker:nth-child(even){margin-top:40px}
+@media(min-width:820px){.sticker:nth-child(even){margin-top:0}.sticker:nth-child(3n+2){margin-top:60px}}
+.sticker:hover{transform:rotate(0) scale(1.06)}
+.sticker:hover .art{animation:wob .6s ease}
+@keyframes wob{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+.sticker .art{width:100%;height:170px;background:var(--c,#3d8bff);border:6px solid var(--white);border-radius:30px;box-shadow:0 10px 0 rgba(0,0,0,.2),0 16px 30px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden}
+.sticker .art::after{content:"";position:absolute;right:-30px;bottom:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.18)}
+.sticker .art span{position:relative;z-index:1;filter:drop-shadow(0 6px 0 rgba(0,0,0,.15))}
+.sticker .lbl{margin-top:-18px;position:relative;z-index:2;background:var(--white);border-radius:16px;padding:9px 16px;font-family:var(--display);font-weight:800;font-size:17px;line-height:1.2;text-align:center;box-shadow:0 5px 0 rgba(0,0,0,.2);min-width:70%;color:var(--navy)}
+.sticker .lbl small{display:block;font-family:var(--body);font-weight:600;font-size:12px;color:var(--muted);margin-top:2px}
+.sticker .hint{margin-top:10px;color:var(--white);font-size:14px;font-weight:600;font-style:italic;display:flex;align-items:center;gap:6px}
+.sticker .hint::before{content:"👆";font-style:normal;animation:tap 1.2s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sticker.new::before{content:"BARU!";position:absolute;top:-12px;right:-10px;background:var(--gold);color:var(--navy);font-family:var(--display);font-weight:800;font-size:12px;padding:7px 12px;border-radius:999px;border:3px solid var(--white);z-index:3;transform:rotate(8deg);box-shadow:0 4px 0 var(--red2)}
+.c-red{--c:#e5353d} .c-blue{--c:#3d8bff} .c-gold{--c:#f5b82e} .c-navy{--c:#2a4fb0} .c-pink{--c:#ff7d8a} .c-green{--c:#35b977}
+
+/* ---------- Topik popular ---------- */
+.popular{position:relative;max-width:620px;margin:20px auto 0;padding:0 16px}
+.popular .badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;background:var(--gold);border:4px solid var(--white);color:var(--navy);font-family:var(--display);font-weight:900;font-size:22px;padding:12px 26px;border-radius:999px;box-shadow:0 8px 0 var(--red2)}
+.popular .bars{margin-top:-22px;padding-left:120px;display:grid;gap:12px}
+.bar{display:block;background:var(--cream);border:3px solid var(--navy);border-radius:14px;padding:14px 18px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:16px;color:var(--navy);box-shadow:0 6px 0 rgba(0,0,0,.2);transition:transform .2s,background .2s}
+.bar:hover{transform:translateX(6px);background:#fff8dc}
+.bar::after{content:" →";font-weight:800}
+@media(max-width:560px){.popular .bars{padding-left:0;margin-top:-14px}}
+
+/* ---------- Panel umum ---------- */
+.panel{max-width:920px;margin:50px auto 0;padding:0 16px}
+.sec-title{color:var(--white);text-align:center;margin:0 0 6px;font-size:clamp(1.5rem,4vw,2.1rem);font-weight:900}
+.sec-sub{color:#dbe8ff;text-align:center;margin:0 0 22px;font-size:15px}
+.card{background:var(--white);border-radius:26px;padding:26px 24px;box-shadow:0 10px 0 var(--red2),0 16px 30px rgba(0,0,0,.2);margin-bottom:28px}
+.card .kick{display:inline-block;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:1px;color:var(--navy);background:var(--gold);padding:5px 12px;border-radius:999px;text-transform:uppercase}
+.card h2{font-size:clamp(1.35rem,3.6vw,1.8rem);margin:12px 0 10px;color:var(--navy)}
+.card p{margin:0 0 12px;color:#23415f;font-size:16px}
+.fast{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 6px}
+@media(max-width:600px){.fast{grid-template-columns:repeat(2,1fr)}}
+.fast div{border-radius:18px;padding:14px 10px;text-align:center;color:var(--navy);background:#eef4ff;border:2px solid #c9dbf7}
+.fast b{display:block;font-family:var(--display);font-size:26px;color:var(--red);line-height:1}
+.fast span{font-size:13px;font-weight:600}
+.cta{display:inline-block;margin-top:8px;background:var(--red);color:var(--white);font-family:var(--display);font-weight:800;text-decoration:none;padding:14px 22px;border-radius:16px;box-shadow:0 6px 0 var(--red2);font-size:16px}
+.cta.blue{background:var(--blue);box-shadow:0 6px 0 var(--navy)}
+.cta:hover{transform:translateY(-2px)}
+.placeholder{background:#f1f6ff;border:2px dashed #9fb8e3;border-radius:16px;padding:14px;color:#3c5879;font-size:14px}
+
+/* ---------- Galeri buku album ---------- */
+.book-wrap{position:relative;max-width:720px;margin:0 auto}
+.book{position:relative;width:100%;aspect-ratio:1.45/1;perspective:1800px;margin:0 auto}
+.leaf{position:absolute;top:0;right:0;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.4,.1,.2,1);cursor:pointer}
+.leaf.flipped{transform:rotateY(-180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--white);overflow:hidden;display:flex;align-items:center;justify-content:center;border:1px solid #d9e4f5}
+.face.front{border-radius:0 16px 16px 0;box-shadow:inset 10px 0 18px -14px rgba(0,0,0,.35)}
+.face.back{transform:rotateY(180deg);border-radius:16px 0 0 16px;box-shadow:inset -10px 0 18px -14px rgba(0,0,0,.35)}
+.face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.face .ph{font-family:var(--display);font-weight:800;color:var(--navy);font-size:15px;text-align:center;padding:12px;background:linear-gradient(160deg,#fff3c4,#ffe27a);width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.book-base{position:absolute;left:0;top:0;width:100%;height:100%;border-radius:18px;background:var(--navy);box-shadow:0 18px 30px rgba(0,0,0,.35);z-index:0}
+.book-base::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:6px;margin-left:-3px;background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(0,0,0,0),rgba(0,0,0,.25))}
+.book-ctrl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:22px}
+.book-ctrl button{background:var(--gold);color:var(--navy);border:none;border-radius:14px;width:52px;height:52px;font-size:22px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 var(--red2)}
+.book-ctrl button:active{transform:translateY(3px);box-shadow:0 2px 0 var(--red2)}
+.dots{display:flex;gap:8px}
+.dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .3s}
+.dots i.on{background:var(--gold);transform:scale(1.25)}
+.book-note{text-align:center;color:#dbe8ff;font-size:13px;margin-top:12px}
+.book-stage{position:relative;padding:24px 0 6px}
+.book-stage .book-base{background:linear-gradient(90deg,var(--navy),#143d8f 50%,var(--navy))}
+
+/* ---------- Video Angels ---------- */
+.vid{position:relative;border-radius:22px;overflow:hidden;background:#06163b;aspect-ratio:16/9;border:4px solid var(--gold);box-shadow:0 10px 0 var(--red2)}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#06163b}
+.vid .vph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--white);padding:20px;gap:6px;background:radial-gradient(circle at 30% 30%,#2a6fe0,#06163b 70%)}
+.vid .vph b{font-family:var(--display);font-size:20px}
+.vid .vph span{font-size:14px;color:#dbe8ff}
+.angels-head{display:flex;align-items:center;gap:16px;background:var(--white);border-radius:22px;padding:14px 18px;margin-bottom:18px;box-shadow:0 10px 0 var(--red2)}
+.angels-head img{height:62px;width:auto}
+.angels-head p{margin:0;font-size:14px;color:var(--muted)}
+
+/* ---------- Rak buku Psiko-Pendidikan ---------- */
+.note-s{font-size:13px;color:var(--muted);margin:14px 0 0}
+.bsearch{display:block;width:100%;max-width:420px;margin:0 auto 18px;padding:12px 16px;border-radius:14px;border:3px solid var(--gold);font-size:15px;font-family:var(--body);color:var(--ink)}
+.bsearch:focus{outline:none;border-color:var(--blue)}
+.shelves{background:linear-gradient(180deg,#f7efe2,#eadcc6);border-radius:20px;padding:20px 14px 0;border:3px solid #c9a46b;box-shadow:inset 0 0 30px rgba(120,80,30,.15)}
+.shelf{display:flex;align-items:flex-end;justify-content:center;gap:12px;min-height:230px;padding:0 6px}
+.board{height:18px;margin:0 -6px 6px;background:linear-gradient(180deg,#a8733f,#7a4f25);border-radius:4px;box-shadow:0 8px 0 rgba(0,0,0,.18),inset 0 2px 0 rgba(255,255,255,.2)}
+.spine{flex:0 1 96px;max-width:110px;min-width:64px;border:none;border-radius:10px 10px 4px 4px;color:var(--white);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:12px 4px 10px;position:relative;transition:transform .25s cubic-bezier(.2,.9,.3,1.3);box-shadow:inset -8px 0 12px -8px rgba(0,0,0,.45),inset 8px 0 10px -8px rgba(255,255,255,.35),0 4px 0 rgba(0,0,0,.2)}
+.spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:5px;background:rgba(255,255,255,.35)}
+.spine::before{top:10px}
+.spine::after{bottom:10px}
+.spine:hover{transform:translateY(-12px)}
+.spine:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.spine .no{font-family:var(--display);font-size:11px;font-weight:800;background:rgba(0,0,0,.25);border-radius:999px;padding:2px 8px}
+.spine .ic{font-size:24px;line-height:1}
+.spine .sv{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.4px;white-space:nowrap;margin:auto 0;line-height:1.1}
+@media(max-width:560px){.shelf{gap:8px}.spine{min-width:0;flex:1 1 0}.spine .sv{font-size:12px}}
+.bnone{text-align:center;color:var(--muted);padding:30px 0}
+.bm{position:fixed;inset:0;background:rgba(6,16,40,.72);display:none;align-items:center;justify-content:center;padding:16px;z-index:60}
+.bm.open{display:flex}
+.bm .sheet{background:var(--white);border-radius:24px;max-width:640px;width:100%;max-height:92vh;overflow:auto;border:4px solid var(--gold);box-shadow:0 14px 0 var(--red2)}
+.bm .hd{color:var(--white);padding:20px 22px;display:flex;gap:14px;align-items:center;position:relative}
+.bm .hd .ic{font-size:44px;line-height:1}
+.bm .hd h3{font-size:22px}
+.bm .hd .kk{display:inline-block;font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:1px;background:rgba(255,255,255,.22);padding:3px 10px;border-radius:999px;margin-bottom:4px}
+.bm .x{position:absolute;right:12px;top:12px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.22);color:var(--white);font-size:22px;cursor:pointer}
+.bm .bd{padding:18px 22px 24px;color:var(--ink)}
+.bm h4{font-family:var(--display);color:var(--navy);margin:16px 0 4px;font-size:16px}
+.bm p{margin:6px 0;font-size:15px;color:#23415f}
+.bm ul{padding-left:20px;margin:6px 0}
+.bm li{margin:6px 0;font-size:15px;color:#23415f}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+@media(max-width:560px){.res{grid-template-columns:1fr}}
+.res div{border:2px dashed #9fb8e3;border-radius:14px;padding:12px;text-align:center;font-size:13px;color:var(--muted)}
+.res b{display:block;color:var(--navy);font-family:var(--display);font-size:14px;margin-bottom:4px}
+.res a{color:var(--blue);font-weight:700}
+.src{font-size:13px;color:var(--muted);margin-top:14px;background:#f4f7fc;border-radius:12px;padding:10px 12px}
+
+/* ---------- Tanda air @OTRchuadsteady (samar, tidak boleh diklik) ---------- */
+:root{--wm:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='180'%3E%3Ctext x='30' y='100' transform='rotate(-25 150 90)' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='%23000' fill-opacity='0.08'%3E@OTRchuadsteady%3C/text%3E%3C/svg%3E")}
+.wm-bg{position:fixed;inset:0;pointer-events:none;z-index:5;background-image:var(--wm);background-repeat:repeat}
+.face::after{content:"@OTRchuadsteady";position:absolute;right:8px;bottom:6px;z-index:2;font-family:var(--body);font-size:11px;font-weight:600;color:rgba(255,255,255,.85);background:rgba(0,0,0,.28);padding:2px 7px;border-radius:6px;pointer-events:none}
+.bm .sheet{position:relative;overflow:auto}
+.bm .sheet::before{content:"";position:sticky;top:0;display:block;height:0;pointer-events:none}
+.bm .bd{position:relative;background-image:var(--wm);background-repeat:repeat}
+
+/* ---------- Footer ---------- */
+footer{margin-top:40px;background:var(--red2);color:#ffe9e9;padding:40px 20px 110px;text-align:center}
+footer strong{font-family:var(--display);font-size:18px;color:var(--white);display:block}
+footer p{margin:6px 0;font-size:14px}
+footer .mot{font-family:var(--display);font-weight:900;letter-spacing:2px;color:var(--gold);margin-top:12px}
+
+/* ---------- Mascot & back to top ---------- */
+.mascot{position:fixed;right:14px;bottom:14px;width:92px;height:92px;border-radius:50%;background:var(--white);border:5px solid var(--gold);box-shadow:0 10px 24px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:44px;text-decoration:none;z-index:30;overflow:hidden}
+.mascot img{width:100%;height:100%;object-fit:cover}
+.mascot:hover{transform:scale(1.05)}
+.totop{position:fixed;right:118px;bottom:24px;width:56px;height:56px;border-radius:50%;border:4px solid var(--white);background:var(--red);color:var(--white);font-size:22px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:30;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.totop.show{display:flex}
 </style>
 </head>
-<body>
-<header class="hero">
- <div class="wrap">
+<body id="atas">
+<div class="wm-bg" aria-hidden="true"></div>
+
+<header class="top">
   <div class="brand">
-   <div class="brandmark" aria-hidden="true">♥</div>
-   <div><div class="eyebrow">HOSPITAL SULTAN ABDUL HALIM</div><div class="dept">JABATAN PERUBATAN AM</div><div class="dept">WORLD STROKE &amp; DIABETIC DAY 2026</div></div>
+    <a href="https://jknkedah.moh.gov.my/hsah/" target="_blank" rel="noopener" aria-label="Laman rasmi Hospital Sultan Abdul Halim (dibuka dalam tab baharu)">
+      <img src="assets/logo-hsah.png" alt="Logo Hospital Sultan Abdul Halim" onerror="this.style.display='none'">
+    </a>
+    <div class="t"><a href="#atas" style="color:inherit;text-decoration:none">HSAH 2026</a><small>Jabatan Perubatan Am</small></div>
   </div>
-  <h1>SCAN. KNOW. SAVE.</h1>
-  <p>Ilmu kesihatan yang mudah dicapai. Kenali tanda, cegah risiko dan bertindak dengan betul.</p>
-  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span></div>
- </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  <nav class="menu" id="menu" aria-label="Menu utama">
+    <a href="#strok">Strok</a>
+    <a href="#diabetes">Diabetes</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#angels">Angels &amp; Lagu Tema</a>
+    <a href="#hospital">Hospital</a>
+    <a href="games-all.html">Permainan Booth</a>
+    <a href="#bahan">Bahan Psiko-Pendidikan</a>
+  </nav>
 </header>
-<main class="wrap">
- <section class="intro"><div><h2>Pusat Informasi Kesihatan</h2><p>Pilih misi atau terokai bahan daripada sembilan booth pendidikan.</p></div><span class="tag">AKSES TERUS · MESRA TELEFON</span></section>
- <section class="game-card" aria-labelledby="game-title">
-  <div class="game-top"><div class="trophy" aria-hidden="true">🏆</div><div><div class="gold">BOOTH 10 · GAME UTAMA</div><h2 id="game-title">Health Quest</h2><div class="gold">MISI KENALI. CEGAH. BERTINDAK.</div></div></div>
-  <p>Jawab cabaran kesihatan, kumpul mata dan ketahui sebab di sebalik setiap jawapan. Tiada akaun diperlukan.</p>
-  <div class="game-actions"><button class="btn btn-gold" id="startGame">▶ Mula permainan</button><a class="btn btn-outline" href="#booths" style="color:#fff">Terokai 9 booth ↓</a></div>
- </section>
- <div class="stats" aria-label="Ringkasan permainan">
-  <div class="stat"><strong>🎯 5 soalan</strong><span>Cabaran pantas</span></div>
-  <div class="stat"><strong>⭐ Mata automatik</strong><span>1 mata setiap jawapan betul</span></div>
-  <div class="stat"><strong>💡 Belajar sambil main</strong><span>Penerangan setiap jawapan</span></div>
- </div>
- <section id="gamePanel" class="panel hidden" aria-live="polite"></section>
- <section id="booths">
-  <div class="section-title"><div><h2>Terokai 9 Booth Pendidikan</h2><p>Maklumat tambahan selepas permainan atau bila-bila masa.</p></div></div>
-  <div class="booths" id="boothGrid"></div>
-  <div id="resourcePanel" class="panel hidden" aria-live="polite"></div>
- </section>
- <div class="admin-note"><strong>Nota pengurusan laman:</strong> Ini prototaip awal. Pautan PDF, poster dan video bagi setiap booth boleh ditambah apabila bahan sebenar tersedia. Untuk kemas kini yang terus dilihat semua pengunjung, laman perlu diterbitkan melalui platform hosting atau Google Sites.</div>
+
+<section class="hero">
+  <div class="evcard">
+    <img src="assets/event-logo.png" alt="Logo World Diabetes Day &amp; World Stroke Day 2026" onerror="this.parentNode.innerHTML='<strong style=&quot;color:#0b2a6b;font-family:Poppins,sans-serif;font-size:20px&quot;>World Diabetes Day &amp; World Stroke Day 2026</strong>'">
+  </div>
+  <h1>HSAH World Diabetes &amp; World Stroke Day 2026</h1>
+  <div class="motto"><span>SCAN.</span><span>KNOW.</span><span>SAVE.</span></div>
+  <div class="theme">FROM WAIST TO BRAIN — EVERY KILOGRAM COUNTS</div>
+  <p>Kenali tanda strok, fahami risiko diabetes dan bertindak pantas. Ketik sticker di bawah untuk mula.</p>
+</section>
+
+<main>
+  <nav class="stage" aria-label="Pilihan utama">
+    <a class="sticker new" href="games-all.html" style="--r:-4deg">
+      <div class="art c-gold"><span>🎁</span></div>
+      <div class="lbl">Permainan Booth<small>10 booth · Tangga pemenang</small></div>
+      <div class="hint">Ketik di sini</div>
+    </a>
+    <a class="sticker" href="#strok" style="--r:3deg">
+      <div class="art c-red"><span>🧠</span></div>
+      <div class="lbl">Kenali Strok<small>Tanda FAST &amp; tindakan</small></div>
+      <div class="hint">Ketik di sini</div>
+    </a>
+    <a class="sticker" href="#diabetes" style="--r:-2deg">
+      <div class="art c-blue"><span>🩸</span></div>
+      <div class="lbl">Risiko Diabetes<small>Gula &amp; penjagaan kaki</small></div>
+      <div class="hint">Ketik di sini</div>
+    </a>
+    <a class="sticker" href="#galeri" style="--r:4deg">
+      <div class="art c-navy"><span>📖</span></div>
+      <div class="lbl">Galeri Program<small>Buka album gambar</small></div>
+      <div class="hint">Ketik di sini</div>
+    </a>
+    <a class="sticker" href="#angels" style="--r:-3deg">
+      <div class="art c-pink"><span>👼</span></div>
+      <div class="lbl">Angels<small>Lagu tema &amp; sukarelawan</small></div>
+      <div class="hint">Ketik di sini</div>
+    </a>
+    <a class="sticker" href="#hospital" style="--r:2deg">
+      <div class="art c-green"><span>🏥</span></div>
+      <div class="lbl">Hospital Kami<small>Jabatan Perubatan Am</small></div>
+      <div class="hint">Ketik di sini</div>
+    </a>
+  </nav>
+
+  <section class="popular" aria-labelledby="pop-h">
+    <div class="badge" id="pop-h">🔥 Topik Popular</div>
+    <div class="bars">
+      <a class="bar" href="#strok">Tanda FAST strok</a>
+      <a class="bar" href="#diabetes">Kawal gula darah</a>
+      <a class="bar" href="#diabetes">Jaga kaki diabetes</a>
+      <a class="bar" href="#strok">Kenapa tekanan darah perlu dikawal</a>
+    </div>
+  </section>
+
+  <div class="panel">
+
+    <!-- Galeri buku album -->
+    <section id="galeri" aria-labelledby="gal-h" style="margin-bottom:34px">
+      <h2 class="sec-title" id="gal-h">📖 Galeri Program</h2>
+      <p class="sec-sub">Selak album dengan ketik anak panah atau tunggu gambar bertukar sendiri.</p>
+      <div class="book-wrap">
+        <div class="book-stage">
+          <div class="book" id="book" aria-live="polite">
+            <div class="book-base"></div>
+          </div>
+        </div>
+        <div class="book-ctrl">
+          <button id="prevPg" aria-label="Halaman sebelum">‹</button>
+          <div class="dots" id="dots"></div>
+          <button id="nextPg" aria-label="Halaman seterusnya">›</button>
+        </div>
+        <p class="book-note">Letakkan gambar di folder <b>assets/gallery/</b> dengan nama 1.jpg hingga 6.jpg.</p>
+      </div>
+    </section>
+
+    <!-- Angels & video -->
+    <section id="angels" aria-labelledby="ang-h" style="margin-bottom:34px">
+      <h2 class="sec-title" id="ang-h">👼 Angels · Lagu Tema Stroke</h2>
+      <p class="sec-sub">Dengar lagu tema Angels sambil meneroka program kami.</p>
+      <div class="angels-head">
+        <a href="https://www.angels-initiative.com/angels-community/stories/fast-heroes-unleashed-malaysia" target="_blank" rel="noopener" aria-label="Laman web Angels (dibuka dalam tab baharu)">
+          <img src="assets/angels-logo.jpg" alt="Logo Angels - Leave Your Legacy" onerror="this.remove()">
+        </a>
+        <p>Angels ialah kumpulan sukarelawan yang membantu menyebarkan kesedaran tentang strok dan gaya hidup sihat.</p>
+      </div>
+      <div class="vid">
+        <div class="vph">
+          <b>🎵 Video lagu tema Angels</b>
+          <span>Video akan dimuat naik tidak lama lagi.</span>
+        </div>
+        <video controls preload="metadata" playsinline>
+          <source src="assets/video/angels-stroke.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- Strok -->
+    <article class="card" id="strok">
+      <span class="kick">Strok</span>
+      <h2>Kenali tanda strok dengan FAST</h2>
+      <p>Strok ialah kecemasan perubatan. Setiap minit penting, dan rawatan awal membantu mengurangkan kerosakan otak.</p>
+      <div class="fast">
+        <div><b>F</b><span>Face<br>Muka senget</span></div>
+        <div><b>A</b><span>Arms<br>Lengan lemah</span></div>
+        <div><b>S</b><span>Speech<br>Cakap pelat</span></div>
+        <div><b>T</b><span>Time<br>Hubungi 999</span></div>
+      </div>
+      <p>Jika ada mana-mana tanda ini, hubungi <strong>999</strong> dengan segera. Jangan beri makan atau minum kepada pesakit.</p>
+      <a class="cta" href="games-all.html">Main Waktu Emas →</a>
+    </article>
+
+    <!-- Diabetes -->
+    <article class="card" id="diabetes">
+      <span class="kick">Diabetes</span>
+      <h2>Fahami risiko diabetes dan jaga kaki</h2>
+      <p>Gula darah yang tidak terkawal boleh merosakkan saraf dan saluran darah. Ini termasuk luka kaki yang sukar sembuh, yang boleh membawa kepada komplikasi serius.</p>
+      <p>Amalan mudah: periksa kaki setiap hari, pakai kasut yang selesa, ikut jadual saringan dan ubat yang ditetapkan doktor, dan kekalkan berat badan sihat serta aktif bergerak.</p>
+      <a class="cta blue" href="games-all.html">Main Kenali Gula →</a>
+    </article>
+
+    <!-- Hospital -->
+    <article class="card" id="hospital">
+      <span class="kick">Hospital</span>
+      <h2>Hospital Sultan Abdul Halim, Kedah</h2>
+      <p>Program ini dianjurkan oleh Jabatan Perubatan Am, Hospital Sultan Abdul Halim. Pusat informasi kesihatan ini membantu anda memahami strok dan diabetes dengan lebih mudah.</p>
+      <a class="cta blue" href="https://jknkedah.moh.gov.my/hsah/" target="_blank" rel="noopener" style="margin-bottom:14px">Laman Rasmi HSAH →</a>
+      <div class="placeholder">Maklumat hubungan dan waktu operasi hospital akan dimasukkan oleh pihak HSAH.</div>
+    </article>
+
+    <!-- Bahan -->
+    <article class="card" id="bahan">
+      <span class="kick">Bahan</span>
+      <h2>Bahan Psiko-Pendidikan</h2>
+      <p>Ketik mana-mana buku di rak untuk baca info booth. Poster, PDF dan video akan muncul di dalam buku apabila dimuat naik.</p>
+      <input class="bsearch" id="bsearch" type="search" placeholder="Cari booth atau topik…" aria-label="Cari bahan psiko-pendidikan">
+      <div class="shelves" id="shelves" aria-live="polite"></div>
+      <p class="note-s">Bahan baharu boleh ditambah kemudian tanpa mengubah susunan rak. Sila sahkan kandungan dengan pakar HSAH sebelum diterbitkan.</p>
+    </article>
+
+    <p style="text-align:center;color:#dbe8ff;font-size:14px">Maklumat di laman ini bersifat pendidikan dan tidak menggantikan nasihat doktor.</p>
+  </div>
 </main>
-<footer class="footer"><div class="wrap footer-inner"><div><strong>Jabatan Perubatan Am · Hospital Sultan Abdul Halim</strong><br>World Stroke &amp; Diabetic Day 2026</div><div>SCAN. KNOW. SAVE. · Pendidikan kesihatan</div></div></footer>
-<dialog id="boothDialog"><div class="modal-inner"><h2 id="modalTitle">Booth</h2><p id="modalSub"></p><div id="modalContent"></div><div class="modal-actions"><button class="btn btn-gold" id="saveResource">Simpan bahan (dalam fail ini)</button><button class="btn btn-outline" id="closeModal">Tutup</button></div></div></dialog>
+
+<footer>
+  <strong>HOSPITAL SULTAN ABDUL HALIM</strong>
+  <p>Jabatan Perubatan Am · Kedah</p>
+  <p>HSAH World Diabetes &amp; World Stroke Day 2026</p>
+  <div class="mot">SCAN. KNOW. SAVE.</div>
+</footer>
+
+<div class="bm" id="bm" role="dialog" aria-modal="true" aria-labelledby="bmTitle">
+  <div class="sheet">
+    <div class="hd" id="bmHd"></div>
+    <button class="x" id="bmClose" aria-label="Tutup">&times;</button>
+    <div class="bd" id="bmBd"></div>
+  </div>
+</div>
+
+<a class="mascot" href="games-all.html" aria-label="Mainkan permainan booth">
+  <img src="assets/mascot.png" alt="" onerror="this.remove()">
+  <span aria-hidden="true">🦸</span>
+</a>
+<button class="totop" id="totop" aria-label="Kembali ke atas">↑</button>
+
 <script>
-const questions=[
- {q:"Anda nampak seseorang tiba-tiba senget muka dan sukar bercakap. Apakah tindakan paling tepat?",a:["Tunggu sehingga pulih sendiri","Hubungi 999 dengan segera","Beri makanan atau minuman","Suruh tidur dahulu"],c:1,why:"Tanda strok memerlukan tindakan kecemasan. Hubungi 999 dengan segera dan catat masa gejala bermula."},
- {q:"Apakah maksud huruf F dalam kaedah FAST untuk mengenal pasti strok?",a:["Fever","Face — muka senget","Food","Feeling tired"],c:1,why:"F ialah Face. Perhatikan sama ada sebelah muka jatuh atau senyuman tidak simetri."},
- {q:"Apakah cara yang sesuai untuk membantu mencegah diabetes jenis 2?",a:["Minum minuman manis setiap hari","Tidak perlu bersenam","Amalkan pemakanan seimbang dan aktiviti fizikal","Berhenti makan semua karbohidrat"],c:2,why:"Pemakanan seimbang, aktiviti fizikal dan pemeriksaan kesihatan membantu mengurangkan risiko diabetes jenis 2."},
- {q:"Jika seseorang disyaki mengalami strok, patutkah kita memberinya air untuk diminum?",a:["Ya, supaya lebih bertenaga","Ya, jika sedikit sahaja","Tidak, kerana mungkin sukar menelan","Ya, jika masih sedar"],c:2,why:"Jangan beri makanan, minuman atau ubat melalui mulut kerana masalah menelan boleh menyebabkan tercekik. Hubungi 999."},
- {q:"Mengapakah pesakit diabetes perlu memantau paras gula darah mengikut nasihat petugas kesihatan?",a:["Untuk membantu mengurus diabetes","Untuk mengelakkan semua jenis makanan","Supaya tidak perlu pemeriksaan lain","Hanya apabila berasa pening"],c:0,why:"Pemantauan membantu pesakit dan pasukan kesihatan memahami kawalan gula dan menyesuaikan pengurusan mengikut keperluan."}
+/* ---------- Rak buku Psiko-Pendidikan ----------
+   Setiap buku = satu booth. Untuk tambah bahan, isi nilai dalam "bahan"
+   contoh: poster:'assets/psiko/pt-poster.jpg', pdf:'assets/psiko/pt.pdf', video:'assets/psiko/pt.mp4'
+   Kandungan perlu disemak pakar HSAH sebelum diterbitkan. */
+const BOOKS = [
+  { id:'pt', no:1, title:'Physiotherapy', sub:'PT', icon:'🦽', color:'#1e5fd6', h:200,
+    tujuan:'Memahami peranan fisioterapi dalam pemulihan selepas strok.',
+    poin:['Latihan keseimbangan dan kekuatan membantu mengurangkan risiko jatuh.',
+          'Pemulihan sebaiknya bermula seawal yang selamat, di bawah pemantauan pasukan.',
+          'Gunakan alat bantu berjalan mengikut nasihat fisioterapi.'],
+    bahan:{poster:null,pdf:null,video:null} },
+  { id:'ot', no:2, title:'Occupational Therapy', sub:'OT', icon:'🧩', color:'#e5353d', h:215,
+    tujuan:'Membantu pesakit kembali melakukan aktiviti harian dengan lebih berdikari.',
+    poin:['Terapi cara kerja merangkumi makan, mandi dan berpakaian.',
+          'Ubah suai persekitaran rumah untuk mengurangkan risiko terjatuh.',
+          'Latihan kecil yang dilakukan setiap hari lebih berkesan daripada latihan panjang sekali-sekala.'],
+    bahan:{poster:null,pdf:null,video:null} },
+  { id:'ph', no:3, title:'Pharmacy', sub:'Farmasi', icon:'💊', color:'#2a4fb0', h:190,
+    tujuan:'Memastikan ubat digunakan dengan betul dan selamat.',
+    poin:['Ambil ubat tepat dos dan masa seperti yang ditetapkan.',
+          'Jangan hentikan atau ubah dos tanpa nasihat doktor atau ahli farmasi.',
+          'Bawa senarai ubat semasa setiap kali ke klinik atau hospital.'],
+    bahan:{poster:null,pdf:null,video:null} },
+  { id:'de', no:4, title:'Diabetic Educator', sub:'DE', icon:'📊', color:'#ff7d8a', h:205,
+    tujuan:'Memahami diabetes dan cara mengawal gula darah dalam kehidupan harian.',
+    poin:['Ketahui sasaran gula darah anda bersama doktor atau pendidik diabetes.',
+          'Ikut jadual saringan dan pemeriksaan yang ditetapkan.',
+          'Periksa kaki setiap hari dan dapatkan rawatan jika ada luka yang sukar sembuh.'],
+    bahan:{poster:null,pdf:null,video:null} },
+  { id:'psy', no:5, title:'Psychiatry', sub:'PSY', icon:'🧠', color:'#35b977', h:185,
+    tujuan:'Mengenali hubungan antara kesihatan mental, strok dan diabetes.',
+    poin:['Tekanan dan kemurungan boleh menjejaskan penjagaan diri dan ubat.',
+          'Teknik pernafasan perlahan membantu menenangkan diri ketika tertekan.',
+          'Dapatkan bantuan profesional jika perasaan sedih atau cemas berterusan.'],
+    bahan:{poster:null,pdf:null,video:null} },
+  { id:'diet', no:6, title:'Dietitian', sub:'Pemakanan', icon:'🍎', color:'#f5b82e', h:200,
+    tujuan:'Membina pola makan seimbang untuk mengawal berat badan dan gula darah.',
+    poin:['Separuh pinggan sebaiknya sayur dan buah.',
+          'Pilih karbohidrat kompleks seperti nasi perang dan ubi.',
+          'Kurangkan gula tambahan, garam dan makanan goreng.'],
+    bahan:{poster:null,pdf:null,video:null} },
+  { id:'st', no:7, title:'Speech Therapy', sub:'ST · Hospital Pantai', icon:'💬', color:'#7b5cd6', h:220,
+    tujuan:'Membantu pesakit yang mengalami masalah pertuturan atau penelanan selepas strok.',
+    poin:['Pertuturan dan penelanan boleh terjejas selepas strok.',
+          'Latihan pertuturan membantu pesakit berkomunikasi semula.',
+          'Jika tersedak semasa makan, rujuk pasukan terapi pertuturan.'],
+    bahan:{poster:null,pdf:null,video:null} },
+  { id:'hp', no:8, title:'Hospital Pantai', sub:'Waktu Emas', icon:'🏥', color:'#1e5fd6', h:195,
+    tujuan:'Memahami kepentingan rawatan segera apabila tanda strok muncul.',
+    poin:['Kenali tanda FAST: muka senget, lengan lemah, cakap pelat.',
+          'Hubungi 999 dengan segera apabila ada tanda strok.',
+          'Setiap minit penting. Catat masa gejala mula berlaku.'],
+    bahan:{poster:null,pdf:null,video:null} },
+  { id:'ang', no:9, title:'Angels', sub:'Sukarelawan', icon:'👼', color:'#d7262f', h:210,
+    tujuan:'Mengenali faktor risiko strok dan cara menyebarkan kesedaran dalam keluarga.',
+    poin:['Faktor risiko yang boleh diubah termasuk tekanan darah tinggi, merokok dan kurang aktiviti fizikal.',
+          'Lilitan pinggang yang tinggi meningkatkan risiko diabetes dan strok.',
+          'Kongsikan tanda FAST dengan ahli keluarga dan rakan.'],
+    bahan:{poster:null,pdf:null,video:null} }
 ];
-const booths=[
- {n:1,title:"Fisioterapi",sub:"Pergerakan dan pemulihan",icon:"🧍",desc:"Bahan tentang pergerakan, keseimbangan, kekuatan dan pemulihan fungsi.",links:[]},
- {n:2,title:"Terapi Cara Kerja",sub:"Aktiviti harian dan kefungsian",icon:"🤲",desc:"Bahan tentang aktiviti kehidupan harian, penyertaan, keselamatan dan kebebasan berfungsi.",links:[]},
- {n:3,title:"Farmasi",sub:"Penggunaan ubat dengan selamat",icon:"💊",desc:"Bahan tentang penggunaan ubat yang betul, pematuhan dan keselamatan ubat.",links:[]},
- {n:4,title:"Pendidik Diabetes",sub:"Pendidikan dan kawalan diabetes",icon:"🩸",desc:"Bahan tentang pemantauan gula, penjagaan kendiri dan pengurusan diabetes.",links:[]},
- {n:5,title:"Psikiatri",sub:"Kesihatan mental dan kesejahteraan",icon:"🧠",desc:"Bahan tentang kesihatan mental, daya tindak dan kesejahteraan emosi.",links:[]},
- {n:6,title:"Dietetik",sub:"Pemakanan seimbang",icon:"🥗",desc:"Bahan tentang pemakanan seimbang, saiz hidangan dan pilihan makanan.",links:[]},
- {n:7,title:"Terapi Pertuturan",sub:"Komunikasi dan menelan",icon:"💬",desc:"Bahan tentang komunikasi, pertuturan dan kesukaran menelan.",links:[]},
- {n:8,title:"Hospital Pantai",sub:"Bahan pendidikan booth",icon:"🏥",desc:"Bahan pendidikan yang disediakan oleh pasukan Hospital Pantai.",links:[]},
- {n:9,title:"Angels",sub:"Kesedaran dan sokongan strok",icon:"💙",desc:"Bahan kesedaran strok dan sokongan berkaitan laluan rawatan.",links:[]}
-];
-let qi=0,score=0,picked=null,finished=false,activeBooth=null;
-const $=id=>document.getElementById(id);
-function renderBooths(){ $("boothGrid").innerHTML=booths.map(b=>`<button class="booth" data-booth="${b.n}"><span class="booth-head"><span class="booth-icon">${b.icon}</span><span class="booth-no">BOOTH ${String(b.n).padStart(2,"0")}</span></span><strong>${b.title}</strong><small>${b.sub}</small></button>`).join("");document.querySelectorAll("[data-booth]").forEach(el=>el.addEventListener("click",()=>showBooth(+el.dataset.booth)));}
-function start(){qi=0;score=0;picked=null;finished=false;renderQuestion();$("gamePanel").classList.remove("hidden");$("gamePanel").scrollIntoView({behavior:"smooth",block:"start"});}
-function renderQuestion(){
- const p=$("gamePanel");
- if(finished){p.innerHTML=`<div class="result"><div style="font-size:2.5rem">🏆</div><h2>Misi selesai!</h2><div class="score">${score} / ${questions.length} mata</div><p>${score===5?"Cemerlang! Semua jawapan tepat.":score>=3?"Bagus! Teruskan meningkatkan pengetahuan kesihatan anda.":"Terus belajar dan cuba lagi. Setiap jawapan ialah peluang menambah ilmu."}</p><div class="game-actions" style="justify-content:center"><button class="btn btn-gold" id="replay">↻ Main semula</button><a class="btn btn-outline" style="color:var(--navy);border-color:var(--line)" href="#booths">Terokai booth</a></div></div>`;$("replay").addEventListener("click",start);return;}
- const q=questions[qi];
- p.innerHTML=`<div class="progressrow"><span>SOALAN ${qi+1} / ${questions.length}</span><span>⭐ Mata: ${score}</span></div><div class="progress"><div style="width:${(qi/questions.length)*100}%"></div></div><h3 class="question">${q.q}</h3><div class="answers">${q.a.map((a,i)=>`<button class="answer" data-answer="${i}" ${picked!==null?"disabled":""}><span class="letter">${String.fromCharCode(65+i)}</span><span>${a}</span></button>`).join("")}</div><div id="feedback"></div>`;
- p.querySelectorAll("[data-answer]").forEach(el=>el.addEventListener("click",()=>choose(+el.dataset.answer)));
- if(picked!==null)showFeedback();
+const RES = [['poster','Poster / Infografik','🖼️'],['pdf','Dokumen PDF','📄'],['video','Video Pendidikan','🎬']];
+const escH = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function renderShelves(q=''){
+  const s = q.trim().toLowerCase();
+  const list = BOOKS.filter(b => !s || (b.title+' '+b.sub+' '+b.tujuan).toLowerCase().includes(s));
+  const box = document.getElementById('shelves');
+  if(!list.length){ box.innerHTML = '<p class="bnone">Tiada bahan dijumpai. Cuba perkataan lain.</p>'; return; }
+  let html = '';
+  for(let i=0; i<list.length; i+=3){
+    html += `<div class="shelf">${list.slice(i,i+3).map(b=>`
+      <button class="spine" data-id="${b.id}" style="background:${b.color};height:${b.h}px" aria-label="Buka ${escH(b.title)}">
+        <span class="no">${String(b.no).padStart(2,'0')}</span>
+        <span class="ic" aria-hidden="true">${b.icon}</span>
+        <span class="sv">${escH(b.title)}</span>
+      </button>`).join('')}</div><div class="board"></div>`;
+  }
+  box.innerHTML = html;
+  box.querySelectorAll('.spine').forEach(el => el.addEventListener('click', ()=>openBook(el.dataset.id)));
 }
-function choose(i){if(picked!==null)return;picked=i;if(i===questions[qi].c)score++;renderQuestion();showFeedback();}
-function showFeedback(){const q=questions[qi];document.querySelectorAll("[data-answer]").forEach(el=>{const i=+el.dataset.answer;if(i===q.c)el.classList.add("correct");else if(i===picked)el.classList.add("wrong");});$("feedback").innerHTML=`<div class="feedback"><strong>${picked===q.c?"✓ Betul! Syabas.":"↗ Belum tepat. Jom belajar."}</strong><br>${q.why}<div style="margin-top:12px"><button class="btn btn-gold" id="next">${qi===questions.length-1?"Lihat keputusan":"Soalan seterusnya →"}</button></div></div>`;$("next").addEventListener("click",()=>{if(qi===questions.length-1){finished=true;renderQuestion();}else{qi++;picked=null;renderQuestion();}});}
-function showBooth(n){activeBooth=booths.find(b=>b.n===n);$("modalTitle").textContent=`Booth ${String(n).padStart(2,"0")} · ${activeBooth.title}`;$("modalSub").textContent=activeBooth.sub;$("modalContent").innerHTML=`<p>${activeBooth.desc}</p><label for="resourceName">Tajuk bahan (contoh: Poster tanda strok)</label><input id="resourceName" placeholder="Masukkan tajuk bahan"><label for="resourceUrl">Pautan bahan (PDF, video atau laman)</label><input id="resourceUrl" type="url" placeholder="https://..."><label for="resourceDesc">Nota ringkas (pilihan)</label><textarea id="resourceDesc" placeholder="Penerangan ringkas untuk pengunjung"></textarea><div id="savedResources"></div><p style="font-size:.78rem;margin-top:12px">Nota: borang ini ialah demo setempat. Bahan yang disimpan di sini hanya disimpan dalam pelayar/peranti ini dan tidak diterbitkan kepada semua pengunjung.</p>`;renderSaved(n);$("boothDialog").showModal();}
-function key(n){return "hsah2026_booth_"+n;}
-function getSaved(n){try{return JSON.parse(localStorage.getItem(key(n))||"[]")}catch(e){return []}}
-function renderSaved(n){const list=getSaved(n);$("savedResources").innerHTML=list.length?`<h3 style="margin-top:16px">Bahan tersimpan pada peranti ini</h3>`+list.map(r=>`<div class="resource-box"><h3>${esc(r.name)}</h3>${r.desc?`<p>${esc(r.desc)}</p>`:""}${r.url?`<div class="resource-links"><a href="${esc(r.url)}" target="_blank" rel="noopener">Buka bahan ↗</a></div>`:""}</div>`).join(""):"";}
-function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-$("startGame").addEventListener("click",start);$("closeModal").addEventListener("click",()=>$("boothDialog").close());
-$("saveResource").addEventListener("click",()=>{const name=$("resourceName").value.trim(),url=$("resourceUrl").value.trim(),desc=$("resourceDesc").value.trim();if(!name){alert("Sila masukkan tajuk bahan.");return;}if(url&&!/^https?:\/\//i.test(url)){alert("Pautan perlu bermula dengan https:// atau http://");return;}const list=getSaved(activeBooth.n);list.push({name,url,desc});try{localStorage.setItem(key(activeBooth.n),JSON.stringify(list));renderSaved(activeBooth.n);$("resourceName").value="";$("resourceUrl").value="";$("resourceDesc").value="";alert("Bahan disimpan pada peranti ini sahaja. Untuk paparan awam, kemas kini laman yang diterbitkan.");}catch(e){alert("Pelayar tidak membenarkan simpanan setempat.");}});
-renderBooths();
+
+function openBook(id){
+  const b = BOOKS.find(x=>x.id===id); if(!b) return;
+  document.getElementById('bmHd').style.background = b.color;
+  document.getElementById('bmHd').innerHTML = `
+    <span class="ic" aria-hidden="true">${b.icon}</span>
+    <div><span class="kk">Booth ${b.no} · ${escH(b.sub)}</span><h3 id="bmTitle">${escH(b.title)}</h3></div>`;
+  document.getElementById('bmBd').innerHTML = `
+    <h4>Tujuan</h4>
+    <p>${escH(b.tujuan)}</p>
+    <h4>Maklumat utama</h4>
+    <ul>${b.poin.map(p=>`<li>${escH(p)}</li>`).join('')}</ul>
+    <h4>Bahan booth</h4>
+    <div class="res">${RES.map(([k,l,ic])=>{
+      const p = b.bahan[k];
+      return `<div><b>${ic} ${l}</b>${p ? `<a href="${escH(p)}" target="_blank" rel="noopener">Buka</a>` : 'Akan dimuat naik'}</div>`;
+    }).join('')}</div>
+    <div class="src">Sumber rujukan yang dipercayai untuk booth ini akan ditambah kemudian.</div>`;
+  document.getElementById('bm').classList.add('open');
+}
+function closeBook(){ document.getElementById('bm').classList.remove('open'); }
+document.getElementById('bmClose').addEventListener('click', closeBook);
+document.getElementById('bm').addEventListener('click', e=>{ if(e.target.id==='bm') closeBook(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeBook(); });
+document.getElementById('bsearch').addEventListener('input', e=>renderShelves(e.target.value));
+renderShelves();
+
+/* ---------- Menu ---------- */
+const burger=document.getElementById('burger'), menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{ const o=menu.classList.toggle('open'); burger.setAttribute('aria-expanded',o); });
+document.addEventListener('click',e=>{ if(!menu.contains(e.target)&&!burger.contains(e.target)){ menu.classList.remove('open'); burger.setAttribute('aria-expanded',false); } });
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+/* ---------- Butang kembali ke atas ---------- */
+const totop=document.getElementById('totop');
+window.addEventListener('scroll',()=>totop.classList.toggle('show', window.scrollY>400),{passive:true});
+totop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ---------- Galeri buku album ----------
+   Letak gambar: assets/gallery/1.jpg hingga 6.jpg (tambah lebih jika perlu).
+   Setiap helaian ada dua muka: depan (gambar ganjil) dan belakang (gambar genap). */
+const PICS = Array.from({length:6}, (_,i)=>`assets/gallery/${i+1}.jpg`);
+const CAPTIONS = ['Program HSAH','Booth Pendidikan','Sesi Saringan','Komuniti Sihat','Sukarelawan Angels','Penutup'];
+const book = document.getElementById('book');
+const dotsEl = document.getElementById('dots');
+const LEAVES = Math.ceil(PICS.length/2);
+let cur = 0, timer = null;
+
+function face(src, n, side){
+  const cap = CAPTIONS[n-1] || '';
+  if(!src) return `<div class="face ${side}"><div class="ph">&nbsp;</div></div>`;
+  return `<div class="face ${side}">
+    <div class="ph">Gambar ${n}<br>${cap}</div>
+    <img src="${src}" alt="${cap}" onerror="this.remove()">
+  </div>`;
+}
+const leaves = [];
+for(let i=0;i<LEAVES;i++){
+  const el = document.createElement('div');
+  el.className = 'leaf';
+  el.innerHTML = face(PICS[i*2], i*2+1, 'front') + face(PICS[i*2+1], i*2+2, 'back');
+  el.addEventListener('click', ()=> (i<cur ? prev() : next()));
+  book.appendChild(el);
+  leaves.push(el);
+}
+for(let i=0;i<=LEAVES;i++){
+  const d = document.createElement('i');
+  dotsEl.appendChild(d);
+}
+
+function render(){
+  leaves.forEach((el,i)=>{
+    el.classList.toggle('flipped', i<cur);
+    el.style.zIndex = i<cur ? i : LEAVES-i;
+  });
+  [...dotsEl.children].forEach((d,i)=>d.classList.toggle('on', i===cur));
+}
+function next(){ cur = cur>=LEAVES ? 0 : cur+1; render(); }
+function prev(){ cur = cur<=0 ? LEAVES : cur-1; render(); }
+
+function start(){ stop(); timer = setInterval(next, 4500); }
+function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+
+document.getElementById('nextPg').addEventListener('click',()=>{ next(); start(); });
+document.getElementById('prevPg').addEventListener('click',()=>{ prev(); start(); });
+book.parentElement.addEventListener('mouseenter', stop);
+book.parentElement.addEventListener('mouseleave', start);
+book.parentElement.addEventListener('touchstart', stop, {passive:true});
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('galeri').getBoundingClientRect().height) return;
+  if(e.key==='ArrowRight'){ next(); start(); }
+  if(e.key==='ArrowLeft'){ prev(); start(); }
+});
+render();
+start();
 </script>
 </body>
 </html>
