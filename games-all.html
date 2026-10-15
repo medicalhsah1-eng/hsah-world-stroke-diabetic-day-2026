@@ -73,6 +73,33 @@ main{padding:16px 12px 38px}.view{display:none}.view.active{display:block;animat
 .balance-pip.done{background:#22c98b;border-color:#078957;box-shadow:0 0 0 3px #22c98b25}
 .balance-pip.active{background:#ffd166;border-color:#d99b18;transform:scale(1.25)}
 .balance-btn{min-width:170px;font-size:1.05rem;padding:14px 20px}
+
+/* Diabetic Step Sequence: dance arcade */
+.dance-wrap{width:min(600px,100%);margin:auto;padding:8px;display:flex;flex-direction:column;gap:12px}
+.dance-top{display:flex;align-items:center;gap:12px;background:linear-gradient(120deg,#172554,#2857a4);color:white;border-radius:18px;padding:12px}
+.dance-top b{display:block;font-size:1.05rem;letter-spacing:.04em}.dance-top small{display:block;opacity:.88;margin-top:4px}
+.dance-mascot{font-size:2.7rem;animation:heroFloat .8s ease-in-out infinite}
+.dance-stats{display:flex;justify-content:space-around;gap:6px;flex-wrap:wrap}.dance-stats span{background:#edf4ff;border-radius:10px;padding:7px 10px;font-size:.82rem}
+.dance-stage{height:355px;position:relative;overflow:hidden;border-radius:20px;border:3px solid #a8c7f2;background:linear-gradient(#172554,#253f86 65%,#14234d);box-shadow:inset 0 0 35px #55b9ff30}
+.dance-lanes{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.dance-lane{position:relative;border-right:1px solid #b9dcff36;background:linear-gradient(180deg,#ffffff05,#51baff10)}
+.dance-lane:nth-child(odd){background-color:#ffffff04}
+.dance-lane-label{position:absolute;top:8px;width:100%;text-align:center;color:#fff;font-size:1.4rem;text-shadow:0 0 12px #5fe7ff}
+.dance-lane-label small{display:block;font-size:.6rem;opacity:.8}
+.dance-hitline{position:absolute;left:0;right:0;height:46px;border-top:3px solid #54ffbb;border-bottom:3px solid #54ffbb;background:#42ffb51b;z-index:3;pointer-events:none}
+.dance-hitline span{position:absolute;right:6px;top:-18px;font-size:.55rem;font-weight:1000;letter-spacing:.12em;color:#8dffcf}
+.dance-notes{position:absolute;inset:0;z-index:2;pointer-events:none}
+.dance-note{position:absolute;top:-58px;width:calc(25% - 16px);height:48px;display:flex;align-items:center;justify-content:center;border-radius:13px;border:2px solid #fff;background:linear-gradient(145deg,#fff,#a8e9ff);color:#1a3677;font-size:1.65rem;box-shadow:0 0 18px #52e6ff99,0 4px 0 #69b4e7;will-change:top}
+.dance-note.dance-hit{background:#a8ffd5;box-shadow:0 0 35px #6affc7;transform:scale(1.25);opacity:0;transition:.12s}
+.dance-judge{position:absolute;z-index:4;top:47%;left:0;right:0;text-align:center;font-weight:1000;font-size:1.2rem;color:#fff;text-shadow:0 3px 8px #000;pointer-events:none}
+.judge-good{color:#78ffce;animation:winBurst .25s ease}.judge-miss{color:#ffcf7c}
+.dance-flash{box-shadow:inset 0 0 70px #39ffc955}.dance-shake{animation:balanceMiss .2s ease}
+.dance-controls{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.dance-pad{min-width:0;border:0;border-radius:14px;padding:10px 2px;background:linear-gradient(145deg,#e7f5ff,#a9d9ff);color:#17437f;font-weight:1000;font-size:1.5rem;box-shadow:0 4px 0 #6e9dcc;touch-action:manipulation}
+.dance-pad small{display:block;font-size:.65rem}.dance-pad:active{transform:translateY(3px);box-shadow:0 1px 0 #6e9dcc}
+.dance-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.85rem;font-weight:800}
+.dance-bottom label{display:flex;align-items:center;gap:8px}.dance-bottom input{width:110px}
+.dance-start{background:linear-gradient(90deg,#0bbf86,#19a7cf)!important;color:white!important;font-weight:1000;letter-spacing:.04em}
 </style>
 </head>
 <body>
