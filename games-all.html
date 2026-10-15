@@ -103,7 +103,7 @@ main{padding:16px 12px 38px}.view{display:none}.view.active{display:block;animat
 </style>
 </head>
 <body>
-<header><div class="headin"><div class="headrow"><div class="brand"><div class="brandicon">⚡</div><div><div class="eyebrow">HSAH • Hero Arcade Adventure</div><h1>HEALTH QUEST 2026</h1><p>Kembali Berdikari Walau Ada Limitasi</p></div></div><div class="music"><button id="musicBtn" type="button">♫ Muzik OFF</button><label class="small">Vol <input id="volume" type="range" min="0" max="100" value="24"></label></div></div></div></header>
+<header><div class="headin"><div class="headrow"><div class="brand"><div class="brandicon">⚡</div><div><div class="eyebrow">HSAH • Hero Arcade Adventure</div><h1>HEALTH QUEST 2026</h1><p>Kembali Berdikari Walau Ada Limitasi</p></div></div><div class="music"><button id="musicBtn" type="button">♫ Muzik OFF</button><label class="small">Vol <input id="volume" type="range" min="0" max="100" value="55"></label></div></div></div></header>
 <main>
 <section id="home" class="view active">
 <div class="maphero"><span class="tag" style="background:#ffffff22;color:#fff">PETA PENGEMBARAAN</span><h2>Selamat datang, Hero Kesihatan! 🦸</h2><p>Terokai dunia Stroke dan Diabetes. Selesaikan misi, kumpul XP dan bawa pulang ilmu untuk melindungi diri serta orang tersayang.</p><div class="mapstats"><span>⚡ XP <b id="xp">0</b></span><span>🏅 Lencana <b id="badgeCount">0</b></span><span>🗺️ Misi <b id="completedCount">0/18</b></span></div></div>
@@ -260,13 +260,13 @@ if(g.kind==='balance'){
   <div class="dance-stats"><span>⭐ Skor <b id="danceScore">0</b></span><span>🔥 Combo <b id="danceCombo">0</b></span><span>🎯 Tepat <b id="danceHits">0</b></span><span>⚡ <b id="danceLevel">Tahap 1</b></span></div>
   <div class="dance-stage" id="danceStage"><div class="dance-lanes">${arrows.map((a,i)=>`<div class="dance-lane"><div class="dance-lane-label">${a}<small>${labels[i]}</small></div></div>`).join('')}</div><div class="dance-notes" id="danceNotes"></div><div class="dance-hitline" id="danceHitline" style="top:76%"><span>TEKAN DI SINI</span></div><div class="dance-judge" id="danceJudge">TEKAN MULA MENARI 🎵</div></div>
   <div class="dance-controls">${arrows.map((a,i)=>`<button class="dance-pad" data-dir="${i}">${a}<small>${labels[i]}</small></button>`).join('')}</div>
-  <div class="dance-bottom"><label><input type="checkbox" id="danceMusic" checked> ♫ Muzik</label><label>🔊 <input id="danceVolume" type="range" min="0" max="100" value="45" aria-label="Kelantangan muzik"></label><button class="btn dance-start" id="danceStart">▶ MULA MENARI</button></div>
+  <div class="dance-bottom"><label><input type="checkbox" id="danceMusic" checked> ♫ Muzik</label><label>🔊 <input id="danceVolume" type="range" min="0" max="100" value="45" aria-label="Kelantangan muzik"></label><button class="btn dance-start" id="danceStart">▶ MULA MENARI + AKTIFKAN MUZIK</button><button class="btn ghost" id="danceSoundTest" type="button">🔊 UJI BUNYI</button></div>
   <div class="puzzle-note">Cara main: sentuh anak panah yang sama apabila nota sampai ke garisan hijau. Mulakan perlahan, kemudian rentak dan nota bertambah laju.</div>
  </div>`;
  const stage=$('danceStage'),notesLayer=$('danceNotes'),judge=$('danceJudge');
- function audio(){if(!ctx){ctx=new(window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.gain.value=volume;gain.connect(ctx.destination);}if(ctx.state==='suspended')ctx.resume();}
+ function audio(){if(!ctx){ctx=new(window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.gain.value=1;gain.connect(ctx.destination);}if(ctx.state==='suspended')ctx.resume().catch(()=>{});}
  function blip(freq,d=.12,wave='triangle',vol=.18){if(!ctx||!gain)return;const o=ctx.createOscillator(),v=ctx.createGain();o.type=wave;o.frequency.value=freq;v.gain.setValueAtTime(Math.max(.001,vol*volume),ctx.currentTime);v.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+d);o.connect(v);v.connect(gain);o.start();o.stop(ctx.currentTime+d+.01);}
- function beat(){if(!running||!$('danceMusic').checked)return;const n=frame++%8;blip(n%4===0?110: n%2===0?220:330,.09,n%4===0?'sine':'triangle',.22);if(n%2===0)blip([262,330,392,330][Math.floor(n/2)%4],.16,'sine',.12);}
+ function beat(){if(!running||!$('danceMusic').checked||!ctx)return;const n=frame++%8;const bass=[130.81,130.81,164.81,164.81,174.61,174.61,146.83,146.83];const melody=[523.25,392,440,392,523.25,440,392,330];blip(bass[n],.22,'sine',.42);blip(melody[n],.19,'triangle',.38);if(n%2===0)blip(880,.055,'square',.09);}
  function addNote(dir,now){const el=document.createElement('div');el.className='dance-note';el.textContent=arrows[dir];el.style.left=`calc(${dir*25}% + 8px)`;notesLayer.appendChild(el);notes.push({dir,y:-58,el,hit:false,born:now});}
  function loop(now){if(!running)return;if(!lastSpawn)lastSpawn=now;if(!lastBeat)lastBeat=now;
   const level=Math.min(5,Math.floor((now-startAt)/10000));spawnEvery=Math.max(490,1250-level*145);speed=155+level*27;
@@ -283,7 +283,7 @@ if(g.kind==='balance'){
  function startDance(){audio();if(raf)cancelAnimationFrame(raf);notes.forEach(n=>n.el.remove());notes=[];score=0;combo=0;bestCombo=0;misses=0;lastSpawn=0;lastBeat=0;frame=0;finished=false;running=true;startAt=performance.now();judge.textContent='IKUT RENTAK!';$('danceStart').textContent='↻ MULA SEMULA';$('actions').innerHTML='';$('danceScore').textContent='0';$('danceCombo').textContent='0';$('danceHits').textContent='0';raf=requestAnimationFrame(loop);}
  f.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>tap(+b.dataset.dir)));
  const keys={'ArrowLeft':0,'ArrowUp':1,'ArrowDown':2,'ArrowRight':3};const keyHandler=e=>{if(Object.prototype.hasOwnProperty.call(keys,e.key)&&running){e.preventDefault();tap(keys[e.key]);}};window.addEventListener('keydown',keyHandler);
- $('danceStart').onclick=startDance;$('danceMusic').onchange=()=>{if($('danceMusic').checked&&running)beat();};$('danceVolume').oninput=()=>{volume=+$('danceVolume').value/100;if(gain)gain.gain.value=volume;};
+ $('danceStart').onclick=startDance;$('danceSoundTest').onclick=()=>{try{audio();if(ctx&&ctx.state==='suspended')ctx.resume();blip(523.25,.28,'triangle',.65);setTimeout(()=>blip(659.25,.28,'triangle',.65),180);setTimeout(()=>blip(783.99,.35,'triangle',.65),360);judge.textContent='UJI BUNYI: DENGAR TIGA NOT 🎵';}catch(e){judge.textContent='Audio tidak tersedia dalam pelayar ini.';}};$('danceMusic').onchange=()=>{if($('danceMusic').checked&&running){frame=0;beat();}else if(!$('danceMusic').checked){judge.textContent='Muzik dijeda';}};$('danceVolume').oninput=()=>{volume=+$('danceVolume').value/100;if(gain)gain.gain.value=1;};
  cleanup=()=>{running=false;if(raf)cancelAnimationFrame(raf);if(beatTimer)clearInterval(beatTimer);window.removeEventListener('keydown',keyHandler);if(ctx){ctx.close().catch(()=>{});ctx=null;gain=null;}};
 }else if(g.kind==='sequence'){
  const correct=['💧 Air kosong','👟 Aktiviti mengikut kemampuan','🩺 Ikut pelan penjagaan','🧘 Rehat dan pantau keadaan'];let picked=[];const pool=[...correct].sort(()=>Math.random()-.5);const w=document.createElement('div');w.className='tiles';f.appendChild(w);const out=document.createElement('div');out.className='puzzle-note';out.textContent='Urutan: belum dipilih';f.appendChild(out);pool.forEach(v=>w.appendChild(btn(v,()=>{if(picked.includes(v))return;picked.push(v);out.textContent='Urutan: '+picked.join(' → ');if(picked.length===4)end(picked.every((x,i)=>x===correct[i]),120);},'tile')));action('Mula semula',()=>{picked=[];out.textContent='Urutan: belum dipilih';});
@@ -311,9 +311,52 @@ if(g.kind==='balance'){
 function board(){const rows=state.board.slice().sort((a,b)=>b.xp-a.xp).slice(0,20);$('boardRows').innerHTML='';if(!rows.length)$('boardRows').innerHTML='<p class="muted">Belum ada rekod. Simpan pencapaian untuk melihat nama di sini.</p>';rows.forEach((r,i)=>{const el=document.createElement('div');el.className='leaderrow';const name=document.createElement('span');name.textContent=r.name;const rank=document.createElement('b');rank.textContent=i+1;const score=document.createElement('strong');score.textContent=r.xp+' XP';el.append(rank,name,score);$('boardRows').append(el);});view('board');}
 function save(){const name=$('player').value.trim();if(!name){alert('Masukkan nama panggilan hero dahulu.');return;}state.player=name;const row=state.board.find(x=>x.name.toLowerCase()===name.toLowerCase());if(row)row.xp=Math.max(row.xp,state.xp);else state.board.push({name,xp:state.xp});persist();alert('Skor disimpan pada peranti ini sahaja.');}
 function clear(){if(confirm('Padam semua rekod leaderboard pada peranti ini?')){state.board=[];persist();board();}}
-function tone(freq,d=.16,type='triangle',vol=.04){try{if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)();masterGain=audioCtx.createGain();masterGain.connect(audioCtx.destination);}if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(vol,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);o.connect(g);g.connect(masterGain);o.start();o.stop(audioCtx.currentTime+d+.01);}catch(e){}}
-function music(on){musicOn=on;$('musicBtn').textContent=on?'♫ Muzik ON':'♫ Muzik OFF';if(musicTimer)clearInterval(musicTimer);if(on){let i=0;const notes=[262,330,392,523,392,330];musicTimer=setInterval(()=>tone(notes[i++%notes.length],.2,'triangle',.035),270);}else musicTimer=null;}
-$('musicBtn').onclick=()=>music(!musicOn);$('volume').oninput=()=>{if(masterGain)masterGain.gain.value=+$('volume').value/100;};
+function tone(freq,d=.16,type='triangle',vol=.04){
+ try{
+  if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)();masterGain=audioCtx.createGain();masterGain.gain.value=(+$('volume').value/100);masterGain.connect(audioCtx.destination);}
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;
+  g.gain.setValueAtTime(Math.max(.001,vol),audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);
+  o.connect(g);g.connect(masterGain);o.start();o.stop(audioCtx.currentTime+d+.02);
+ }catch(e){}
+}
+// A continuous, original arcade-style soundtrack for the map AND every game.
+// Browsers require a user gesture before audio can start; first tap anywhere enables it.
+function music(on){
+ musicOn=on;
+ $('musicBtn').textContent=on?'♫ Muzik ON':'♫ Muzik OFF';
+ $('musicBtn').setAttribute('aria-pressed',on?'true':'false');
+ if(musicTimer){clearInterval(musicTimer);musicTimer=null;}
+ if(!on)return;
+ try{
+  if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)();masterGain=audioCtx.createGain();masterGain.gain.value=(+$('volume').value/100);masterGain.connect(audioCtx.destination);}
+  if(audioCtx.state==='suspended')audioCtx.resume();
+ }catch(e){$('musicBtn').textContent='♫ Audio tidak tersedia';return;}
+ let step=0;
+ const melody=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,1046.5,880,783.99,659.25,587.33];
+ const bass=[130.81,130.81,164.81,164.81,174.61,174.61,146.83,146.83];
+ musicTimer=setInterval(()=>{
+  if(!musicOn)return;
+  const n=step%melody.length;
+  tone(melody[n],.20,'square',.055);
+  if(step%2===0)tone(bass[(step>>1)%bass.length],.31,'triangle',.075);
+  if(step%4===0)tone(75,.07,'sine',.035);
+  step++;
+ },220);
+}
+$('musicBtn').onclick=()=>music(!musicOn);
+$('volume').oninput=()=>{if(masterGain)masterGain.gain.value=+$('volume').value/100;};
+let musicGestureSeen=false;
+function enableMusicAfterGesture(e){
+ if(musicGestureSeen)return;
+ if(e&&e.target&&e.target.closest&&e.target.closest('#musicBtn'))return;
+ musicGestureSeen=true;
+ if(!musicOn)music(true);
+}
+document.addEventListener('pointerdown',enableMusicAfterGesture,{passive:true});
+document.addEventListener('keydown',enableMusicAfterGesture);
+
 $('player').onchange=persist;$('openBoard').onclick=board;$('closeBooth').onclick=()=>$('boothGames').classList.add('hidden');$('saveScore').onclick=save;$('quitGame').onclick=()=>{stop();$('boothGames').classList.add('hidden');view('home');};$('goHome').onclick=()=>{stop();view('home');};$('resultBoard').onclick=board;$('boardHome').onclick=()=>view('home');$('boardSave').onclick=save;$('clearBoard').onclick=clear;
 
 function currentBoothGames(){return GAMES.filter(g=>g.booth===activeBoothId);}
