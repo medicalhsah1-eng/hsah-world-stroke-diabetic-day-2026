@@ -20,6 +20,59 @@ main{padding:16px 12px 38px}.view{display:none}.view.active{display:block;animat
 .map-pin.reg{background:#ffbf32;color:#382000;box-shadow:0 3px 0 #986100,0 0 0 3px #ffd15c77}
 .map-pin.done{background:#079968;box-shadow:0 3px 0 #075c42,0 0 0 3px #36c99577}
 @media(max-width:520px){.adventure-map{border-radius:12px}.map-pin{border-width:2px}}
+
+.path-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid #d8e4f5}
+.path-nav button{flex:1;min-width:145px}
+#boothGames{scroll-margin-top:12px}
+
+/* Arcade motion upgrade */
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 0 0 #49d9ff00;filter:brightness(1)}50%{box-shadow:0 0 0 7px #49d9ff38;filter:brightness(1.12)}}
+@keyframes tilePop{0%{transform:scale(.82);opacity:.4}75%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+@keyframes clueScan{0%{transform:translate(-50%,-50%) rotate(-18deg)}50%{transform:translate(-46%,-54%) rotate(8deg)}100%{transform:translate(-50%,-50%) rotate(-18deg)}}
+@keyframes winBurst{0%{transform:scale(.3) rotate(-20deg);opacity:0}70%{transform:scale(1.2) rotate(8deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes runnerBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+@keyframes cluePing{0%{r:18;opacity:1}100%{r:32;opacity:0}}
+.arena{position:relative;overflow:hidden}
+.arena:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.28;background:linear-gradient(115deg,transparent 0 35%,#fff8 48%,transparent 60%);background-size:220% 100%;animation:arenaShine 7s linear infinite}
+@keyframes arenaShine{from{background-position:200% 0}to{background-position:-20% 0}}
+.field>*{animation:tilePop .28s ease both}
+.tile,.sc,.mem{transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+.tile:hover,.sc:hover,.mem:hover{transform:translateY(-3px) scale(1.025);box-shadow:0 8px 0 #cbd9ee}
+.tile:active,.sc:active,.mem:active{transform:scale(.95)}
+.sc.sel{animation:glowPulse .9s infinite}
+.footviz{position:relative;overflow:hidden;box-shadow:0 8px 20px #1d5c9414}
+.detective-lens{position:absolute;z-index:4;right:7%;top:9%;font-size:2.3rem;filter:drop-shadow(0 3px 3px #203d6b55);animation:clueScan 2.3s ease-in-out infinite;pointer-events:none}
+.footviz svg [data-clue]{transition:opacity .25s,filter .25s;filter:drop-shadow(0 0 2px #fff)}
+.footviz svg [data-clue]:hover{filter:drop-shadow(0 0 8px #ffcc45);opacity:1!important}
+.footviz svg [data-clue] circle:first-child{animation:glowPulse 1.8s infinite}
+.mascot{animation:heroFloat 1.3s ease-in-out infinite}
+.resulthero #mascot{display:inline-block;animation:winBurst .55s ease both,heroFloat 1.4s ease-in-out .6s infinite}
+.map-pin{animation:glowPulse 2.6s infinite}
+.map-pin:nth-of-type(2n){animation-delay:.35s}
+.feedback.good{animation:tilePop .25s ease}
+
+/* Physiotherapy: animated balance-timing challenge */
+.balance-game{width:min(540px,100%);display:flex;flex-direction:column;align-items:center;gap:13px;padding:12px 2px}
+.balance-hero{font-size:3.3rem;filter:drop-shadow(0 7px 2px #1b438a22);animation:balanceHero 1.15s ease-in-out infinite}
+@keyframes balanceHero{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-8px) rotate(4deg)}}
+.balance-track{height:64px;width:100%;position:relative;border-radius:18px;border:3px solid #b8c9e8;background:linear-gradient(180deg,#e8efff,#d8e5fb);box-shadow:inset 0 4px 8px #8da6d344;overflow:hidden;touch-action:manipulation;cursor:pointer}
+.balance-track:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 9%,#8ba5d52b 9.2% 9.6%)}
+.balance-zone{position:absolute;top:0;bottom:0;background:linear-gradient(180deg,#71f0b1,#19bd7a);border-left:3px solid #078957;border-right:3px solid #078957;box-shadow:0 0 19px #1ad58b88;transition:left .25s,width .25s}
+.balance-marker{position:absolute;top:50%;left:0;width:29px;height:43px;border-radius:11px;background:linear-gradient(145deg,#fff,#ffe27b);border:3px solid #f1a927;box-shadow:0 4px 0 #c9811b,0 0 15px #ffcc5b88;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
+.balance-track.hit{animation:balanceHit .3s ease}
+.balance-track.miss{animation:balanceMiss .25s ease}
+@keyframes balanceHit{50%{box-shadow:0 0 0 7px #36d99b66,0 0 35px #22d18c}}
+@keyframes balanceMiss{25%,75%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
+.balance-stats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.balance-stat{border-radius:12px;padding:8px 12px;background:#fff;border:1px solid #dce7f7;font-weight:900;font-size:.84rem}
+.balance-stat strong{color:#087d56}
+.balance-instruction{text-align:center;font-weight:900;line-height:1.45}
+.balance-pips{display:flex;gap:7px;justify-content:center}
+.balance-pip{width:13px;height:13px;border-radius:50%;background:#d5e0f3;border:2px solid #b8c8e4}
+.balance-pip.done{background:#22c98b;border-color:#078957;box-shadow:0 0 0 3px #22c98b25}
+.balance-pip.active{background:#ffd166;border-color:#d99b18;transform:scale(1.25)}
+.balance-btn{min-width:170px;font-size:1.05rem;padding:14px 20px}
 </style>
 </head>
 <body>
@@ -48,8 +101,10 @@ main{padding:16px 12px 38px}.view{display:none}.view.active{display:block;animat
 <div id="boothGames" class="hidden"><div class="maptitle"><span class="tag" id="boothTag">BOOTH</span><h2 id="boothTitle">Pilih misi</h2><div class="line"></div><button class="btn ghost" id="closeBooth">Tutup</button></div><div id="gameCards" class="gamegrid"></div></div>
 <div class="panel" style="margin-top:17px"><div class="row between"><div><b>🏁 Tangga Pemenang</b><p class="small muted" style="margin:4px 0 0">Simpan pencapaian pada peranti ini.</p></div><button class="btn" id="saveScore">Simpan skor</button></div></div>
 </section>
-<section id="play" class="view"><div class="panel"><div class="arenahead"><div><span id="gameTag" class="tag">STROKE</span><h2 id="gameTitle"></h2><p class="muted small" id="gameDesc"></p></div><button class="btn ghost" id="quitGame">↩ Peta misi</button></div><div class="row between small"><b id="levelText">LEVEL 1</b><span class="tag" id="scorePill">⚡ 0 XP</span></div><div class="progress" style="margin-top:9px"><span id="levelProgress"></span></div><div class="arena"><div class="arenaTop"><b id="miniTitle">MISI BERMULA</b><span class="tag" id="timerTag">ARCADE MODE</span></div><div class="prompt" id="prompt"></div><div class="field" id="field"></div><div id="feedback" class="feedback" aria-live="polite"></div><div class="actions" id="actions"></div></div></div></section>
-<section id="result" class="view"><div class="resulthero"><span id="resultTag" class="tag">MISI SELESAI</span><h2 id="resultHeading">Hebat, Hero!</h2><div class="mascotrow"><div class="mascot" id="mascot">🦸</div><div class="bubble" id="message"></div></div></div><div class="panel"><div class="stats"><div class="stat"><small>XP misi</small><strong id="earned">0</strong></div><div class="stat"><small>Jumlah XP</small><strong id="totalXP">0</strong></div><div class="stat"><small>Lencana</small><strong id="badges">0</strong></div></div><span class="tag diab">TIP KESIHATAN</span><p id="tip" style="line-height:1.6"></p><div id="badgeEarned"></div><div class="actions"><button class="btn" id="replay">↻ Main semula</button><button class="btn dark" id="goHome">🗺️ Peta misi</button><button class="btn ghost" id="resultBoard">🏆 Tangga Pemenang</button></div></div></section>
+<section id="play" class="view"><div class="panel"><div class="arenahead"><div><span id="gameTag" class="tag">STROKE</span><h2 id="gameTitle"></h2><p class="muted small" id="gameDesc"></p></div><button class="btn ghost" id="quitGame">↩ Peta misi</button></div><div class="row between small"><b id="levelText">LEVEL 1</b><span class="tag" id="scorePill">⚡ 0 XP</span></div><div class="progress" style="margin-top:9px"><span id="levelProgress"></span></div><div class="arena"><div class="arenaTop"><b id="miniTitle">MISI BERMULA</b><span class="tag" id="timerTag">ARCADE MODE</span></div><div class="prompt" id="prompt"></div><div class="field" id="field"></div><div id="feedback" class="feedback" aria-live="polite"></div><div class="actions" id="actions"></div>
+<div class="path-nav"><button class="btn ghost" id="pathRestart">↻ Cuba semula misi ini</button><button class="btn ghost" id="pathMap">🗺️ Kembali ke peta</button></div>
+</div></div></section>
+<section id="result" class="view"><div class="resulthero"><span id="resultTag" class="tag">MISI SELESAI</span><h2 id="resultHeading">Hebat, Hero!</h2><div class="mascotrow"><div class="mascot" id="mascot">🦸</div><div class="bubble" id="message"></div></div></div><div class="panel"><div class="stats"><div class="stat"><small>XP misi</small><strong id="earned">0</strong></div><div class="stat"><small>Jumlah XP</small><strong id="totalXP">0</strong></div><div class="stat"><small>Lencana</small><strong id="badges">0</strong></div></div><span class="tag diab">TIP KESIHATAN</span><p id="tip" style="line-height:1.6"></p><div id="badgeEarned"></div><div class="actions"><button class="btn" id="replay">↻ Cuba semula</button><button class="btn dark" id="nextMission">➡️ Misi seterusnya</button><button class="btn ghost" id="goHome">🗺️ Kembali ke peta</button><button class="btn ghost" id="resultBoard">🏆 Tangga Pemenang</button></div></div></section>
 <section id="board" class="view"><div class="panel"><div class="row between"><h2 style="margin:0">🏆 Tangga Pemenang</h2><button class="btn ghost" id="boardHome">Kembali</button></div><p class="small muted">Leaderboard disimpan pada pelayar ini sahaja, bukan dikongsi antara telefon.</p><div id="boardRows"></div><div class="actions"><button class="btn" id="boardSave">Simpan pencapaian</button><button class="btn ghost" id="clearBoard">Padam leaderboard</button></div></div></section>
 </main><footer class="foot">Designed game by OTR Chuad Steady</footer>
 <script>
@@ -66,7 +121,7 @@ const BOOTHS=[
 {id:10,name:'Angels Initiative',icon:'👼',games:[16,17]}
 ];
 const GAMES=[
-{id:'pt-grid',booth:2,title:'Stroke Balance Grid',icon:'🧩',kind:'grid',category:'stroke',desc:'Lengkapkan grid 4×4. Setiap baris dan lajur mesti menggunakan simbol tanpa pengulangan.',intro:'Bantu Hero Pergerakan menyusun simbol gerakan dengan teliti.',win:'Keseimbangan bermula dengan satu langkah. Teruskan latihan mengikut kemampuan untuk bergerak dengan lebih selamat.',lose:'Tidak mengapa. Setiap percubaan membina keyakinan. Cuba lagi dengan tenang.',tip:'Ikut pelan rehabilitasi individu dan gunakan alat bantuan yang disarankan.'},
+{id:'pt-grid',booth:2,title:'Stroke Balance Challenge',icon:'⚖️',kind:'balance',category:'stroke',desc:'Tekan zon hijau yang bergerak. Setiap pusingan semakin pantas dan zon sasaran semakin kecil.',intro:'Bantu Hero Pergerakan mengekalkan keseimbangan: tekan ketika penanda berada di zon hijau!',win:'Keseimbangan bermula dengan satu langkah. Teruskan latihan mengikut kemampuan untuk bergerak dengan lebih selamat.',lose:'Tidak mengapa. Setiap percubaan membina keyakinan. Cuba lagi dengan tenang.',tip:'Ikut pelan rehabilitasi individu dan gunakan alat bantuan yang disarankan.'},
 {id:'pt-steps',booth:2,title:'Diabetes Step Sequence',icon:'👣',kind:'sequence',category:'diabetes',desc:'Susun langkah aktiviti yang selamat menjadi laluan rutin sihat.',intro:'Susun urutan aktiviti daripada mula hingga selesai.',win:'Langkah kecil yang konsisten boleh membantu membina rutin sihat.',lose:'Cuba lagi. Pilih aktiviti beransur-ansur dan utamakan keselamatan.',tip:'Mulakan aktiviti fizikal mengikut kemampuan dan nasihat pasukan kesihatan.'},
 {id:'ot-sort',booth:3,title:'Stroke Occupational Balance Sort',icon:'🧺',kind:'sort',category:'stroke',desc:'Asingkan aktiviti kepada penjagaan diri, produktiviti, rehat dan riadah.',intro:'Bantu Heroin Berdikari merancang aktiviti harian yang seimbang.',win:'Berdikari bukan bermaksud melakukan semuanya sendiri. Strategi dan alat bantuan boleh membantu.',lose:'Setiap cabaran ada cara mengatasinya. Pecahkan aktiviti kepada langkah kecil.',tip:'Sesuaikan aktiviti dan persekitaran mengikut keperluan individu.'},
 {id:'ot-foot',booth:3,title:'Diabetes Foot Care Mission',icon:'🔎',kind:'foot',category:'diabetes',desc:'Dua peringkat: cari tanda amaran pada kaki, kemudian selesaikan cabaran kasut.',intro:'Jadilah detektif kaki diabetes. Perhatikan perubahan dan pilih tindakan selamat.',win:'Mata yang peka, langkah yang selamat! Periksa kaki dan kasut setiap hari.',lose:'Jangan tunggu sehingga kaki sakit. Periksa kaki dan bahagian dalam kasut setiap hari.',tip:'Dapatkan penilaian profesional untuk luka, perubahan warna/suhu, bengkak atau tanda jangkitan.'},
@@ -85,22 +140,77 @@ const GAMES=[
 {id:'angels-path',booth:10,title:'Save the Brain · Path Puzzle',icon:'🧠',kind:'maze',category:'stroke',desc:'Cari laluan ke bantuan kecemasan tanpa melalui halangan.',intro:'Bantu hero mencari jalan kepada bantuan dengan cepat.',win:'Anda semakin memahami kepentingan tindakan kecemasan yang pantas.',lose:'Cuba laluan lain. Keutamaan ialah mendapatkan bantuan segera.',tip:'Jika mengesyaki strok, hubungi 999; jangan memandu sendiri jika ambulans tersedia.'},
 {id:'angels-collect',booth:10,title:'Protect the Future · Match & Collect',icon:'🛡️',kind:'collect',category:'diabetes',desc:'Kumpulkan simbol rutin penjagaan diri.',intro:'Kumpulkan ilmu yang membantu melindungi kesihatan masa depan.',win:'Kongsi ilmu kesihatan yang tepat dengan keluarga dan komuniti.',lose:'Setiap percubaan ialah peluang belajar. Cuba lagi dengan lebih teliti.',tip:'Penjagaan diabetes melibatkan pelan rawatan, pemantauan, pemakanan dan aktiviti yang sesuai.'}
 ];
-const state={xp:0,badges:0,completed:new Set(),scores:{},player:'',lastGame:null,board:[]};const $=id=>document.getElementById(id);let activeGame=null,cleanup=null,audioCtx=null,masterGain=null,musicOn=false,musicTimer=null;
+const state={xp:0,badges:0,completed:new Set(),scores:{},player:'',lastGame:null,board:[]};const $=id=>document.getElementById(id);let activeGame=null,activeBoothId=null,cleanup=null,audioCtx=null,masterGain=null,musicOn=false,musicTimer=null;
 function persist(){state.player=$('player').value.trim().slice(0,24);try{localStorage.setItem('hqState',JSON.stringify({...state,completed:[...state.completed]}));}catch(e){}}
 function load(){try{const x=JSON.parse(localStorage.getItem('hqState')||'{}');state.xp=x.xp||0;state.badges=x.badges||0;state.completed=new Set(x.completed||[]);state.scores=x.scores||{};state.player=x.player||'';state.board=x.board||[];}catch(e){}$('player').value=state.player;stats();}
 function stats(){$('xp').textContent=state.xp;$('badgeCount').textContent=state.badges;$('completedCount').textContent=state.completed.size+'/18';$('totalProgress').style.width=state.completed.size/18*100+'%';document.querySelectorAll('.map-pin').forEach(n=>{const b=BOOTHS.find(x=>x.id===+n.dataset.booth);n.classList.toggle('done',!!b&&b.games.length>0&&b.games.every(i=>state.completed.has(GAMES[i].id)));});}
 function map(){document.querySelectorAll('.map-pin').forEach(n=>{n.addEventListener('click',()=>{const id=+n.dataset.booth;const b=BOOTHS.find(x=>x.id===id);if(b&&b.type==='register')register();else booth(id);});});stats();}
 function view(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));window.scrollTo({top:0,behavior:'smooth'});}
 function register(){const n=prompt('Nama panggilan hero:',state.player||'');if(n!==null){$('player').value=n.slice(0,24);persist();alert('Profil disimpan pada peranti ini. Penebusan hadiah sebenar perlu disahkan petugas.');}}
-function booth(id){const b=BOOTHS.find(x=>x.id===id);$('boothTag').textContent='BOOTH '+id;$('boothTitle').textContent=b.name;$('gameCards').innerHTML='';b.games.forEach(i=>{const g=GAMES[i],c=document.createElement('article');c.className='gamecard';c.innerHTML=`<div class="gicon">${g.icon}</div><span class="tag ${g.category==='diabetes'?'diab':''}">${g.category==='diabetes'?'DIABETES':'STROKE'}</span><h3>${g.title}</h3><p>${g.desc}</p><button class="btn">Mulakan misi</button>`;c.querySelector('button').onclick=()=>start(g.id);$('gameCards').appendChild(c);});$('boothGames').classList.remove('hidden');$('boothGames').scrollIntoView({behavior:'smooth'});}
+function booth(id){const b=BOOTHS.find(x=>x.id===id);activeBoothId=id;$('boothTag').textContent='BOOTH '+id;$('boothTitle').textContent=b.name;$('gameCards').innerHTML='';b.games.forEach(i=>{const g=GAMES[i],c=document.createElement('article');c.className='gamecard';c.innerHTML=`<div class="gicon">${g.icon}</div><span class="tag ${g.category==='diabetes'?'diab':''}">${g.category==='diabetes'?'DIABETES':'STROKE'}</span><h3>${g.title}</h3><p>${g.desc}</p><button class="btn">Mulakan misi</button>`;c.querySelector('button').onclick=()=>start(g.id);$('gameCards').appendChild(c);});$('boothGames').classList.remove('hidden');$('boothGames').scrollIntoView({behavior:'smooth'});}
 function stop(){if(cleanup){cleanup();cleanup=null;}activeGame=null;}
-function say(t,ok=false){$('feedback').textContent=t;$('feedback').className='feedback '+(ok?'good':'bad');}
+function say(t,ok=false){$('feedback').textContent=(ok?'✨ ':'🔍 ')+t;$('feedback').className='feedback '+(ok?'good':'bad');}
 function btn(text,fn,cls='btn'){const b=document.createElement('button');b.type='button';b.className=cls;b.textContent=text;b.onclick=fn;return b;}
 function action(text,fn,cls='btn'){ $('actions').appendChild(btn(text,fn,cls));}
-function start(id){stop();const g=GAMES.find(x=>x.id===id);activeGame=g;state.lastGame=id;persist();$('gameTag').textContent=g.category.toUpperCase();$('gameTag').className='tag '+(g.category==='diabetes'?'diab':'');$('gameTitle').textContent=g.title;$('gameDesc').textContent=g.desc;$('prompt').textContent=g.intro;$('field').innerHTML='';$('actions').innerHTML='';$('feedback').textContent='';$('scorePill').textContent='⚡ 0 XP';$('levelProgress').style.width='0%';$('timerTag').textContent='ARCADE MODE';view('play');mechanic(g);}
-function finish(win,score=100,msg=''){if(!activeGame)return;const g=activeGame;stop();const was=state.completed.has(g.id);score=was?Math.min(10,Math.max(0,Math.round(score*.1))):Math.max(0,Math.round(score));state.xp+=score;if(win&&!was){state.badges++;state.completed.add(g.id);}state.scores[g.id]=Math.max(state.scores[g.id]||0,score);persist();stats();$('resultTag').textContent='BOOTH '+g.booth+' · '+(g.category==='diabetes'?'DIABETES':'STROKE');$('resultHeading').textContent=win?'TAHNIAH, HERO!':'TERUSKAN USAHA!';$('mascot').textContent=win?'🦸':'💪';$('message').textContent=msg||(win?g.win:g.lose);$('earned').textContent=score;$('totalXP').textContent=state.xp;$('badges').textContent=state.badges;$('tip').textContent=g.tip;$('badgeEarned').innerHTML=win?`<span class="badge">🏅 ${g.title}${was?'':' · Lencana baharu'}</span>`:'<span class="badge">🌱 Pengalaman ialah kemajuan</span>';$('replay').onclick=()=>start(g.id);$('goHome').onclick=()=>view('home');$('resultBoard').onclick=board;view('result');}
+function start(id){stop();const g=GAMES.find(x=>x.id===id);activeGame=g;activeBoothId=g.booth;state.lastGame=id;persist();$('gameTag').textContent=g.category.toUpperCase();$('gameTag').className='tag '+(g.category==='diabetes'?'diab':'');$('gameTitle').textContent=g.title;$('gameDesc').textContent=g.desc;$('prompt').textContent=g.intro;$('field').innerHTML='';$('actions').innerHTML='';$('feedback').textContent='';$('scorePill').textContent='⚡ 0 XP';$('levelProgress').style.width='0%';$('timerTag').textContent='ARCADE MODE';view('play');mechanic(g);}
+function finish(win,score=100,msg=''){if(!activeGame)return;const g=activeGame;stop();const was=state.completed.has(g.id);score=was?Math.min(10,Math.max(0,Math.round(score*.1))):Math.max(0,Math.round(score));state.xp+=score;if(win&&!was){state.badges++;state.completed.add(g.id);}state.scores[g.id]=Math.max(state.scores[g.id]||0,score);persist();stats();$('resultTag').textContent='BOOTH '+g.booth+' · '+(g.category==='diabetes'?'DIABETES':'STROKE');$('resultHeading').textContent=win?'TAHNIAH, HERO!':'TERUSKAN USAHA!';$('mascot').textContent=win?'🦸':'💪';$('message').textContent=msg||(win?g.win:g.lose);$('earned').textContent=score;$('totalXP').textContent=state.xp;$('badges').textContent=state.badges;$('tip').textContent=g.tip;$('badgeEarned').innerHTML=win?`<span class="badge">🏅 ${g.title}${was?'':' · Lencana baharu'}</span>`:'<span class="badge">🌱 Pengalaman ialah kemajuan</span>';$('replay').onclick=()=>start(g.id);$('goHome').onclick=()=>view('home');$('resultBoard').onclick=board;view('result');if(win){$('resultHeading').textContent='✨ TAHNIAH, HERO! ✨';$('mascot').animate([{transform:'scale(.4) rotate(-20deg)',opacity:0},{transform:'scale(1.2) rotate(8deg)',opacity:1},{transform:'scale(1)',opacity:1}],{duration:600,easing:'cubic-bezier(.2,.8,.2,1)'});}}
 function mechanic(g){const f=$('field');let ended=false;const end=(win,score=100,msg='')=>{if(ended)return;ended=true;$('scorePill').textContent='⚡ '+score+' XP';$('levelProgress').style.width=win?'100%':'50%';finish(win,score,msg);};const choose=(arr,fn,cls='tiles')=>{f.innerHTML='';const w=document.createElement('div');w.className=cls;arr.forEach((v,i)=>w.appendChild(btn(v,()=>fn(i),cls==='memory'?'mem':'tile')));f.appendChild(w);return w;};
-if(g.kind==='meowdoku'||g.kind==='grid'){
+
+if(g.kind==='balance'){
+ const total=6;let round=0,hits=0,raf=0,active=true,started=performance.now(),period=2600,zoneLeft=35,zoneWidth=30,lastTime=0;
+ f.innerHTML=`<div class="balance-game">
+   <div class="balance-hero" id="balanceHero" aria-hidden="true">🦸‍♂️</div>
+   <div class="balance-instruction" id="balanceInstruction">Bersedia? Tunggu penanda kuning masuk ke zon hijau.</div>
+   <div class="balance-stats"><div class="balance-stat">Pusingan <strong id="balRound">1</strong> / ${total}</div><div class="balance-stat">Tepat <strong id="balHits">0</strong></div><div class="balance-stat">Kelajuan <strong id="balSpeed">Perlahan</strong></div></div>
+   <div class="balance-track" id="balanceTrack" role="button" tabindex="0" aria-label="Tekan apabila penanda kuning berada dalam zon hijau"><div class="balance-zone" id="balanceZone"></div><div class="balance-marker" id="balanceMarker"></div></div>
+   <div class="balance-pips" id="balancePips">${Array.from({length:total},(_,i)=>`<span class="balance-pip ${i===0?'active':''}"></span>`).join('')}</div>
+   <div class="puzzle-note">🎯 Zon hijau semakin kecil dan penanda semakin laju. Sentuh trek atau tekan butang ketika penanda berada dalam zon hijau.</div>
+   <button class="btn balance-btn" id="balanceTap">⚡ TEKAN SEKARANG</button>
+ </div>`;
+ const track=$('balanceTrack'),zone=$('balanceZone'),marker=$('balanceMarker');
+ function setupRound(){
+   if(round>=total){active=false;if(raf)cancelAnimationFrame(raf);end(hits>=4, hits*30);return;}
+   period=Math.max(780,2600-round*340);
+   zoneWidth=Math.max(9,30-round*3.6);
+   zoneLeft=8+Math.random()*(84-zoneWidth);
+   zone.style.left=zoneLeft+'%';zone.style.width=zoneWidth+'%';
+   $('balRound').textContent=round+1;
+   $('balHits').textContent=hits;
+   $('balSpeed').textContent=round<2?'Perlahan':round<4?'Sederhana':'Pantas!';
+   $('balanceInstruction').textContent=round===0?'Pusingan pertama: zon hijau besar dan penanda bergerak perlahan.':'Bersedia! Cari zon hijau yang semakin kecil.';
+   $('balancePips').innerHTML=Array.from({length:total},(_,i)=>`<span class="balance-pip ${i<round?'done':i===round?'active':''}"></span>`).join('');
+   started=performance.now();
+   if(raf)cancelAnimationFrame(raf);
+   animate();
+ }
+ function animate(now){
+   if(!active)return;
+   const t=(now||performance.now())-started;
+   const phase=(t%period)/period;
+   const x=(phase<.5?phase*2:2-phase*2)*100;
+   marker.style.left=x+'%';
+   raf=requestAnimationFrame(animate);
+ }
+ function attempt(){
+   if(!active)return;
+   const x=parseFloat(marker.style.left)||0;
+   const center=zoneLeft+zoneWidth/2;
+   const hit=Math.abs(x-center)<=zoneWidth/2+2;
+   track.classList.remove('hit','miss');void track.offsetWidth;track.classList.add(hit?'hit':'miss');
+   if(hit){hits++;tone(660+hits*75,.18,'triangle',.055);$('balanceInstruction').textContent=['Bagus! Keseimbangan terkawal.','Tepat! Anda berjaya mengekalkan fokus.','Hebat! Bersedia untuk cabaran lebih pantas.'][Math.floor(Math.random()*3)];say('Tepat pada zon hijau! +30 XP',true);}
+   else{tone(180,.12,'sawtooth',.025);$('balanceInstruction').textContent='Terlepas sedikit. Tenang dan cuba pusingan seterusnya.';say('Belum tepat — sasarkan zon hijau.',false);}
+   $('balHits').textContent=hits;
+   round++;
+   $('levelText').textContent='PUSINGAN '+Math.min(round+1,total);
+   $('levelProgress').style.width=(round/total*100)+'%';
+   setTimeout(setupRound,650);
+ }
+ $('balanceTap').addEventListener('click',attempt);
+ track.addEventListener('click',attempt);
+ track.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();attempt();}});
+ cleanup=()=>{active=false;if(raf)cancelAnimationFrame(raf);};
+ setupRound();
+}else if(g.kind==='meowdoku'||g.kind==='grid'){
  const syms=g.kind==='meowdoku'?['💧','🥦','🏃','🩸']:['⬆️','➡️','⬇️','⬅️'];
  const solution=[0,1,2,3,2,3,0,1,1,0,3,2,3,2,1,0];
  let values=[0,-1,2,-1,-1,3,-1,1,1,-1,3,-1,-1,2,-1,0],selected=-1;
@@ -110,7 +220,7 @@ if(g.kind==='meowdoku'||g.kind==='grid'){
  syms.forEach((s,i)=>symbols.appendChild(btn(s,()=>pick(i),'tile')));draw();action('Semak grid',()=>{if(values.every((v,i)=>v===solution[i]))end(true,160);else say('Belum selesai atau masih ada susunan salah. Semak baris dan lajur.');});action('Petunjuk',()=>say('Petunjuk: baris pertama ialah 💧 🥦 🏃 🩸. Gunakan petunjuk itu untuk menyelesaikan baris lain.',true));
 }else if(g.kind==='foot'){
  const clues=[['wound','Luka/lepuh','Luka atau lepuh perlu dinilai segera walaupun tidak sakit.'],['red','Perubahan warna','Perubahan warna atau suhu yang baharu memerlukan perhatian.'],['swollen','Bengkak','Bengkak baharu perlu dinilai oleh profesional.'],['nail','Perubahan kuku','Perubahan kulit atau kuku perlu dipantau.']];let found=new Set();
- f.innerHTML=`<div class="footviz"><svg viewBox="0 0 300 360" role="img" aria-label="Ilustrasi kaki pendidikan dengan kawasan petunjuk"><defs><linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd9b9"/><stop offset="1" stop-color="#e9a980"/></linearGradient></defs><path d="M106 305 C90 276 91 235 105 204 C118 174 115 145 111 117 C107 87 112 52 139 45 C158 40 174 54 177 77 L188 147 C193 174 205 195 214 220 C226 254 220 287 197 309 C176 328 128 329 106 305Z" fill="url(#skin)" stroke="#b87956" stroke-width="4"/><ellipse cx="139" cy="38" rx="14" ry="19" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><ellipse cx="163" cy="43" rx="12" ry="17" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><ellipse cx="183" cy="55" rx="10" ry="14" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><ellipse cx="198" cy="70" rx="9" ry="12" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><ellipse cx="207" cy="87" rx="8" ry="10" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><g data-clue="wound" style="cursor:pointer"><circle cx="151" cy="246" r="17" fill="#d94b53" stroke="#8e202b" stroke-width="3"/><circle cx="151" cy="246" r="25" fill="none" stroke="#fff" stroke-dasharray="4 4" stroke-width="3"/></g><g data-clue="red" style="cursor:pointer"><circle cx="181" cy="180" r="15" fill="#ff6c6c" stroke="#a92835" stroke-width="3"/><circle cx="181" cy="180" r="23" fill="none" stroke="#fff" stroke-dasharray="4 4" stroke-width="3"/></g><g data-clue="swollen" style="cursor:pointer"><ellipse cx="124" cy="289" rx="20" ry="13" fill="#a6c7ff" stroke="#3666b4" stroke-width="3"/><ellipse cx="124" cy="289" rx="27" ry="20" fill="none" stroke="#fff" stroke-dasharray="4 4" stroke-width="3"/></g><g data-clue="nail" style="cursor:pointer"><ellipse cx="139" cy="38" rx="8" ry="11" fill="#8d5d50" stroke="#fff" stroke-width="2"/><ellipse cx="139" cy="38" rx="16" ry="22" fill="none" stroke="#fff" stroke-dasharray="4 4" stroke-width="3"/></g></svg></div><div class="puzzle-note">🔎 <b>Foot Care Detective</b><br>Pilih setiap tanda pada ilustrasi kaki untuk menyiasat petunjuk.</div><div id="clueInfo" class="puzzle-note">Petunjuk ditemui: 0/4</div>`;
+ f.innerHTML=`<div class="footviz"><div class="detective-lens" aria-hidden="true">🔎</div><svg viewBox="0 0 300 360" role="img" aria-label="Ilustrasi kaki pendidikan dengan kawasan petunjuk"><defs><linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd9b9"/><stop offset="1" stop-color="#e9a980"/></linearGradient></defs><path d="M106 305 C90 276 91 235 105 204 C118 174 115 145 111 117 C107 87 112 52 139 45 C158 40 174 54 177 77 L188 147 C193 174 205 195 214 220 C226 254 220 287 197 309 C176 328 128 329 106 305Z" fill="url(#skin)" stroke="#b87956" stroke-width="4"/><ellipse cx="139" cy="38" rx="14" ry="19" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><ellipse cx="163" cy="43" rx="12" ry="17" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><ellipse cx="183" cy="55" rx="10" ry="14" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><ellipse cx="198" cy="70" rx="9" ry="12" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><ellipse cx="207" cy="87" rx="8" ry="10" fill="#ffd9b9" stroke="#b87956" stroke-width="3"/><g data-clue="wound" style="cursor:pointer"><circle cx="151" cy="246" r="17" fill="#d94b53" stroke="#8e202b" stroke-width="3"/><circle cx="151" cy="246" r="25" fill="none" stroke="#fff" stroke-dasharray="4 4" stroke-width="3"/></g><g data-clue="red" style="cursor:pointer"><circle cx="181" cy="180" r="15" fill="#ff6c6c" stroke="#a92835" stroke-width="3"/><circle cx="181" cy="180" r="23" fill="none" stroke="#fff" stroke-dasharray="4 4" stroke-width="3"/></g><g data-clue="swollen" style="cursor:pointer"><ellipse cx="124" cy="289" rx="20" ry="13" fill="#a6c7ff" stroke="#3666b4" stroke-width="3"/><ellipse cx="124" cy="289" rx="27" ry="20" fill="none" stroke="#fff" stroke-dasharray="4 4" stroke-width="3"/></g><g data-clue="nail" style="cursor:pointer"><ellipse cx="139" cy="38" rx="8" ry="11" fill="#8d5d50" stroke="#fff" stroke-width="2"/><ellipse cx="139" cy="38" rx="16" ry="22" fill="none" stroke="#fff" stroke-dasharray="4 4" stroke-width="3"/></g></svg></div><div class="puzzle-note">🔎 <b>Foot Care Detective</b><br>Pilih setiap tanda pada ilustrasi kaki untuk menyiasat petunjuk.</div><div id="clueInfo" class="puzzle-note">Petunjuk ditemui: 0/4</div>`;
  f.querySelectorAll('[data-clue]').forEach(el=>el.onclick=()=>{const id=el.dataset.clue;if(found.has(id))return;found.add(id);const c=clues.find(x=>x[0]===id);$('clueInfo').textContent=c[1]+': '+c[2]+' · '+found.size+'/4';el.style.opacity='.45';say('Petunjuk ditemui: '+c[1],true);if(found.size===4)shoes();});
  function shoes(){f.innerHTML=`<div class="puzzle-note"><b>PERINGKAT 2 · SHOE SMART</b><br>Pilih kasut yang lebih selamat untuk kaki diabetes.</div><div class="tiles"><button class="tile" data-shoe="safe">👟 Kasut muat dan selesa</button><button class="tile" data-shoe="tight">👠 Kasut ketat</button><button class="tile" data-shoe="object">🔎 Objek di dalam kasut</button></div><div id="shoeInfo" class="puzzle-note">Pilih pilihan untuk menyiasat.</div>`;f.querySelectorAll('[data-shoe]').forEach(b=>b.onclick=()=>{const v=b.dataset.shoe;$('shoeInfo').textContent=v==='safe'?'Lebih sesuai. Periksa juga bahagian dalam kasut sebelum memakainya.':v==='tight'?'Kasut ketat boleh menyebabkan geseran dan tekanan. Pilih saiz dan bentuk yang sesuai.':'Objek di dalam kasut boleh mencederakan kaki. Keluarkan objek dan periksa kaki.';if(v==='safe'){say('Kedua-dua peringkat selesai!',true);action('Selesaikan misi',()=>end(true,180));}else say('Perhatikan petunjuk dan cuba pilihan lebih selamat.');});}
  action('Petua pemeriksaan',()=>say('Periksa kaki setiap hari termasuk tapak dan celah jari. Dapatkan nasihat profesional untuk luka atau perubahan luar biasa.',true));
@@ -143,7 +253,29 @@ function clear(){if(confirm('Padam semua rekod leaderboard pada peranti ini?')){
 function tone(freq,d=.16,type='triangle',vol=.04){try{if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)();masterGain=audioCtx.createGain();masterGain.connect(audioCtx.destination);}if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(vol,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);o.connect(g);g.connect(masterGain);o.start();o.stop(audioCtx.currentTime+d+.01);}catch(e){}}
 function music(on){musicOn=on;$('musicBtn').textContent=on?'♫ Muzik ON':'♫ Muzik OFF';if(musicTimer)clearInterval(musicTimer);if(on){let i=0;const notes=[262,330,392,523,392,330];musicTimer=setInterval(()=>tone(notes[i++%notes.length],.2,'triangle',.035),270);}else musicTimer=null;}
 $('musicBtn').onclick=()=>music(!musicOn);$('volume').oninput=()=>{if(masterGain)masterGain.gain.value=+$('volume').value/100;};
-$('player').onchange=persist;$('openBoard').onclick=board;$('closeBooth').onclick=()=>$('boothGames').classList.add('hidden');$('saveScore').onclick=save;$('quitGame').onclick=()=>{stop();view('home');};$('goHome').onclick=()=>{stop();view('home');};$('resultBoard').onclick=board;$('boardHome').onclick=()=>view('home');$('boardSave').onclick=save;$('clearBoard').onclick=clear;
+$('player').onchange=persist;$('openBoard').onclick=board;$('closeBooth').onclick=()=>$('boothGames').classList.add('hidden');$('saveScore').onclick=save;$('quitGame').onclick=()=>{stop();$('boothGames').classList.add('hidden');view('home');};$('goHome').onclick=()=>{stop();view('home');};$('resultBoard').onclick=board;$('boardHome').onclick=()=>view('home');$('boardSave').onclick=save;$('clearBoard').onclick=clear;
+
+function currentBoothGames(){return GAMES.filter(g=>g.booth===activeBoothId);}
+function nextGameId(){
+  const currentId=activeGame?.id||state.lastGame;
+  if(!currentId)return null;
+  const current=GAMES.find(g=>g.id===currentId);if(!current)return null;
+  activeBoothId=current.booth;
+  const list=currentBoothGames(),idx=list.findIndex(g=>g.id===currentId);
+  if(idx>=0&&idx+1<list.length)return list[idx+1].id;
+  const nextBooth=BOOTHS.find(b=>b.id>activeBoothId&&b.games.length);
+  return nextBooth?GAMES[nextBooth.games[0]].id:null;
+}
+function goNextMission(){
+  const id=nextGameId();
+  if(id){const g=GAMES.find(x=>x.id===id);booth(g.booth);start(id);}
+  else{view('home');alert('Tahniah! Anda telah sampai ke penghujung misi yang tersedia. Pilih mana-mana booth pada peta untuk bermain semula.');}
+}
+$('pathRestart')?.addEventListener('click',()=>{if(activeGame)start(activeGame.id);});
+
+$('pathMap')?.addEventListener('click',()=>{stop();$('boothGames').classList.add('hidden');view('home');});
+$('nextMission')?.addEventListener('click',goNextMission);
+
 load();map();
 </script>
 </body></html>
