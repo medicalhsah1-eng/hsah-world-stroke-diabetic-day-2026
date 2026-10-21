@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1e5fd6">
+<meta name="build-version" content="HSAH-2026-home-art-refresh-20261021">
 <title>HSAH World Diabetes &amp; World Stroke Day 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +70,11 @@ img{max-width:100%;display:block}
 .sticker .art{width:100%;height:170px;background:var(--c,#3d8bff);border:6px solid var(--white);border-radius:30px;box-shadow:0 10px 0 rgba(0,0,0,.2),0 16px 30px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden}
 .sticker .art::after{content:"";position:absolute;right:-30px;bottom:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.18)}
 .sticker .art span{position:relative;z-index:1;filter:drop-shadow(0 6px 0 rgba(0,0,0,.15))}
+/* Ilustrasi khusus untuk enam kad utama */
+.sticker .art.has-image{padding:0;background:#fff;}
+.sticker .art.has-image::after{display:none}
+.sticker .art.has-image img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover;}
+.sticker .art.angels-art img{object-fit:contain;background:#fff;padding:8px}
 .sticker .art.hsah-art{padding:0;background:#eaf3ff}
 .sticker .art.hsah-art img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
 .sticker .art.angels-art{background:linear-gradient(145deg,#ff8b98,#f45c74);padding:15px}
@@ -350,27 +356,27 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 <main>
   <nav class="stage" aria-label="Pilihan utama">
     <a class="sticker new" href="games-all.html" style="--r:-4deg">
-      <div class="art c-gold"><span>🎁</span></div>
+      <div class="art has-image c-gold"><img src="assets/healthquest-map.jpg" alt="Peta pengembaraan HealthQuest HSAH 2026" loading="lazy" decoding="async"></div>
       <div class="lbl">Permainan Booth<small>10 booth · Tangga pemenang</small></div>
       <div class="hint">Ketik di sini</div>
     </a>
     <a class="sticker" href="#strok" style="--r:3deg">
-      <div class="art c-red"><span>🧠</span></div>
+      <div class="art has-image c-red"><img src="assets/fast-heroes-card.png" alt="Empat FAST Heroes untuk kesedaran tanda strok" loading="lazy" decoding="async"></div>
       <div class="lbl">Kenali Strok<small>Tanda FAST &amp; tindakan</small></div>
       <div class="hint">Ketik di sini</div>
     </a>
     <a class="sticker" href="#diabetes" style="--r:-2deg">
-      <div class="art c-blue"><span>🩸</span></div>
+      <div class="art has-image c-blue"><img src="assets/diabetes-risk-art.png" alt="Ilustrasi risiko diabetes, pemeriksaan gula dan penjagaan kaki" loading="lazy" decoding="async"></div>
       <div class="lbl">Risiko Diabetes<small>Gula &amp; penjagaan kaki</small></div>
       <div class="hint">Ketik di sini</div>
     </a>
     <a class="sticker" href="#galeri" style="--r:4deg">
-      <div class="art c-navy"><span>📖</span></div>
+      <div class="art has-image c-navy"><img src="assets/program-gallery-art.png" alt="Ilustrasi galeri program dan aktiviti kesihatan" loading="lazy" decoding="async"></div>
       <div class="lbl">Galeri Program<small>Buka album gambar</small></div>
       <div class="hint">Ketik di sini</div>
     </a>
     <a class="sticker" href="#angels" style="--r:-3deg">
-      <div class="art angels-art"><img src="assets/fast-heroes-team.png" alt="Empat FAST Heroes" loading="lazy" decoding="async"></div>
+      <div class="art has-image angels-art"><img src="assets/angels-logo.jpg" alt="Logo Angels Initiative Leave Your Legacy" loading="lazy" decoding="async"></div>
       <div class="lbl">Angels<small>Lagu tema &amp; sukarelawan</small></div>
       <div class="hint">Ketik di sini</div>
     </a>
