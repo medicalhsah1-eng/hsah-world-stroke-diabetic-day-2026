@@ -191,6 +191,35 @@ img{max-width:100%;display:block}
 .bm .sheet::before{content:"";position:sticky;top:0;display:block;height:0;pointer-events:none}
 
 
+
+/* ---------- Animasi flip buku rak psiko-pendidikan ---------- */
+.bm .sheet.book-open{max-width:760px;background:#f4ead7;perspective:1600px}
+.bm .book-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#fff;border-bottom:1px solid #eadcc6}
+.bm .book-topbar strong{font-family:var(--display);color:var(--navy);font-size:14px}
+.bm .book-topbar span{font-size:12px;color:var(--muted)}
+.bm .book-pages{padding:16px;background:linear-gradient(90deg,#d6c5a7,#f7efdf 5%,#f7efdf 95%,#d6c5a7);min-height:350px}
+.bm .flip-page{min-height:320px;background:#fffdf7;border:1px solid #e4d8c3;border-radius:4px 14px 14px 4px;box-shadow:0 8px 22px #573c1d22,inset 9px 0 12px -12px #543;overflow:hidden;transform-origin:left center;animation:pageFlipIn .48s ease both}
+.bm .flip-page.turning{animation:pageFlipOut .22s ease both}
+.bm .flip-content{max-width:640px;margin:auto;padding:clamp(22px,5vw,42px);text-align:center}
+.bm .flip-kicker{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:#1c7f87}
+.bm .flip-icon{font-size:48px;margin:8px 0}
+.bm .flip-content h4{font-size:clamp(22px,4vw,30px);margin:8px 0 14px}
+.bm .flip-content p{line-height:1.75}
+.bm .flip-callout{margin:18px auto 0;padding:13px 15px;max-width:560px;background:#f1f7ff;border:1px dashed #abc3e7;border-radius:12px;color:#3c5879;font-size:13px}
+.bm .flip-material{display:flex;align-items:center;justify-content:center;min-height:100px;margin:16px auto;padding:18px;background:#f7f9fc;border:1px dashed #abc3e7;border-radius:12px;max-width:560px;color:#526b84}
+.bm .flip-material img{max-height:300px;object-fit:contain;border-radius:8px}
+.bm .flip-material video{width:100%;max-height:320px;border-radius:8px}
+.bm .flip-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.bm .flip-actions a,.bm .flip-actions button{display:inline-block;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff;text-decoration:none;font-weight:800;font-size:13px;cursor:pointer}
+.bm .flip-actions .light{background:#e7eef9;color:var(--navy)}
+.bm .flip-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;background:#fff;border-top:1px solid #e4d8c3}
+.bm .flip-controls button{border:0;border-radius:11px;background:var(--gold);color:var(--navy);font-weight:800;padding:11px 14px;cursor:pointer;box-shadow:0 3px 0 var(--red2)}
+.bm .flip-controls button:disabled{opacity:.4;cursor:not-allowed}
+.bm .flip-count{font-size:12px;color:var(--muted);font-weight:700;text-align:center}
+@keyframes pageFlipIn{from{opacity:.55;transform:rotateY(-14deg);filter:brightness(.88)}to{opacity:1;transform:rotateY(0);filter:brightness(1)}}
+@keyframes pageFlipOut{to{opacity:.5;transform:rotateY(12deg);filter:brightness(.85)}}
+@media(max-width:560px){.bm .book-pages{padding:9px;min-height:340px}.bm .flip-page{min-height:320px}.bm .flip-content{padding:22px 17px}.bm .flip-controls{padding:11px 9px}.bm .flip-controls button{padding:10px 11px;font-size:12px}.bm .flip-count{font-size:11px}}
+
 /* ---------- Footer portal-style ---------- */
 footer{margin-top:48px;background:#082d67;color:#e8f0ff;padding:30px 20px 24px;text-align:center;border-top:4px solid var(--gold)}
 footer .footer-inner{max-width:920px;margin:0 auto}
@@ -613,29 +642,62 @@ function renderShelves(q=''){
   box.querySelectorAll('.spine').forEach(el => el.addEventListener('click', ()=>openBook(el.dataset.id)));
 }
 
+let activeBookId = null, activePageIndex = 0;
+function buildBookPages(b){
+  const pages = [{
+    kind:'intro', kicker:'Pengenalan profesion / persatuan', icon:b.icon,
+    title:b.title, body:b.tujuan,
+    extra:`Bidang tumpuan: ${b.poin.slice(0,2).join(' ')}`
+  }];
+  pages.push({kind:'poster',kicker:'Bahan pendidikan',icon:'🖼️',title:'Poster & Infografik',body:'Terokai poster dan infografik pendidikan untuk booth ini.',resource:b.bahan.poster,extra:'Muat naik poster sebenar dan isikan laluan fail dalam data BOOKS untuk dipaparkan di sini.'});
+  pages.push({kind:'pdf',kicker:'Bahan bacaan',icon:'📄',title:'Dokumen PDF',body:'Baca atau muat turun panduan pendidikan berkaitan.',resource:b.bahan.pdf,extra:'Apabila fail PDF ditambah, ia boleh dibuka dalam pelayar atau dimuat turun.'});
+  pages.push({kind:'video',kicker:'Tontonan pendidikan',icon:'🎬',title:'Video Pendidikan',body:'Tonton video pendidikan berkaitan profesion atau persatuan ini.',resource:b.bahan.video,extra:'Apabila pautan atau fail video ditambah, video akan dipaparkan pada halaman ini.'});
+  return pages;
+}
+function renderFlipPage(){
+  const b=BOOKS.find(x=>x.id===activeBookId); if(!b)return;
+  const pages=buildBookPages(b), p=pages[activePageIndex];
+  const pageArea=document.getElementById('bmPageArea');
+  let media='';
+  if(p.resource){
+    const src=escH(p.resource);
+    if(p.kind==='poster') media=`<div class="flip-material"><img src="${src}" alt="${escH(p.title)}" onerror="this.parentElement.innerHTML='Fail poster tidak dapat dipaparkan. Semak laluan fail.'"></div><div class="flip-actions"><a href="${src}" target="_blank" rel="noopener">Buka bahan penuh</a><a class="light" href="${src}" download>Muat turun</a></div>`;
+    else if(p.kind==='pdf') media=`<div class="flip-material" style="display:block"><iframe src="${src}" title="Dokumen PDF" style="width:100%;height:320px;border:0"></iframe></div><div class="flip-actions"><a href="${src}" target="_blank" rel="noopener">Buka PDF</a><a class="light" href="${src}" download>Muat turun PDF</a></div>`;
+    else media=`<div class="flip-material"><video controls playsinline src="${src}">Pelayar anda tidak menyokong video.</video></div>`;
+  }else{
+    media=`<div class="flip-material"><div><div style="font-size:34px;margin-bottom:8px">${p.icon}</div><strong>Ruang ${escH(p.title.toLowerCase())}</strong><br><span style="font-size:13px">${escH(p.extra)}</span></div></div>`;
+  }
+  const introExtra=p.kind==='intro'?`<div class="flip-callout"><strong>Kenali bidang ini</strong><br>${escH(p.extra)}<br><br><em>Maklumat ini ialah draf umum dan perlu disemak oleh unit atau organisasi berkenaan.</em></div>`:'';
+  pageArea.innerHTML=`<article class="flip-page"><div class="flip-content"><div class="flip-kicker">${p.kicker}</div><div class="flip-icon">${p.icon}</div><h4>${escH(p.title)}</h4><p>${escH(p.body)}</p>${introExtra}${media}</div></article>`;
+  document.getElementById('flipCount').textContent=`Halaman ${activePageIndex+1} daripada ${pages.length}`;
+  document.getElementById('flipPrev').disabled=activePageIndex===0;
+  document.getElementById('flipNext').disabled=activePageIndex===pages.length-1;
+}
 function openBook(id){
-  const b = BOOKS.find(x=>x.id===id); if(!b) return;
-  document.getElementById('bmHd').style.background = b.color;
-  document.getElementById('bmHd').innerHTML = `
-    <span class="ic" aria-hidden="true">${b.icon}</span>
-    <div><span class="kk">Booth ${b.no} · ${escH(b.sub)}</span><h3 id="bmTitle">${escH(b.title)}</h3></div>`;
-  document.getElementById('bmBd').innerHTML = `
-    <h4>Tujuan</h4>
-    <p>${escH(b.tujuan)}</p>
-    <h4>Maklumat utama</h4>
-    <ul>${b.poin.map(p=>`<li>${escH(p)}</li>`).join('')}</ul>
-    <h4>Bahan booth</h4>
-    <div class="res">${RES.map(([k,l,ic])=>{
-      const p = b.bahan[k];
-      return `<div><b>${ic} ${l}</b>${p ? `<a href="${escH(p)}" target="_blank" rel="noopener">Buka</a>` : 'Akan dimuat naik'}</div>`;
-    }).join('')}</div>
-    <div class="src">Sumber rujukan yang dipercayai untuk booth ini akan ditambah kemudian.</div>`;
+  const b=BOOKS.find(x=>x.id===id); if(!b)return;
+  activeBookId=id; activePageIndex=0;
+  const sheet=document.querySelector('#bm .sheet');
+  sheet.classList.add('book-open');
+  document.getElementById('bmHd').style.background=b.color;
+  document.getElementById('bmHd').innerHTML=`<span class="ic" aria-hidden="true">${b.icon}</span><div><span class="kk">Booth ${b.no} · ${escH(b.sub)}</span><h3 id="bmTitle">${escH(b.title)}</h3></div>`;
+  document.getElementById('bmBd').innerHTML=`<div class="book-topbar"><strong>BUKU PENDIDIKAN</strong><span>Selak halaman untuk meneroka</span></div><div class="book-pages" id="bmPageArea"></div><div class="flip-controls"><button type="button" id="flipPrev" disabled>← Sebelum</button><span class="flip-count" id="flipCount">Halaman 1 daripada 4</span><button type="button" id="flipNext">Seterusnya →</button></div>`;
+  renderFlipPage();
+  document.getElementById('flipPrev').addEventListener('click',()=>{if(activePageIndex>0){activePageIndex--;renderFlipPage()}});
+  document.getElementById('flipNext').addEventListener('click',()=>{if(activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage()}});
   document.getElementById('bm').classList.add('open');
 }
 function closeBook(){ document.getElementById('bm').classList.remove('open'); }
 document.getElementById('bmClose').addEventListener('click', closeBook);
 document.getElementById('bm').addEventListener('click', e=>{ if(e.target.id==='bm') closeBook(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeBook(); });
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') closeBook();
+  const modal=document.getElementById('bm');
+  if(modal.classList.contains('open') && activeBookId){
+    const b=BOOKS.find(x=>x.id===activeBookId);
+    if(e.key==='ArrowRight' && activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage();}
+    if(e.key==='ArrowLeft' && activePageIndex>0){activePageIndex--;renderFlipPage();}
+  }
+});
 document.getElementById('bsearch').addEventListener('input', e=>renderShelves(e.target.value));
 renderShelves();
 
