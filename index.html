@@ -261,7 +261,7 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 .diabetes-hero-cta .cta{margin-top:4px}
 .hsah-banner{position:relative;isolation:isolate;overflow:hidden;background:#eaf4ff}
 .hsah-photo-link{position:absolute;inset:0;z-index:0;display:block;overflow:hidden}
-.hsah-photo-link::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.82)),url('assets/hsah-hospital.jpg') center/cover no-repeat;filter:saturate(.75)}
+.hsah-photo-link::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.28),rgba(255,255,255,.38)),url('assets/hsah-hospital.jpg') center/cover no-repeat;filter:saturate(.75)}
 .hsah-logo-link{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;max-width:100%;border-radius:12px}
 .hsah-logo-link:focus-visible,.hsah-photo-link:focus-visible{outline:3px solid #1e5fd6;outline-offset:3px}
 .hsah-banner img{position:relative;z-index:2;pointer-events:none}
@@ -302,6 +302,14 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 .fast-heroes-visual figcaption{padding:10px 14px;font-size:12px;line-height:1.5;color:#405777;text-align:center;background:#fff}
 .fast-heroes-fast{margin:18px 0 16px}
 @media(max-width:560px){.fast-heroes-visual figcaption{font-size:11px;padding:9px 10px}}
+
+/* Accessible, simplified menu */
+.menu-heading{padding:8px 12px 10px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.5px;color:#71809a}
+.menu .menu-action{display:flex;width:100%;align-items:center;gap:12px;margin:3px 0;padding:12px 13px;border:0;border-radius:14px;text-align:left;font:inherit;font-weight:700;font-size:14px;color:var(--ink,#123);background:#eaf2ff;cursor:pointer}
+.menu .menu-action:focus-visible,.menu a:focus-visible{outline:3px solid #1e5fd6;outline-offset:2px}
+body.larger-text main p,body.larger-text main li{font-size:1.12em;line-height:1.8}
+@media(max-width:560px){.menu{right:8px;min-width:min(290px,calc(100vw - 16px));max-height:calc(100dvh - 100px);overflow-y:auto}}
+
 </style>
 </head>
 <body id="atas">
@@ -316,13 +324,14 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   <nav class="menu" id="menu" aria-label="Menu utama">
-    <a href="#strok">Strok</a>
-    <a href="#diabetes">Diabetes</a>
-    <a href="#galeri">Galeri</a>
-    <a href="#angels">Angels &amp; Lagu Tema</a>
-    <a href="#hospital">Hospital</a>
-    <a href="games-all.html">Permainan Booth</a>
-    <a href="#bahan">Bahan Psiko-Pendidikan</a>
+    <div class="menu-heading">MENU UTAMA</div>
+    <a href="#strok">🧠 Kenali Strok</a>
+    <a href="#diabetes">💙 Kenali Diabetes</a>
+    <a href="#galeri">🖼️ Galeri</a>
+    <a href="#angels">🎵 Angels &amp; Lagu Tema</a>
+    <a href="#hospital">🏥 Hospital HSAH</a>
+    <a href="#bahan">📚 Rak Bahan Pendidikan</a>
+    <button type="button" class="menu-action" id="displaySetting">Aa&nbsp; Besarkan tulisan</button>
   </nav>
 </header>
 
@@ -462,7 +471,6 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
         <div><b>T</b><span>Time<br>Hubungi 999</span></div>
       </div>
       <p>Jika ada mana-mana tanda ini, hubungi <strong>999</strong> dengan segera. Jangan beri makan atau minum kepada pesakit.</p>
-      <a class="cta" href="games-all.html">Main Waktu Emas →</a>
     </article>
 
     <!-- Diabetes: superhero visual matching the FAST Heroes section -->
@@ -474,10 +482,6 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
         <img src="assets/diabetes-superhero.png" alt="Maskot glucometer superhero dengan mesej Kenali Risiko, Cegah Komplikasi dan panduan penjagaan diabetes" loading="lazy" decoding="async">
         <figcaption>Jaga gula darah, ikut pelan rawatan dan dapatkan nasihat pasukan kesihatan.</figcaption>
       </figure>
-      <div class="diabetes-hero-cta">
-        <a class="cta blue" href="games-all.html">Kenali Risiko Saya →</a>
-        <a class="cta" href="#bahan">Teroka Bahan Pendidikan →</a>
-      </div>
     </article>
 
     <!-- Hospital -->
@@ -664,7 +668,10 @@ renderShelves();
 const burger=document.getElementById('burger'), menu=document.getElementById('menu');
 burger.addEventListener('click',()=>{ const o=menu.classList.toggle('open'); burger.setAttribute('aria-expanded',o); });
 document.addEventListener('click',e=>{ if(!menu.contains(e.target)&&!burger.contains(e.target)){ menu.classList.remove('open'); burger.setAttribute('aria-expanded',false); } });
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded','false');}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+const displaySetting=document.getElementById('displaySetting');
+if(displaySetting){displaySetting.addEventListener('click',()=>{const enabled=document.body.classList.toggle('larger-text');displaySetting.innerHTML=enabled?'Aa&nbsp; Tulisan biasa':'Aa&nbsp; Besarkan tulisan';});}
 
 /* ---------- Butang kembali ke atas ---------- */
 const totop=document.getElementById('totop');
