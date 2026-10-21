@@ -169,7 +169,15 @@ img{max-width:100%;display:block}
 .bnone{text-align:center;color:var(--muted);padding:30px 0}
 .bm{position:fixed;inset:0;background:rgba(6,16,40,.72);display:none;align-items:center;justify-content:center;padding:16px;z-index:60}
 .bm.open{display:flex}
-.bm .sheet{background:var(--white);border-radius:24px;max-width:640px;width:100%;max-height:92vh;overflow:auto;border:4px solid var(--gold);box-shadow:0 14px 0 var(--red2)}
+.bm .sheet{background:var(--white);border-radius:24px;max-width:640px;width:100%;max-height:92vh;overflow:auto;border:4px solid var(--gold);box-shadow:0 14px 0 var(--red2);transform-origin:left center;perspective:1200px}
+.bm.open .sheet{animation:bookOpen .62s cubic-bezier(.2,.75,.25,1) both}
+@keyframes bookOpen{0%{opacity:0;transform:perspective(1200px) rotateY(-72deg) scale(.94);filter:brightness(.72)}65%{opacity:1;transform:perspective(1200px) rotateY(8deg) scale(1.01);filter:brightness(1.04)}100%{opacity:1;transform:perspective(1200px) rotateY(0) scale(1);filter:brightness(1)}}
+.bm .page-turn{animation:paperTurn .42s ease both;transform-origin:left center;backface-visibility:hidden}
+@keyframes paperTurn{0%{opacity:.45;transform:perspective(900px) rotateY(-18deg) translateX(12px);filter:brightness(.88)}100%{opacity:1;transform:perspective(900px) rotateY(0) translateX(0);filter:brightness(1)}}
+.bm .page-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:14px;border-top:1px solid #dce5f2}
+.bm .page-nav button{border:0;border-radius:12px;padding:10px 14px;background:#123c78;color:#fff;font-weight:700;cursor:pointer}
+.bm .page-nav button:disabled{opacity:.35;cursor:not-allowed}.bm .page-count{font-size:12px;color:#526783;font-weight:700}
+@media(prefers-reduced-motion:reduce){.bm.open .sheet,.bm .page-turn{animation:none}}
 .bm .hd{color:var(--white);padding:20px 22px;display:flex;gap:14px;align-items:center;position:relative}
 .bm .hd .ic{font-size:44px;line-height:1}
 .bm .hd h3{font-size:22px}
@@ -190,35 +198,6 @@ img{max-width:100%;display:block}
 .bm .sheet{position:relative;overflow:auto}
 .bm .sheet::before{content:"";position:sticky;top:0;display:block;height:0;pointer-events:none}
 
-
-
-/* ---------- Animasi flip buku rak psiko-pendidikan ---------- */
-.bm .sheet.book-open{max-width:760px;background:#f4ead7;perspective:1600px}
-.bm .book-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#fff;border-bottom:1px solid #eadcc6}
-.bm .book-topbar strong{font-family:var(--display);color:var(--navy);font-size:14px}
-.bm .book-topbar span{font-size:12px;color:var(--muted)}
-.bm .book-pages{padding:16px;background:linear-gradient(90deg,#d6c5a7,#f7efdf 5%,#f7efdf 95%,#d6c5a7);min-height:350px}
-.bm .flip-page{min-height:320px;background:#fffdf7;border:1px solid #e4d8c3;border-radius:4px 14px 14px 4px;box-shadow:0 8px 22px #573c1d22,inset 9px 0 12px -12px #543;overflow:hidden;transform-origin:left center;animation:pageFlipIn .48s ease both}
-.bm .flip-page.turning{animation:pageFlipOut .22s ease both}
-.bm .flip-content{max-width:640px;margin:auto;padding:clamp(22px,5vw,42px);text-align:center}
-.bm .flip-kicker{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:#1c7f87}
-.bm .flip-icon{font-size:48px;margin:8px 0}
-.bm .flip-content h4{font-size:clamp(22px,4vw,30px);margin:8px 0 14px}
-.bm .flip-content p{line-height:1.75}
-.bm .flip-callout{margin:18px auto 0;padding:13px 15px;max-width:560px;background:#f1f7ff;border:1px dashed #abc3e7;border-radius:12px;color:#3c5879;font-size:13px}
-.bm .flip-material{display:flex;align-items:center;justify-content:center;min-height:100px;margin:16px auto;padding:18px;background:#f7f9fc;border:1px dashed #abc3e7;border-radius:12px;max-width:560px;color:#526b84}
-.bm .flip-material img{max-height:300px;object-fit:contain;border-radius:8px}
-.bm .flip-material video{width:100%;max-height:320px;border-radius:8px}
-.bm .flip-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
-.bm .flip-actions a,.bm .flip-actions button{display:inline-block;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff;text-decoration:none;font-weight:800;font-size:13px;cursor:pointer}
-.bm .flip-actions .light{background:#e7eef9;color:var(--navy)}
-.bm .flip-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;background:#fff;border-top:1px solid #e4d8c3}
-.bm .flip-controls button{border:0;border-radius:11px;background:var(--gold);color:var(--navy);font-weight:800;padding:11px 14px;cursor:pointer;box-shadow:0 3px 0 var(--red2)}
-.bm .flip-controls button:disabled{opacity:.4;cursor:not-allowed}
-.bm .flip-count{font-size:12px;color:var(--muted);font-weight:700;text-align:center}
-@keyframes pageFlipIn{from{opacity:.55;transform:rotateY(-14deg);filter:brightness(.88)}to{opacity:1;transform:rotateY(0);filter:brightness(1)}}
-@keyframes pageFlipOut{to{opacity:.5;transform:rotateY(12deg);filter:brightness(.85)}}
-@media(max-width:560px){.bm .book-pages{padding:9px;min-height:340px}.bm .flip-page{min-height:320px}.bm .flip-content{padding:22px 17px}.bm .flip-controls{padding:11px 9px}.bm .flip-controls button{padding:10px 11px;font-size:12px}.bm .flip-count{font-size:11px}}
 
 /* ---------- Footer portal-style ---------- */
 footer{margin-top:48px;background:#082d67;color:#e8f0ff;padding:30px 20px 24px;text-align:center;border-top:4px solid var(--gold)}
@@ -565,7 +544,7 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
    Setiap buku = satu booth. Untuk tambah bahan, isi nilai dalam "bahan"
    contoh: poster:'assets/psiko/pt-poster.jpg', pdf:'assets/psiko/pt.pdf', video:'assets/psiko/pt.mp4'
    Kandungan perlu disemak pakar HSAH sebelum diterbitkan. */
-const BOOKS = [
+let BOOKS = [
   { id:'pt', no:1, title:'Physiotherapy', sub:'PT', icon:'🦽', color:'#1e5fd6', h:200,
     tujuan:'Memahami peranan fisioterapi dalam pemulihan selepas strok.',
     poin:['Latihan keseimbangan dan kekuatan membantu mengurangkan risiko jatuh.',
@@ -642,64 +621,43 @@ function renderShelves(q=''){
   box.querySelectorAll('.spine').forEach(el => el.addEventListener('click', ()=>openBook(el.dataset.id)));
 }
 
-let activeBookId = null, activePageIndex = 0;
-function buildBookPages(b){
-  const pages = [{
-    kind:'intro', kicker:'Pengenalan profesion / persatuan', icon:b.icon,
-    title:b.title, body:b.tujuan,
-    extra:`Bidang tumpuan: ${b.poin.slice(0,2).join(' ')}`
-  }];
-  pages.push({kind:'poster',kicker:'Bahan pendidikan',icon:'🖼️',title:'Poster & Infografik',body:'Terokai poster dan infografik pendidikan untuk booth ini.',resource:b.bahan.poster,extra:'Muat naik poster sebenar dan isikan laluan fail dalam data BOOKS untuk dipaparkan di sini.'});
-  pages.push({kind:'pdf',kicker:'Bahan bacaan',icon:'📄',title:'Dokumen PDF',body:'Baca atau muat turun panduan pendidikan berkaitan.',resource:b.bahan.pdf,extra:'Apabila fail PDF ditambah, ia boleh dibuka dalam pelayar atau dimuat turun.'});
-  pages.push({kind:'video',kicker:'Tontonan pendidikan',icon:'🎬',title:'Video Pendidikan',body:'Tonton video pendidikan berkaitan profesion atau persatuan ini.',resource:b.bahan.video,extra:'Apabila pautan atau fail video ditambah, video akan dipaparkan pada halaman ini.'});
-  return pages;
-}
-function renderFlipPage(){
+let activeBookId = null;
+let activePage = 0;
+function renderBookPage(animate=true){
   const b=BOOKS.find(x=>x.id===activeBookId); if(!b)return;
-  const pages=buildBookPages(b), p=pages[activePageIndex];
-  const pageArea=document.getElementById('bmPageArea');
-  let media='';
-  if(p.resource){
-    const src=escH(p.resource);
-    if(p.kind==='poster') media=`<div class="flip-material"><img src="${src}" alt="${escH(p.title)}" onerror="this.parentElement.innerHTML='Fail poster tidak dapat dipaparkan. Semak laluan fail.'"></div><div class="flip-actions"><a href="${src}" target="_blank" rel="noopener">Buka bahan penuh</a><a class="light" href="${src}" download>Muat turun</a></div>`;
-    else if(p.kind==='pdf') media=`<div class="flip-material" style="display:block"><iframe src="${src}" title="Dokumen PDF" style="width:100%;height:320px;border:0"></iframe></div><div class="flip-actions"><a href="${src}" target="_blank" rel="noopener">Buka PDF</a><a class="light" href="${src}" download>Muat turun PDF</a></div>`;
-    else media=`<div class="flip-material"><video controls playsinline src="${src}">Pelayar anda tidak menyokong video.</video></div>`;
-  }else{
-    media=`<div class="flip-material"><div><div style="font-size:34px;margin-bottom:8px">${p.icon}</div><strong>Ruang ${escH(p.title.toLowerCase())}</strong><br><span style="font-size:13px">${escH(p.extra)}</span></div></div>`;
+  const body=document.getElementById('bmBd');
+  let content='';
+  if(activePage===0){
+    content=`<h4>Pengenalan</h4><p>${escH(b.tujuan)}</p><p>Kenali peranan ${escH(b.title)} dan bahan pendidikan yang disediakan untuk pengunjung.</p>`;
+  } else if(activePage===1){
+    content=`<h4>Maklumat utama</h4><ul>${(b.poin||[]).map(p=>`<li>${escH(p)}</li>`).join('')}</ul>`;
+  } else {
+    content=`<h4>Bahan pendidikan</h4><div class="res">${RES.map(([k,l,ic])=>{const p=(b.bahan||{})[k];return `<div><b>${ic} ${l}</b>${p?`<a href="${escH(p)}" target="_blank" rel="noopener">Buka bahan</a>`:'Belum dimuat naik'}</div>`;}).join('')}</div><div class="src">Sumber rujukan: maklumat pendidikan booth. Sila rujuk profesional kesihatan untuk nasihat individu.</div>`;
   }
-  const introExtra=p.kind==='intro'?`<div class="flip-callout"><strong>Kenali bidang ini</strong><br>${escH(p.extra)}<br><br><em>Maklumat ini ialah draf umum dan perlu disemak oleh unit atau organisasi berkenaan.</em></div>`:'';
-  pageArea.innerHTML=`<article class="flip-page"><div class="flip-content"><div class="flip-kicker">${p.kicker}</div><div class="flip-icon">${p.icon}</div><h4>${escH(p.title)}</h4><p>${escH(p.body)}</p>${introExtra}${media}</div></article>`;
-  document.getElementById('flipCount').textContent=`Halaman ${activePageIndex+1} daripada ${pages.length}`;
-  document.getElementById('flipPrev').disabled=activePageIndex===0;
-  document.getElementById('flipNext').disabled=activePageIndex===pages.length-1;
+  body.innerHTML=`<div class="page-turn">${content}<div class="page-nav"><button type="button" id="bmPrev" ${activePage===0?'disabled':''}>← Kembali</button><span class="page-count">Halaman ${activePage+1} daripada 3</span><button type="button" id="bmNext">${activePage===2?'Tutup Buku':'Seterusnya →'}</button></div></div>`;
+  document.getElementById('bmPrev').addEventListener('click',()=>{if(activePage>0){activePage--;renderBookPage();}});
+  document.getElementById('bmNext').addEventListener('click',()=>{if(activePage<2){activePage++;renderBookPage();}else closeBook();});
 }
 function openBook(id){
-  const b=BOOKS.find(x=>x.id===id); if(!b)return;
-  activeBookId=id; activePageIndex=0;
-  const sheet=document.querySelector('#bm .sheet');
-  sheet.classList.add('book-open');
+  const b=BOOKS.find(x=>x.id===id); if(!b) return;
+  activeBookId=id; activePage=0;
   document.getElementById('bmHd').style.background=b.color;
   document.getElementById('bmHd').innerHTML=`<span class="ic" aria-hidden="true">${b.icon}</span><div><span class="kk">Booth ${b.no} · ${escH(b.sub)}</span><h3 id="bmTitle">${escH(b.title)}</h3></div>`;
-  document.getElementById('bmBd').innerHTML=`<div class="book-topbar"><strong>BUKU PENDIDIKAN</strong><span>Selak halaman untuk meneroka</span></div><div class="book-pages" id="bmPageArea"></div><div class="flip-controls"><button type="button" id="flipPrev" disabled>← Sebelum</button><span class="flip-count" id="flipCount">Halaman 1 daripada 4</span><button type="button" id="flipNext">Seterusnya →</button></div>`;
-  renderFlipPage();
-  document.getElementById('flipPrev').addEventListener('click',()=>{if(activePageIndex>0){activePageIndex--;renderFlipPage()}});
-  document.getElementById('flipNext').addEventListener('click',()=>{if(activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage()}});
-  document.getElementById('bm').classList.add('open');
+  renderBookPage(false);
+  const modal=document.getElementById('bm');modal.classList.remove('open');void modal.offsetWidth;modal.classList.add('open');
 }
-function closeBook(){ document.getElementById('bm').classList.remove('open'); }
+function closeBook(){document.getElementById('bm').classList.remove('open');activeBookId=null;}
 document.getElementById('bmClose').addEventListener('click', closeBook);
 document.getElementById('bm').addEventListener('click', e=>{ if(e.target.id==='bm') closeBook(); });
-document.addEventListener('keydown', e=>{
-  if(e.key==='Escape') closeBook();
-  const modal=document.getElementById('bm');
-  if(modal.classList.contains('open') && activeBookId){
-    const b=BOOKS.find(x=>x.id===activeBookId);
-    if(e.key==='ArrowRight' && activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage();}
-    if(e.key==='ArrowLeft' && activePageIndex>0){activePageIndex--;renderFlipPage();}
-  }
-});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeBook(); });
 document.getElementById('bsearch').addEventListener('input', e=>renderShelves(e.target.value));
 renderShelves();
+// Katalog luaran: bahan boleh ditambah melalui education-data.json tanpa mengedit index.html.
+fetch('education-data.json').then(r=>{if(!r.ok)throw new Error('catalog unavailable');return r.json();}).then(data=>{
+  if(!Array.isArray(data.books))return;
+  BOOKS=BOOKS.map(base=>{const extra=data.books.find(x=>x.id===base.id);return extra?{...base,...extra,bahan:{...base.bahan,...(extra.bahan||{})}}:base;});
+  renderShelves(document.getElementById('bsearch').value);
+}).catch(()=>{/* Katalog terbina dalam digunakan jika fail JSON belum tersedia. */});
 
 /* ---------- Menu ---------- */
 const burger=document.getElementById('burger'), menu=document.getElementById('menu');

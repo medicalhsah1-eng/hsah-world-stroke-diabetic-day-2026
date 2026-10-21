@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "instructions": "Edit bahan links below. Use relative paths such as assets/education/ot/poster-01.jpg or full https:// URLs. Do not change book id.",
+  "books": [
+    {
+      "id": "pt",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    },
+    {
+      "id": "ot",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    },
+    {
+      "id": "ph",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    },
+    {
+      "id": "de",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    },
+    {
+      "id": "psy",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    },
+    {
+      "id": "diet",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    },
+    {
+      "id": "st",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    },
+    {
+      "id": "hp",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    },
+    {
+      "id": "ang",
+      "bahan": {
+        "poster": null,
+        "pdf": null,
+        "video": null,
+        "link": null
+      }
+    }
+  ]
+}
