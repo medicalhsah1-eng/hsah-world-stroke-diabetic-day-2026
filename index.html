@@ -273,6 +273,15 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 .hsah-title-link{color:inherit;text-decoration:none}
 .hsah-title-link:hover{text-decoration:underline}
 @media(max-width:560px){.angels-title-link{max-width:100px}.angels-title-link img{width:92px;max-height:64px}.angels-title-text{font-size:clamp(.95rem,4vw,1.2rem)}}
+
+/* FAST Heroes artwork: same image in Angels sticker, Angels section and FAST section */
+.sticker .art.angels-art{padding:0;background:#fff;align-items:stretch;justify-content:stretch}
+.sticker .art.angels-art img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+.fast-heroes-visual{margin:18px 0 20px;background:#f5f9ff;border:2px solid #d9e5f8;border-radius:18px;overflow:hidden;box-shadow:0 5px 0 rgba(11,42,107,.08)}
+.fast-heroes-visual img{display:block;width:100%;height:auto;object-fit:contain}
+.fast-heroes-visual figcaption{padding:10px 14px;font-size:12px;line-height:1.5;color:#405777;text-align:center;background:#fff}
+.fast-heroes-fast{margin:18px 0 16px}
+@media(max-width:560px){.fast-heroes-visual figcaption{font-size:11px;padding:9px 10px}}
 </style>
 </head>
 <body id="atas">
@@ -361,7 +370,7 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
       <div class="hint">Ketik di sini</div>
     </a>
     <a class="sticker" href="#angels" style="--r:-3deg">
-      <div class="art angels-art"><div class="hero-grid" role="img" aria-label="Empat simbol FAST Heroes: muka, lengan, pertuturan dan masa"><span>🙂</span><span>💪</span><span>🗣️</span><span>⏱️</span></div></div>
+      <div class="art angels-art"><img src="assets/fast-heroes-team.png" alt="Empat FAST Heroes" loading="lazy" decoding="async"></div>
       <div class="lbl">Angels<small>Lagu tema &amp; sukarelawan</small></div>
       <div class="hint">Ketik di sini</div>
     </a>
@@ -409,6 +418,10 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
       <div class="angels-head">
         <p>Angels Initiative ialah komuniti global yang menyokong peningkatan kualiti rawatan strok melalui latihan, sokongan kepada pasukan strok, perkongsian ilmu dan usaha memperkukuh rangkaian rujukan pesakit.</p>
       </div>
+      <figure class="fast-heroes-visual">
+        <img src="assets/fast-heroes-team.png" alt="Empat FAST Heroes: Frank the Face, Armando the Arms, Sophia the Singer dan Timmy on Time. Kenali tanda strok melalui muka, lengan, pertuturan dan masa untuk mendapatkan bantuan kecemasan." loading="lazy" decoding="async">
+        <figcaption>Kenali empat tanda amaran strok: Face, Arms, Speech dan Time. Bertindak segera apabila gejala muncul.</figcaption>
+      </figure>
       <div class="vid">
         <video id="angelsThemeVideo" controls autoplay muted loop playsinline preload="auto" aria-label="Lagu tema Angels Initiative">
           <source src="assets/angels-stroke.mp4" type="video/mp4">
@@ -421,6 +434,10 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
       <span class="kick">Strok</span>
       <h2>Kenali tanda strok dengan FAST</h2>
       <p>Strok ialah kecemasan perubatan. Setiap minit penting, dan rawatan awal membantu mengurangkan kerosakan otak.</p>
+      <figure class="fast-heroes-visual fast-heroes-fast">
+        <img src="assets/fast-heroes-team.png" alt="Empat FAST Heroes yang mengingatkan tanda Face, Arms, Speech dan Time" loading="lazy" decoding="async">
+        <figcaption>FAST: kenali tanda strok pada muka, lengan dan pertuturan — bertindak segera dan hubungi 999.</figcaption>
+      </figure>
       <div class="fast">
         <div><b>F</b><span>Face<br>Muka senget</span></div>
         <div><b>A</b><span>Arms<br>Lengan lemah</span></div>
@@ -476,10 +493,9 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
   <div class="footer-inner">
     <p class="developer-credit">Pembangunan &amp; Reka Bentuk Digital</p>
     <strong>OTR CHUAD STEADY</strong>
-    <p class="developer-sub">HSAH World Diabetes &amp; World Stroke Day 2026</p>
+    <p class="developer-sub">Laman HSAH World Diabetes &amp; World Stroke Day 2026</p>
     <div class="footer-divider" aria-hidden="true"></div>
-    <p class="footer-org">Laman pendidikan kesedaran diabetes dan strok</p>
-    <p class="copyright">© 2026 OTR CHUAD STEADY. Hak cipta terpelihara.</p>
+    <p class="copyright">© 2026 · Hak cipta terpelihara.</p>
   </div>
 </footer>
 
