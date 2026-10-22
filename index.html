@@ -600,7 +600,7 @@ body.larger-text main p,body.larger-text main li{font-size:1.12em;line-height:1.
       <div class="health-tv-empty" id="healthTvEmpty">
         <div class="play-mark" aria-hidden="true">▶</div>
         <b>Ruang Tayangan Kesihatan</b>
-        <span>Letakkan video MP4 dalam <code>assets/videos/</code>. Senarai iklan akan dimainkan satu demi satu.</span>
+        <span>Letakkan video MP4 dalam <code>assets/video/</code>. Senarai iklan akan dimainkan satu demi satu.</span>
       </div>
     </div>
     <div class="health-tv-now">
@@ -917,12 +917,12 @@ start();
 (function(){
   const video = document.getElementById('healthTvVideo');
   if(!video) return;
-  // Letakkan fail MP4 dalam assets/videos/ dan tambah satu objek bagi setiap iklan.
+  // Letakkan fail MP4 dalam assets/video/ dan tambah satu objek bagi setiap iklan.
   const playlist = [
-    {title:'Angin Ahmar aka Strok', description:'Kenali tanda strok dan bertindak segera.', src:'assets/videos/Angin%20Ahmar%20aka%20Strok.mp4'},
-    {title:'Garam dan Darah Tinggi', description:'Fahami kaitan pengambilan garam dengan tekanan darah tinggi.', src:'assets/videos/Garam%20dan%20Darah%20Tinggi.mp4'},
-    {title:'Kurangkan Pengambilan Gula Harian', description:'Kurangkan gula harian untuk kesihatan yang lebih baik.', src:'assets/videos/Kurangkan%20Pengambilan%20Gula%20Harian.mp4'},
-    {title:'Gula dan Diabetes', description:'Kenali hubungan gula, diabetes dan penjagaan kesihatan.', src:'assets/videos/Gula%20dan%20Diabetes.mp4'}
+    {title:'Angin Ahmar aka Strok', description:'Kenali tanda strok dan bertindak segera.', src:'assets/video/Angin%20Ahmar%20aka%20Strok.mp4'},
+    {title:'Garam dan Darah Tinggi', description:'Fahami kaitan pengambilan garam dengan tekanan darah tinggi.', src:'assets/video/Garam%20dan%20Darah%20Tinggi.mp4'},
+    {title:'Kurangkan Pengambilan Gula Harian', description:'Kurangkan gula harian untuk kesihatan yang lebih baik.', src:'assets/video/Kurangkan%20Pengambilan%20Gula%20Harian.mp4'},
+    {title:'Gula dan Diabetes', description:'Kenali hubungan gula, diabetes dan penjagaan kesihatan.', src:'assets/video/Gula%20dan%20Diabetes.mp4'}
   ];
   const empty=document.getElementById('healthTvEmpty');
   const current=document.getElementById('healthTvCurrent');
@@ -976,7 +976,7 @@ start();
   video.addEventListener('ended',()=>loadItem((index+1)%playlist.length,true));
   video.addEventListener('error',()=>{
     empty.style.display='flex';
-    status.textContent='Video tidak ditemui — semak nama fail dalam assets/videos/';
+    status.textContent='Video tidak ditemui — semak nama fail dalam assets/video/';
     playBtn.textContent='▶ Cuba lagi';
   });
   playBtn.addEventListener('click',()=>{
