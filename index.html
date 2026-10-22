@@ -386,6 +386,52 @@ body.larger-text main p,body.larger-text main li{font-size:1.12em;line-height:1.
 @media(max-width:560px){.menu{right:8px;min-width:min(290px,calc(100vw - 16px));max-height:calc(100dvh - 100px);overflow-y:auto}}
 
 </style>
+<style>
+
+/* HSAH HEALTH TV — responsive layout refinement */
+.health-tv{max-width:1400px;margin:42px auto;padding:0 16px}
+.health-tv-shell{padding:clamp(14px,2vw,24px)}
+.health-tv-content-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(270px,0.9fr);gap:18px;align-items:start}
+.health-tv-main-column,.health-tv-side-column{min-width:0}
+.health-tv-screen{width:100%;max-width:100%;aspect-ratio:16/9;overflow:hidden}
+.health-tv-screen video{display:block;width:100%;height:100%;object-fit:contain;background:#020817}
+.health-tv-side-column{min-width:0;padding:12px;border:1px solid rgba(255,215,106,.32);border-radius:18px;background:rgba(1,12,33,.38)}
+.health-tv-playlist{display:flex;flex-direction:column;gap:9px;width:100%;min-width:0}
+.health-tv-item{display:grid;grid-template-columns:34px minmax(0,94px) minmax(0,1fr);align-items:center;gap:10px;width:100%;min-width:0;box-sizing:border-box;padding:10px}
+.health-tv-item .num{width:32px;height:32px;min-width:32px;flex:0 0 32px}
+.health-tv-item img,.health-tv-item .thumb{width:100%;max-width:94px;min-width:0;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.health-tv-item .item-title,.health-tv-item .item-description{min-width:0;overflow-wrap:break-word;word-break:normal;white-space:normal}
+.health-tv-item .item-title{font-size:13px;line-height:1.3}
+.health-tv-item .item-description{font-size:11px;line-height:1.35}
+.health-tv-controls{display:flex;flex-wrap:wrap;gap:8px}
+.health-tv-controls button{min-width:0;padding:9px 12px;font-size:13px}
+.health-tv-next-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+.health-tv-next-head b{font-size:14px;line-height:1.25}
+.health-tv-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media(max-width:760px){
+ .health-tv{margin:24px auto;padding:0 10px}
+ .health-tv-shell{padding:12px;border-radius:22px}
+ .health-tv-content-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+ .health-tv-main-column,.health-tv-side-column{width:100%;min-width:0}
+ .health-tv-screen{width:100%;aspect-ratio:16/9;max-height:42vh}
+ .health-tv-screen video{object-fit:contain}
+ .health-tv-side-column{padding:10px}
+ .health-tv-playlist{display:flex;flex-direction:column;gap:8px}
+ .health-tv-item{grid-template-columns:32px minmax(72px,100px) minmax(0,1fr);gap:9px;padding:9px}
+ .health-tv-item .num{width:30px;height:30px;min-width:30px;flex-basis:30px}
+ .health-tv-item img,.health-tv-item .thumb{max-width:100px}
+ .health-tv-item .item-title{font-size:13px;line-height:1.3}
+ .health-tv-item .item-description{font-size:11px}
+ .health-tv-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .health-tv-controls button{width:100%;padding:9px 5px;font-size:12px;white-space:normal}
+ .health-tv-foot{flex-direction:column;align-items:flex-start}
+}
+@media(min-width:761px){
+ .health-tv-playlist{display:flex;flex-direction:column}
+ .health-tv-item{grid-template-columns:32px minmax(72px,94px) minmax(0,1fr)}
+}
+
+</style>
 </head>
 <body id="atas">
 <div id="loading-screen" aria-label="Memuatkan laman"><img src="logo-program.png" alt="Logo sambutan"></div>
