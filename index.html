@@ -108,6 +108,27 @@ img{max-width:100%;display:block}
 .card h2{font-size:clamp(1.35rem,3.6vw,1.8rem);margin:12px 0 10px;color:var(--navy)}
 .card p{margin:0 0 12px;color:#23415f;font-size:16px}
 .fast{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 6px}
+
+/* Approved Mini Cinema layout: large screen + playlist panel */
+.health-tv-content-grid{display:grid;grid-template-columns:minmax(0,2.05fr) minmax(290px,0.95fr);gap:22px;align-items:start}
+.health-tv-main-column,.health-tv-side-column{min-width:0}
+.health-tv-side-column{border:1px solid rgba(255,215,106,.34);border-radius:20px;padding:14px;background:rgba(1,12,33,.42)}
+.health-tv-next{border-top:0;padding-top:0}
+.health-tv-next-head{background:linear-gradient(110deg,#ffe16b,#f5b82e);border-radius:13px;padding:13px 14px;margin-bottom:12px;color:#09265a}
+.health-tv-next-head b{color:#09265a;font-size:14px}
+.health-tv-next-head span{color:#17396c}
+.health-tv-playlist{grid-template-columns:1fr;gap:9px}
+.health-tv-item{padding:11px;border-radius:14px}
+.health-tv-item .num{width:34px;height:34px;flex-basis:34px;border-radius:50%;background:#0da9f5;color:white;border:1px solid #8bdcff;font-size:14px}
+.health-tv-item .item-title{font-size:12px}
+.health-tv-item[aria-current="true"]{border-color:#5bd2ff;background:rgba(0,154,255,.15);box-shadow:0 0 0 1px rgba(91,210,255,.35),0 0 14px rgba(0,154,255,.18)}
+.health-tv-foot{flex-direction:column;align-items:flex-start;margin-top:12px;padding:12px;border-radius:12px;background:rgba(0,154,255,.1);border:1px solid rgba(91,210,255,.2)}
+@media(max-width:760px){
+ .health-tv-content-grid{grid-template-columns:1fr;gap:16px}
+ .health-tv-side-column{padding:12px}
+ .health-tv-playlist{grid-template-columns:1fr}
+}
+
 @media(max-width:600px){.fast{grid-template-columns:repeat(2,1fr)}}
 .fast div{border-radius:18px;padding:14px 10px;text-align:center;color:var(--navy);background:#eef4ff;border:2px solid #c9dbf7}
 .fast b{display:block;font-family:var(--display);font-size:26px;color:var(--red);line-height:1}
@@ -190,6 +211,60 @@ img{max-width:100%;display:block}
 .bm .sheet{position:relative;overflow:auto}
 .bm .sheet::before{content:"";position:sticky;top:0;display:block;height:0;pointer-events:none}
 
+
+
+/* ---------- HSAH HEALTH TV: Mini Cinema ---------- */
+.health-tv{max-width:1400px;margin:50px auto 0;padding:0 16px}
+.health-tv-shell{position:relative;overflow:hidden;border:3px solid #f5b82e;border-radius:28px;padding:clamp(16px,2.2vw,28px);background:radial-gradient(ellipse at 50% -20%,#214b8c 0%,#0b214b 48%,#06132e 100%);box-shadow:0 8px 0 #8d6417,0 22px 36px rgba(0,0,0,.28);color:#fff}
+.health-tv-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding:4px 4px 18px;border-bottom:1px solid rgba(255,215,106,.28)}
+.health-tv-icon{display:grid;place-items:center;flex:0 0 54px;height:54px;border:2px solid #f5b82e;border-radius:17px;background:linear-gradient(145deg,#244f91,#0b2a6b);font-size:27px;box-shadow:0 5px 0 rgba(0,0,0,.22)}
+.health-tv-kicker{font-size:10px;letter-spacing:2px;font-weight:900;color:#ffd76a}
+.health-tv-title{font-family:var(--display);font-size:clamp(1.35rem,4vw,2rem);font-weight:900;line-height:1.08;color:#fff;margin-top:3px}
+.health-tv-sub{font-size:13px;color:#d4e3ff;margin-top:5px}
+.health-tv-live{margin-left:auto;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);border-radius:999px;padding:7px 10px;font-size:10px;font-weight:800;letter-spacing:1px}
+.health-tv-live:before{content:"";width:7px;height:7px;background:#f5b82e;border-radius:50%;box-shadow:0 0 0 4px rgba(245,184,46,.15)}
+.health-tv-screen{position:relative;overflow:hidden;aspect-ratio:16/9;background:#020817;border:3px solid #d6a83a;border-radius:18px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15),0 12px 22px rgba(0,0,0,.28)}
+.health-tv-screen video{display:block;width:100%;height:100%;object-fit:contain;background:#020817}
+.health-tv-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;background:radial-gradient(circle at 50% 35%,#244c87,#06132d 72%);color:#fff;gap:7px}
+.health-tv-empty .play-mark{font-size:clamp(36px,8vw,64px);line-height:1;color:#ffd15c;text-shadow:0 4px 0 #805b16}
+.health-tv-empty b{font-family:var(--display);font-size:clamp(15px,3vw,22px)}
+.health-tv-empty span{font-size:12px;color:#d3e2ff;max-width:380px}
+.health-tv-now{display:flex;align-items:center;gap:12px;padding:15px 2px 12px}
+.health-tv-now .now-mark{display:grid;place-items:center;width:42px;height:42px;flex:0 0 42px;border-radius:13px;background:#f5b82e;color:#0b2a6b;font-size:19px}
+.health-tv-now small{display:block;font-size:10px;color:#ffd76a;font-weight:900;letter-spacing:1.4px}
+.health-tv-now strong{display:block;font-family:var(--display);font-size:15px;line-height:1.3;color:#fff}
+.health-tv-now p{font-size:12px;color:#c7d8f5;margin:3px 0 0}
+.health-tv-controls{display:flex;flex-wrap:wrap;align-items:center;gap:9px;padding:0 0 16px}
+.health-tv-controls button{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:10px 13px;background:#17396c;color:#fff;font:700 12px var(--body);cursor:pointer;min-height:42px}
+.health-tv-controls button.primary{background:#f5b82e;color:#0b2a6b;border-color:#ffd76a}
+.health-tv-controls button:disabled{opacity:.45;cursor:not-allowed}
+.health-tv-controls .tv-spacer{flex:1}
+.health-tv-status{font-size:11px;color:#c7d8f5}
+.health-tv-next{border-top:1px solid rgba(255,255,255,.16);padding-top:14px}
+.health-tv-next-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.health-tv-next-head b{font-family:var(--display);font-size:13px;color:#fff}
+.health-tv-next-head span{font-size:10px;color:#c7d8f5}
+.health-tv-playlist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.health-tv-item{display:flex;align-items:center;gap:9px;min-width:0;text-align:left;padding:10px;border-radius:13px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#e8f0ff;cursor:pointer}
+.health-tv-item[aria-current="true"]{border-color:#f5b82e;background:rgba(245,184,46,.14);box-shadow:inset 0 0 0 1px rgba(245,184,46,.2)}
+.health-tv-item .num{display:grid;place-items:center;width:29px;height:29px;flex:0 0 29px;border-radius:9px;background:rgba(255,255,255,.1);font-size:11px;font-weight:900;color:#ffd76a}
+.health-tv-item .item-title{min-width:0;font-size:11px;line-height:1.3;font-weight:700;overflow-wrap:anywhere}
+.health-tv-item .item-state{display:block;color:#b9cbea;font-size:9px;font-weight:500;margin-top:3px}
+.health-tv-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;color:#b9cbea;font-size:10px}
+.health-tv-foot span{display:inline-flex;align-items:center;gap:6px}
+.health-tv-foot .gold{color:#ffd76a}
+@media(max-width:600px){
+ .health-tv{margin-top:36px;padding:0 12px}
+ .health-tv-shell{padding:15px;border-radius:22px}
+ .health-tv-head{gap:10px}.health-tv-icon{flex-basis:44px;height:44px;border-radius:13px;font-size:23px}
+ .health-tv-live{font-size:9px;padding:6px 8px}
+ .health-tv-playlist{grid-template-columns:1fr}
+ .health-tv-item{padding:9px 10px}
+ .health-tv-controls button{flex:1}
+ .health-tv-controls .tv-spacer{display:none}
+ .health-tv-foot{align-items:flex-start;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){.health-tv *{scroll-behavior:auto}}
 
 /* ---------- Footer portal-style ---------- */
 footer{margin-top:48px;background:#082d67;color:#e8f0ff;padding:30px 20px 24px;text-align:center;border-top:4px solid var(--gold)}
@@ -330,6 +405,7 @@ body.larger-text main p,body.larger-text main li{font-size:1.12em;line-height:1.
     <a href="#galeri">🖼️ Galeri</a>
     <a href="#angels">🎵 Angels &amp; Lagu Tema</a>
     <a href="#hospital">🏥 Hospital HSAH</a>
+    <a href="#health-tv">📺 HSAH Health TV</a>
     <a href="#bahan">📚 Rak Bahan Pendidikan</a>
     <button type="button" class="menu-action" id="displaySetting">Aa&nbsp; Besarkan tulisan</button>
   </nav>
@@ -504,7 +580,65 @@ body.larger-text main p,body.larger-text main li{font-size:1.12em;line-height:1.
       </div>
     </article>
 
-    <!-- Bahan -->
+    
+<!-- HSAH HEALTH TV — Mini Cinema -->
+<section class="health-tv" id="health-tv" aria-labelledby="healthTvTitle">
+  <div class="health-tv-shell">
+    <header class="health-tv-head">
+      <div class="health-tv-icon" aria-hidden="true">📺</div>
+      <div>
+        <div class="health-tv-kicker">HSAH • HEALTH EDUCATION CHANNEL</div>
+        <h2 class="health-tv-title" id="healthTvTitle">HSAH HEALTH TV</h2>
+        <p class="health-tv-sub">Iklan kesihatan ringkas. Ilmu yang boleh menyelamatkan nyawa.</p>
+      </div>
+      <span class="health-tv-live">HEALTH TV</span>
+    </header>
+    <div class="health-tv-content-grid">
+      <div class="health-tv-main-column">
+    <div class="health-tv-screen">
+      <video id="healthTvVideo" playsinline muted preload="metadata" controls aria-label="Pemain iklan kesihatan HSAH"></video>
+      <div class="health-tv-empty" id="healthTvEmpty">
+        <div class="play-mark" aria-hidden="true">▶</div>
+        <b>Ruang Tayangan Kesihatan</b>
+        <span>Letakkan video MP4 dalam <code>assets/videos/</code>. Senarai iklan akan dimainkan satu demi satu.</span>
+      </div>
+    </div>
+    <div class="health-tv-now">
+      <div class="now-mark" aria-hidden="true">▶</div>
+      <div>
+        <small>SEDANG DITAYANGKAN</small>
+        <strong id="healthTvCurrent">Sedia untuk memuatkan iklan</strong>
+        <p id="healthTvDescription">Autoplay bermula senyap untuk keserasian pelayar telefon.</p>
+      </div>
+    </div>
+    <div class="health-tv-controls" aria-label="Kawalan HSAH Health TV">
+      <button type="button" id="healthTvPlay" class="primary">▶ Main</button>
+      <button type="button" id="healthTvMute">🔇 Bunyi: Senyap</button>
+      <button type="button" id="healthTvRestart">↻ Mula semula</button>
+      <span class="tv-spacer"></span>
+      <span class="health-tv-status" id="healthTvStatus" role="status" aria-live="polite">Menunggu fail video</span>
+    </div>
+      </div>
+      <div class="health-tv-side-column">
+    <div class="health-tv-next">
+      <div class="health-tv-next-head">
+        <b>🎬 Senarai Iklan</b>
+        <span id="healthTvCount">0 video</span>
+      </div>
+      <div class="health-tv-playlist" id="healthTvPlaylist">
+        <div class="health-tv-item" style="grid-column:1/-1;cursor:default"><span class="num">＋</span><span class="item-title">Tambah fail MP4 dalam senarai video di kod laman.</span></div>
+      </div>
+    </div>
+    <div class="health-tv-foot">
+      <span>★ <span class="gold">Tonton, fahami, amalkan.</span></span>
+      <span>Autoplay senyap • Ulang senarai secara automatik</span>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bahan -->
     <article class="card" id="bahan">
       <span class="kick">Bahan</span>
       <h2>Bahan Psiko-Pendidikan</h2>
@@ -777,6 +911,93 @@ start();
   });
 })();
 </script>
+
+
+/* ---------- HSAH HEALTH TV playlist ---------- */
+(function(){
+  const video = document.getElementById('healthTvVideo');
+  if(!video) return;
+  // Letakkan fail MP4 dalam assets/videos/ dan tambah satu objek bagi setiap iklan.
+  const playlist = [
+    {title:'Angin Ahmar aka Strok', description:'Kenali tanda strok dan bertindak segera.', src:'assets/videos/Angin%20Ahmar%20aka%20Strok.mp4'},
+    {title:'Garam dan Darah Tinggi', description:'Fahami kaitan pengambilan garam dengan tekanan darah tinggi.', src:'assets/videos/Garam%20dan%20Darah%20Tinggi.mp4'},
+    {title:'Kurangkan Pengambilan Gula Harian', description:'Kurangkan gula harian untuk kesihatan yang lebih baik.', src:'assets/videos/Kurangkan%20Pengambilan%20Gula%20Harian.mp4'},
+    {title:'Gula dan Diabetes', description:'Kenali hubungan gula, diabetes dan penjagaan kesihatan.', src:'assets/videos/Gula%20dan%20Diabetes.mp4'}
+  ];
+  const empty=document.getElementById('healthTvEmpty');
+  const current=document.getElementById('healthTvCurrent');
+  const description=document.getElementById('healthTvDescription');
+  const status=document.getElementById('healthTvStatus');
+  const count=document.getElementById('healthTvCount');
+  const list=document.getElementById('healthTvPlaylist');
+  const playBtn=document.getElementById('healthTvPlay');
+  const muteBtn=document.getElementById('healthTvMute');
+  const restartBtn=document.getElementById('healthTvRestart');
+  let index=0, hasLoaded=false;
+
+  count.textContent=playlist.length+' video';
+  list.innerHTML=playlist.map((item,i)=>`<button type="button" class="health-tv-item" data-index="${i}" aria-current="${i===0?'true':'false'}"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="item-title">${item.title}<span class="item-state">${i===0?'Pertama dalam senarai':'Pilih untuk main'}</span></span></button>`).join('');
+
+  function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function setActive(){
+    [...list.querySelectorAll('.health-tv-item')].forEach((el,i)=>{
+      el.setAttribute('aria-current',String(i===index));
+      const state=el.querySelector('.item-state');
+      if(state) state.textContent=i===index?'Sedang dipilih':(i===(index+1)%playlist.length?'Seterusnya':'Pilih untuk main');
+    });
+    current.textContent=playlist[index].title;
+    description.textContent=playlist[index].description;
+  }
+  function loadItem(i, autoplay=true){
+    if(!playlist.length) return;
+    index=(i+playlist.length)%playlist.length;
+    const item=playlist[index];
+    video.pause();
+    video.src=item.src;
+    video.muted=true;
+    video.load();
+    empty.style.display='flex';
+    hasLoaded=false;
+    setActive();
+    status.textContent='Memuatkan video…';
+    playBtn.textContent='▶ Main';
+    if(autoplay){
+      const tryPlay=()=>{
+        const p=video.play();
+        if(p && p.then){
+          p.then(()=>{empty.style.display='none';hasLoaded=true;status.textContent='Dimainkan secara senyap';playBtn.textContent='Ⅱ Jeda';})
+           .catch(()=>{status.textContent='Tekan Main untuk memulakan video';});
+        }
+      };
+      video.addEventListener('canplay',tryPlay,{once:true});
+    }
+  }
+  video.addEventListener('playing',()=>{empty.style.display='none';hasLoaded=true;playBtn.textContent='Ⅱ Jeda';status.textContent=video.muted?'Dimainkan secara senyap':'Sedang dimainkan';});
+  video.addEventListener('ended',()=>loadItem((index+1)%playlist.length,true));
+  video.addEventListener('error',()=>{
+    empty.style.display='flex';
+    status.textContent='Video tidak ditemui — semak nama fail dalam assets/videos/';
+    playBtn.textContent='▶ Cuba lagi';
+  });
+  playBtn.addEventListener('click',()=>{
+    if(video.paused){
+      const p=video.play();
+      if(p&&p.then)p.then(()=>{empty.style.display='none';}).catch(()=>status.textContent='Semak fail video dan cuba lagi.');
+    } else video.pause();
+  });
+  video.addEventListener('pause',()=>{if(!video.ended)playBtn.textContent='▶ Main';});
+  muteBtn.addEventListener('click',()=>{
+    video.muted=!video.muted;
+    muteBtn.textContent=video.muted?'🔇 Bunyi: Senyap':'🔊 Bunyi: Hidup';
+    status.textContent=video.muted?'Dimainkan secara senyap':'Bunyi dihidupkan';
+  });
+  restartBtn.addEventListener('click',()=>{video.currentTime=0;video.play().then(()=>{empty.style.display='none';}).catch(()=>{});});
+  list.addEventListener('click',e=>{
+    const btn=e.target.closest('[data-index]');
+    if(btn) loadItem(Number(btn.dataset.index),true);
+  });
+  loadItem(0,true);
+})();
 
 </body>
 </html>
