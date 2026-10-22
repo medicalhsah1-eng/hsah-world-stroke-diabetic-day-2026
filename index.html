@@ -91,15 +91,23 @@ img{max-width:100%;display:block}
 .c-red{--c:#e5353d} .c-blue{--c:#3d8bff} .c-gold{--c:#f5b82e} .c-navy{--c:#2a4fb0} .c-pink{--c:#ff7d8a} .c-green{--c:#35b977}
 
 /* ---------- Topik popular ---------- */
-/* Topik Popular awam: soalan terus ke video berkaitan */
-.popular-highlight{display:inline-flex;align-items:center;background:linear-gradient(120deg,#ffe9a3,#ffd45c);color:#102c58;border:2px solid #f4b82e;border-radius:14px;padding:10px 16px;font-weight:900;box-shadow:0 5px 0 rgba(180,126,17,.24),0 8px 18px rgba(13,38,79,.14);letter-spacing:.2px}
-.popular-intro{margin:12px 0 16px;color:var(--muted,#52627a);font-size:clamp(14px,1.8vw,17px)}
+/* Topik Popular: glossy illustrated cards matching the approved mockup */
+.popular{max-width:1000px;margin:22px auto 30px;padding:0 14px;text-align:center}
+.popular-highlight{display:flex;width:max-content;max-width:100%;align-items:center;justify-content:center;gap:12px;margin:0 auto 22px;padding:12px clamp(22px,5vw,46px);background:linear-gradient(180deg,#ffe66f 0%,#ffbf32 100%);color:#092b6d;border:3px solid #fff0a5;border-radius:999px;font-family:var(--display);font-size:clamp(24px,5.4vw,44px);line-height:1.1;font-weight:1000;text-shadow:0 2px 0 #fff8d7,0 4px 0 rgba(150,91,9,.18);box-shadow:0 7px 0 #b12632,0 12px 22px rgba(0,0,0,.24)}
+.popular-highlight span{font-size:1.05em}
 .popular-question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.popular-question{display:block;width:100%;text-align:left;border:0;border-radius:24px;padding:20px 22px;background:linear-gradient(135deg,#fff1bd,#ffedb2);color:#19375f;box-shadow:0 5px 0 rgba(175,130,28,.14);font:inherit;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
-.popular-question:hover,.popular-question:focus-visible{transform:translateY(-2px);box-shadow:0 8px 18px rgba(17,43,83,.18);outline:3px solid #f5b82e;outline-offset:2px}
-.popular-question-text{font-weight:800;font-size:clamp(17px,2vw,22px);line-height:1.5}
-.popular-question-icon{display:inline-block;margin-right:7px}
-@media(max-width:640px){.popular-question-grid{grid-template-columns:1fr}.popular-question{padding:18px 20px}}
+.popular-question{position:relative;display:grid;grid-template-columns:minmax(76px,34%) minmax(0,1fr) 38px;align-items:center;gap:12px;width:100%;min-height:184px;text-align:left;border:3px solid rgba(255,255,255,.9);border-radius:28px;padding:18px 15px;background:linear-gradient(145deg,#fff5cf,#ffe58b);color:#082d75;box-shadow:0 5px 0 rgba(241,178,42,.75),0 10px 20px rgba(0,0,0,.22),inset 0 0 0 2px rgba(255,255,255,.4);font:inherit;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;overflow:hidden}
+.popular-question:nth-child(2){background:linear-gradient(145deg,#dff8ff,#8edcff);box-shadow:0 5px 0 #1686c6,0 10px 20px rgba(0,0,0,.22),inset 0 0 0 2px rgba(255,255,255,.4)}
+.popular-question:nth-child(3){background:linear-gradient(145deg,#ffe8f4,#f6bde1);box-shadow:0 5px 0 #cc4c9c,0 10px 20px rgba(0,0,0,.22),inset 0 0 0 2px rgba(255,255,255,.4)}
+.popular-question:nth-child(4){background:linear-gradient(145deg,#e5ffef,#a3f2d0);box-shadow:0 5px 0 #40b99a,0 10px 20px rgba(0,0,0,.22),inset 0 0 0 2px rgba(255,255,255,.4)}
+.popular-question::before{content:"";position:absolute;inset:7px;border:1px solid rgba(255,255,255,.55);border-radius:20px;pointer-events:none}
+.popular-question:hover,.popular-question:focus-visible{transform:translateY(-3px) scale(1.01);filter:saturate(1.08);outline:3px solid #ffdf65;outline-offset:3px}
+.popular-illustration{display:grid;place-items:center;font-size:clamp(42px,7.3vw,76px);line-height:1;filter:drop-shadow(0 5px 2px rgba(28,55,92,.18));z-index:1}
+.popular-question-text{position:relative;z-index:1;font-family:var(--display);font-weight:900;font-size:clamp(15px,2.2vw,23px);line-height:1.34;overflow-wrap:anywhere}
+.popular-question-text em{font-style:normal;color:#ed272c}
+.popular-arrow{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#073b91;color:#fff;font-size:32px;font-family:Arial,sans-serif;font-weight:700;line-height:1;box-shadow:0 3px 0 rgba(0,0,0,.16);z-index:1}
+@media(max-width:640px){.popular{padding:0 14px;margin:22px auto 28px}.popular-highlight{margin-bottom:18px}.popular-question-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.popular-question{grid-template-columns:1fr 30px;grid-template-rows:auto 1fr;gap:5px 8px;min-height:190px;padding:13px 11px;border-radius:22px;align-content:start}.popular-illustration{grid-column:1;justify-self:start;font-size:clamp(36px,10vw,58px);height:58px}.popular-question-text{grid-column:1/-1;grid-row:2;font-size:clamp(13px,3.35vw,17px);line-height:1.36;padding:0 2px 4px}.popular-arrow{grid-column:2;grid-row:1;width:30px;height:30px;font-size:27px;justify-self:end;align-self:center}}
+@media(max-width:360px){.popular-question{min-height:205px;padding:10px 8px}.popular-question-text{font-size:12.5px}.popular-illustration{font-size:35px}}
 .popular{position:relative;max-width:620px;margin:20px auto 0;padding:0 16px}
 .popular .badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;background:var(--gold);border:4px solid var(--white);color:var(--navy);font-family:var(--display);font-weight:900;font-size:22px;padding:12px 26px;border-radius:999px;box-shadow:0 8px 0 var(--red2)}
 .popular .bars{margin-top:-22px;padding-left:120px;display:grid;gap:12px}
@@ -149,7 +157,25 @@ img{max-width:100%;display:block}
 
 /* ---------- Galeri buku album ---------- */
 /* Galeri Program: kulit album tertutup dahulu, klik untuk membuka album flip sebenar */
-#galeri .book-wrap{max-width:860px}
+#galeri /* Open scrapbook album styling to match approved reference */
+#galeri{max-width:1100px;margin-left:auto;margin-right:auto;padding:0 12px}
+#galeri .sec-title{font-size:clamp(30px,5.8vw,52px);font-family:var(--display);font-weight:1000;color:#fff;text-shadow:-2px -2px 0 #173b89,2px -2px 0 #173b89,-2px 2px 0 #173b89,2px 2px 0 #173b89,0 5px 0 #d69d27,0 8px 14px rgba(0,0,0,.35);margin-bottom:18px}
+#galeri .book-stage{padding:24px 0 10px}
+#galeri .book{aspect-ratio:1.42/1;filter:drop-shadow(0 18px 12px rgba(0,0,0,.25))}
+#galeri .book-base{border:clamp(8px,1.3vw,15px) ridge #d4a13b;border-radius:22px;background:linear-gradient(90deg,#4d2a0d,#f3d38a 3%,#6f471a 5%,#fff0bd 8%,#fff1c8 48%,#c99a4b 50%,#fff0bd 52%,#fff1c8 92%,#6f471a 95%,#f4d991 97%,#4d2a0d);box-shadow:inset 0 0 0 3px #fff2bd,0 10px 0 #8b5b1c,0 18px 30px rgba(0,0,0,.35)}
+#galeri .book-base::before{width:12px;margin-left:-6px;background:linear-gradient(90deg,rgba(88,46,12,.45),rgba(255,255,255,.55),rgba(88,46,12,.45));z-index:10}
+#galeri .face{background:linear-gradient(145deg,#fff6d7,#f6df9f);border:2px solid #c99b45;box-shadow:inset 0 0 0 5px #fff4ce,inset 0 0 0 8px #d7ae5e}
+#galeri .face.front{border-radius:5px 0 0 5px}
+#galeri .face.back{border-radius:0 5px 5px 0}
+#galeri .face .ph{position:absolute;z-index:1;inset:auto 8% 8%;width:84%;height:auto;min-height:30px;padding:7px 6px;border:1px solid #d5aa5b;border-radius:4px;background:linear-gradient(180deg,#ffefc4,#eac77d);box-shadow:0 4px 6px rgba(70,39,8,.22);font-size:clamp(9px,1.35vw,14px);line-height:1.25;color:#42250b}
+#galeri .face img{position:absolute;inset:8% 8% 25%;width:84%;height:67%;object-fit:cover;border:6px solid #fff8e7;box-shadow:0 3px 10px rgba(65,37,12,.3);transform:rotate(-1.5deg)}
+#galeri .leaf:nth-of-type(even) .face img{transform:rotate(1.5deg)}
+#galeri .book-ctrl{margin-top:22px}
+#galeri .book-ctrl button{width:58px;height:58px;border-radius:50%;border:3px solid #ffe28a;font-size:34px;box-shadow:0 5px 0 #a92d34,0 8px 14px rgba(0,0,0,.2)}
+#galeri .dots i{width:13px;height:13px;background:rgba(255,255,255,.45)}
+#galeri .dots i.on{background:#ffca39;transform:scale(1.2)}
+@media(max-width:640px){#galeri .book-stage{padding:12px 0 6px}#galeri .book{aspect-ratio:1.12/1}#galeri .face img{inset:8% 5% 27%;width:90%;height:65%;border-width:3px}#galeri .face .ph{inset:auto 5% 6%;width:90%;font-size:9px;padding:5px 3px}#galeri .book-ctrl button{width:44px;height:44px;font-size:27px}}
+.book-wrap{max-width:860px}
 #galeri .album-cover{position:relative;display:flex;width:100%;aspect-ratio:1.38/1;flex-direction:column;align-items:center;justify-content:center;gap:clamp(7px,1.5vw,16px);overflow:hidden;cursor:pointer;border:clamp(7px,1.4vw,13px) ridge #d8a53a;border-radius:24px;background:radial-gradient(ellipse at 50% 28%,#1e4fa8 0%,#12377f 48%,#071b49 100%);color:#fff4c9;box-shadow:inset 0 0 0 3px #ffe7a0,inset 0 0 0 10px rgba(216,165,58,.28),0 18px 0 #8e5d19,0 30px 42px rgba(0,0,0,.34);text-align:center;padding:24px 16px;transition:transform .25s,filter .25s}
 #galeri .album-cover::before{content:"";position:absolute;inset:12px;border:2px solid #f3d27b;border-radius:13px;pointer-events:none}
 #galeri .album-cover::after{content:"";position:absolute;inset:21px;border:1px solid rgba(255,232,164,.55);border-radius:9px;pointer-events:none}
@@ -163,7 +189,8 @@ img{max-width:100%;display:block}
 #galeri .album-cover.bottom{margin-top:0}
 #galeri .book-wrap.album-closed .book-stage,#galeri .book-wrap.album-closed .book-ctrl{display:none}
 #galeri .book-wrap.album-open .album-cover{display:none}
-#galeri .book-wrap.album-open .book-stage{display:block;animation:albumReveal .55s ease both}
+#galeri .book-wrap.album-open .book-stage{display:block;animation:albumOpenReveal .9s cubic-bezier(.2,.7,.2,1) both;transform-origin:center}
+@keyframes albumOpenReveal{0%{opacity:0;transform:perspective(1200px) rotateX(13deg) scale(.88)}55%{opacity:1;transform:perspective(1200px) rotateX(-2deg) scale(1.02)}100%{opacity:1;transform:perspective(1200px) rotateX(0) scale(1)}}
 #galeri .book-wrap.album-open .book-ctrl{display:flex;animation:albumReveal .65s ease both}
 @keyframes albumReveal{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:520px){#galeri .album-cover{aspect-ratio:1/1.05;gap:10px;padding:22px 12px}#galeri .album-cover strong{font-size:clamp(22px,7vw,34px)}#galeri .book-wrap{max-width:100%}}
@@ -704,20 +731,19 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
   </nav>
 
   <section class="popular" aria-labelledby="pop-h">
-    <div class="badge popular-highlight" id="pop-h">🔥 Topik Popular</div>
-    <p class="popular-intro">Ada persoalan tentang kesihatan? Cari jawapannya melalui video pendek kami.</p>
+    <div class="badge popular-highlight" id="pop-h"><span aria-hidden="true">🔥</span> Topik Popular</div>
     <div class="popular-question-grid">
       <button class="popular-question" type="button" data-health-video="0">
-        <span class="popular-question-text"><span class="popular-question-icon" aria-hidden="true">🧠</span> Apakah tanda awal strok yang kita tidak boleh abaikan?</span>
+        <span class="popular-illustration" aria-hidden="true">🧠</span><span class="popular-question-text">Apakah tanda awal <em>strok</em> yang kita tidak boleh abaikan?</span><span class="popular-arrow" aria-hidden="true">›</span>
       </button>
       <button class="popular-question" type="button" data-health-video="1">
-        <span class="popular-question-text"><span class="popular-question-icon" aria-hidden="true">🧂</span> Mengapa pengambilan garam berlebihan boleh meningkatkan tekanan darah?</span>
+        <span class="popular-illustration" aria-hidden="true">🧂</span><span class="popular-question-text">Mengapa pengambilan <em>garam</em> berlebihan boleh meningkatkan tekanan darah?</span><span class="popular-arrow" aria-hidden="true">›</span>
       </button>
       <button class="popular-question" type="button" data-health-video="2">
-        <span class="popular-question-text"><span class="popular-question-icon" aria-hidden="true">🍬</span> Apakah kaitan gula dengan diabetes?</span>
+        <span class="popular-illustration" aria-hidden="true">🍬</span><span class="popular-question-text">Apakah kaitan <em>gula</em> dengan diabetes?</span><span class="popular-arrow" aria-hidden="true">›</span>
       </button>
       <button class="popular-question" type="button" data-health-video="3">
-        <span class="popular-question-text"><span class="popular-question-icon" aria-hidden="true">🥤</span> Bagaimanakah kita boleh mengurangkan pengambilan gula setiap hari?</span>
+        <span class="popular-illustration" aria-hidden="true">🥤</span><span class="popular-question-text">Bagaimanakah kita boleh <em>mengurangkan pengambilan gula</em> setiap hari?</span><span class="popular-arrow" aria-hidden="true">›</span>
       </button>
     </div>
   </section>
