@@ -447,6 +447,134 @@ body.larger-text main p,body.larger-text main li{font-size:1.12em;line-height:1.
 }
 
 </style>
+<style>
+/* Restore previously approved Psiko-Pendidikan flip-book styles */
+.book-open{max-width:760px;background:#f4ead7;perspective:1600px}
+.bm .book-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#fff;border-bottom:1px solid #eadcc6}
+.bm .book-topbar strong{font-family:var(--display);color:var(--navy);font-size:14px}
+.bm .book-topbar span{font-size:12px;color:var(--muted)}
+.bm .book-pages{padding:16px;background:linear-gradient(90deg,#d6c5a7,#f7efdf 5%,#f7efdf 95%,#d6c5a7);min-height:350px}
+.bm .flip-page{min-height:320px;background:#fffdf7;border:1px solid #e4d8c3;border-radius:4px 14px 14px 4px;box-shadow:0 8px 22px #573c1d22,inset 9px 0 12px -12px #543;overflow:hidden;transform-origin:left center;animation:pageFlipIn .48s ease both}
+.bm .flip-page.turning{animation:pageFlipOut .22s ease both}
+.bm .flip-content{max-width:640px;margin:auto;padding:clamp(22px,5vw,42px);text-align:center}
+.bm .flip-kicker{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:#1c7f87}
+.bm .flip-icon{font-size:48px;margin:8px 0}
+.bm .flip-content h4{font-size:clamp(22px,4vw,30px);margin:8px 0 14px}
+.bm .flip-content p{line-height:1.75}
+.bm .flip-callout{margin:18px auto 0;padding:13px 15px;max-width:560px;background:#f1f7ff;border:1px dashed #abc3e7;border-radius:12px;color:#3c5879;font-size:13px}
+.bm .flip-material{display:flex;align-items:center;justify-content:center;min-height:100px;margin:16px auto;padding:18px;background:#f7f9fc;border:1px dashed #abc3e7;border-radius:12px;max-width:560px;color:#526b84}
+.bm .flip-material img{max-height:300px;object-fit:contain;border-radius:8px}
+.bm .flip-material video{width:100%;max-height:320px;border-radius:8px}
+.bm .flip-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.bm .flip-actions a,.bm .flip-actions button{display:inline-block;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff;text-decoration:none;font-weight:800;font-size:13px;cursor:pointer}
+.bm .flip-actions .light{background:#e7eef9;color:var(--navy)}
+.bm .flip-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;background:#fff;border-top:1px solid #e4d8c3}
+.bm .flip-controls button{border:0;border-radius:11px;background:var(--gold);color:var(--navy);font-weight:800;padding:11px 14px;cursor:pointer;box-shadow:0 3px 0 var(--red2)}
+.bm .flip-controls button:disabled{opacity:.4;cursor:not-allowed}
+.bm .flip-count{font-size:12px;color:var(--muted);font-weight:700;text-align:center}
+@keyframes pageFlipIn{from{opacity:.55;transform:rotateY(-14deg);filter:brightness(.88)}to{opacity:1;transform:rotateY(0);filter:brightness(1)}}
+@keyframes pageFlipOut{to{opacity:.5;transform:rotateY(12deg);filter:brightness(.85)}}
+@media(max-width:560px){.bm .book-pages{padding:9px;min-height:340px}.bm .flip-page{min-height:320px}.bm .flip-content{padding:22px 17px}.bm .flip-controls{padding:11px 9px}.bm .flip-controls button{padding:10px 11px;font-size:12px}.bm .flip-count{font-size:11px}}
+
+/* ---------- Footer portal-style ---------- */
+footer{margin-top:48px;background:#082d67;color:#e8f0ff;padding:30px 20px 24px;text-align:center;border-top:4px solid var(--gold)}
+footer .footer-inner{max-width:920px;margin:0 auto}
+footer .developer-credit{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 6px;color:#c5d7f5;font-weight:700}
+footer strong{font-family:var(--display);font-size:clamp(17px,3vw,21px);font-weight:800;color:#fff;display:block;letter-spacing:.35px}
+footer .developer-sub{margin:5px 0 14px;font-size:12px;color:#c5d7f5}
+footer .footer-divider{height:1px;background:rgba(255,255,255,.16);max-width:720px;margin:18px auto}
+footer .footer-org{font-size:12px;color:#e8f0ff;margin:0 auto 8px}
+footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
+
+/* ---------- Mascot & back to top ---------- */
+.mascot{position:fixed;right:14px;bottom:14px;width:92px;height:92px;border-radius:50%;background:var(--white);border:5px solid var(--gold);box-shadow:0 10px 24px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:44px;text-decoration:none;z-index:30;overflow:hidden}
+.mascot img{width:100%;height:100%;object-fit:cover}
+.mascot:hover{transform:scale(1.05)}
+.totop{position:fixed;right:118px;bottom:24px;width:56px;height:56px;border-radius:50%;border:4px solid var(--white);background:var(--red);color:var(--white);font-size:22px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:30;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.totop.show{display:flex}
+
+/* ---------- Logo loading screen ---------- */
+#loading-screen{
+  position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+  background:#fff;opacity:1;visibility:visible;transition:opacity .35s ease,visibility .35s ease;
+}
+#loading-screen img{width:min(68vw,260px);height:auto;animation:logo-spin 2s linear infinite}
+#loading-screen.loaded{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes logo-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){#loading-screen img{animation:none}}
+
+
+/* ---------- Rakan penaja: jalur bergerak ---------- */
+.sponsor-strip{max-width:1120px;margin:18px auto 24px;padding:0 14px;color:var(--navy)}
+.sponsor-shell{background:#fff;border:1px solid rgba(255,255,255,.7);border-radius:22px;padding:14px 0 10px;box-shadow:0 10px 26px rgba(4,24,67,.18);overflow:hidden}
+.sponsor-heading{text-align:center;font-family:var(--display);font-size:clamp(1rem,2.5vw,1.2rem);font-weight:800;letter-spacing:.3px;margin:0 12px 12px;color:var(--navy)}
+.sponsor-heading span{display:inline-block;width:26px;height:3px;background:var(--gold);vertical-align:middle;margin:0 8px;border-radius:99px}
+.sponsor-track{display:flex;width:max-content;align-items:center;gap:14px;animation:sponsor-scroll 34s linear infinite;padding:2px 10px 8px}
+.sponsor-shell:hover .sponsor-track,.sponsor-shell:focus-within .sponsor-track{animation-play-state:paused}
+.sponsor-group{display:flex;align-items:center;gap:14px}
+.sponsor-item{height:76px;min-width:148px;max-width:190px;padding:10px 16px;display:flex;align-items:center;justify-content:center;text-align:center;background:#f8fbff;border:1px solid #e2eaf7;border-radius:15px;color:var(--navy);font-family:var(--display);font-size:13px;font-weight:800;line-height:1.25;box-shadow:0 4px 10px rgba(11,42,107,.06)}
+.sponsor-item .sponsor-mark{display:block;font-family:var(--body);font-size:10px;font-weight:600;color:#60728f;margin-top:4px}
+.sponsor-item.pantai{color:#07538c}.sponsor-item.angels{color:#72a92b;font-size:20px}.sponsor-item.mems{background:#fff7d7;color:#172a4b;font-size:20px;border-color:#f5d26d}.sponsor-item.central{color:#c95a2b;font-size:17px}.sponsor-item.campaign{color:#174c9a}.sponsor-item.campaign strong{display:block;font-size:14px}
+.sponsor-note{text-align:center;font-size:11px;color:#71819a;margin:0;padding:0 12px}
+
+/* Logo sebenar yang dipotong daripada gambar rujukan penaja yang diberikan */
+.sponsor-item.logo-card{min-width:148px;max-width:190px;height:76px;padding:8px 12px;background:#fff}
+.sponsor-item.logo-card img{display:block;width:100%;height:100%;object-fit:contain}
+.sponsor-item.logo-card.persatuan{min-width:128px;max-width:150px}
+.sponsor-item.logo-card.pantai{min-width:150px}
+.sponsor-item.logo-card.angels{min-width:145px}
+.sponsor-item.logo-card.mems{min-width:130px}
+.sponsor-item.logo-card.central{min-width:160px}
+.sponsor-item.logo-card.campaign{min-width:135px}
+ .sponsor-item.logo-card img{filter:contrast(1.02)}
+.sponsor-link{display:block;flex:0 0 auto;color:inherit;text-decoration:none;border-radius:15px;cursor:pointer}
+.sponsor-link:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.sponsor-link:hover .sponsor-item{transform:translateY(-2px);box-shadow:0 7px 15px rgba(11,42,107,.16)}
+.sponsor-link .sponsor-item{transition:transform .18s ease,box-shadow .18s ease}
+@media(max-width:560px){.sponsor-item.logo-card{min-width:116px;height:64px;padding:6px 8px}.sponsor-item.logo-card.persatuan{min-width:108px}.sponsor-item.logo-card.pantai{min-width:125px}.sponsor-item.logo-card.central{min-width:132px}}
+
+@keyframes sponsor-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:560px){.sponsor-strip{margin:12px auto 18px;padding:0 10px}.sponsor-shell{border-radius:16px;padding-top:12px}.sponsor-track,.sponsor-group{gap:9px}.sponsor-item{min-width:124px;height:68px;padding:8px 10px;font-size:11px}.sponsor-item.angels,.sponsor-item.mems{font-size:17px}.sponsor-item.central{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.sponsor-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.sponsor-group[aria-hidden="true"]{display:none}}
+
+
+/* ---------- Hospital HSAH ---------- */
+.hsah-card{overflow:hidden}
+.hsah-banner{min-height:150px;display:flex;align-items:center;justify-content:center;margin:-22px -22px 22px;padding:22px;background:linear-gradient(135deg,#eaf4ff,#fff 58%,#eaf4ff);border-bottom:4px solid var(--gold)}
+.hsah-banner img{width:min(100%,300px);max-height:170px;object-fit:contain;border-radius:12px}
+.hsah-contact{background:#f4f8ff;border:1px solid #d8e5f8;border-radius:16px;padding:16px;margin-top:16px}
+.hsah-contact h3{font-size:17px;color:var(--navy);margin-bottom:10px}
+.hsah-contact p{margin:8px 0;font-size:14px;overflow-wrap:anywhere}
+.hsah-contact a{color:var(--blue);font-weight:600}
+.hsah-hours{font-size:12px!important;color:var(--muted)}
+@media(max-width:560px){.hsah-banner{margin:-16px -16px 18px;min-height:125px;padding:16px}.hsah-banner img{max-height:130px}}
+
+.hsah-banner-link{display:block;color:inherit;text-decoration:none;border-radius:0;}
+.hsah-banner-link:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.hsah-banner-link:hover .hsah-banner img{transform:scale(1.025)}
+.hsah-banner img{transition:transform .2s ease}
+
+/* Linked official logos and headings */
+.angels-title-link{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;margin-right:8px;border-radius:8px;overflow:hidden;max-width:92px}
+.angels-title-link img{display:block;width:112px;height:auto;max-height:76px;object-fit:contain}
+.angels-title-text{font-size:clamp(1rem,2.2vw,1.45rem);font-weight:800;line-height:1.2}
+.angels-title-link:focus-visible,.hsah-title-link:focus-visible{outline:3px solid #f7bd2f;outline-offset:4px}
+.angels-head{display:block}
+.angels-head p{margin:0}
+.hsah-title-link{color:inherit;text-decoration:none}
+.hsah-title-link:hover{text-decoration:underline}
+@media(max-width:560px){.angels-title-link{max-width:100px}.angels-title-link img{width:92px;max-height:64px}.angels-title-text{font-size:clamp(.95rem,4vw,1.2rem)}}
+
+/* FAST Heroes artwork: same image in Angels sticker, Angels section and FAST section */
+.sticker .art.angels-art{padding:0;background:#fff;align-items:stretch;justify-content:stretch}
+.sticker .art.angels-art img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+.fast-heroes-visual{margin:18px 0 20px;background:#f5f9ff;border:2px solid #d9e5f8;border-radius:18px;overflow:hidden;box-shadow:0 5px 0 rgba(11,42,107,.08)}
+.fast-heroes-visual img{display:block;width:100%;height:auto;object-fit:contain}
+.fast-heroes-visual figcaption{padding:10px 14px;font-size:12px;line-height:1.5;color:#405777;text-align:center;background:#fff}
+.fast-heroes-fast{margin:18px 0 16px}
+@media(max-width:560px){.fast-heroes-visual figcaption{font-size:11px;padding:9px 10px}}
+
+</style>
 </head>
 <body id="atas">
 <div id="loading-screen" aria-label="Memuatkan laman"><img src="logo-program.png" alt="Logo sambutan"></div>
@@ -833,29 +961,62 @@ function renderShelves(q=''){
   box.querySelectorAll('.spine').forEach(el => el.addEventListener('click', ()=>openBook(el.dataset.id)));
 }
 
+let activeBookId = null, activePageIndex = 0;
+function buildBookPages(b){
+  const pages = [{
+    kind:'intro', kicker:'Pengenalan profesion / persatuan', icon:b.icon,
+    title:b.title, body:b.tujuan,
+    extra:`Bidang tumpuan: ${b.poin.slice(0,2).join(' ')}`
+  }];
+  pages.push({kind:'poster',kicker:'Bahan pendidikan',icon:'🖼️',title:'Poster & Infografik',body:'Terokai poster dan infografik pendidikan untuk booth ini.',resource:b.bahan.poster,extra:'Muat naik poster sebenar dan isikan laluan fail dalam data BOOKS untuk dipaparkan di sini.'});
+  pages.push({kind:'pdf',kicker:'Bahan bacaan',icon:'📄',title:'Dokumen PDF',body:'Baca atau muat turun panduan pendidikan berkaitan.',resource:b.bahan.pdf,extra:'Apabila fail PDF ditambah, ia boleh dibuka dalam pelayar atau dimuat turun.'});
+  pages.push({kind:'video',kicker:'Tontonan pendidikan',icon:'🎬',title:'Video Pendidikan',body:'Tonton video pendidikan berkaitan profesion atau persatuan ini.',resource:b.bahan.video,extra:'Apabila pautan atau fail video ditambah, video akan dipaparkan pada halaman ini.'});
+  return pages;
+}
+function renderFlipPage(){
+  const b=BOOKS.find(x=>x.id===activeBookId); if(!b)return;
+  const pages=buildBookPages(b), p=pages[activePageIndex];
+  const pageArea=document.getElementById('bmPageArea');
+  let media='';
+  if(p.resource){
+    const src=escH(p.resource);
+    if(p.kind==='poster') media=`<div class="flip-material"><img src="${src}" alt="${escH(p.title)}" onerror="this.parentElement.innerHTML='Fail poster tidak dapat dipaparkan. Semak laluan fail.'"></div><div class="flip-actions"><a href="${src}" target="_blank" rel="noopener">Buka bahan penuh</a><a class="light" href="${src}" download>Muat turun</a></div>`;
+    else if(p.kind==='pdf') media=`<div class="flip-material" style="display:block"><iframe src="${src}" title="Dokumen PDF" style="width:100%;height:320px;border:0"></iframe></div><div class="flip-actions"><a href="${src}" target="_blank" rel="noopener">Buka PDF</a><a class="light" href="${src}" download>Muat turun PDF</a></div>`;
+    else media=`<div class="flip-material"><video controls playsinline src="${src}">Pelayar anda tidak menyokong video.</video></div>`;
+  }else{
+    media=`<div class="flip-material"><div><div style="font-size:34px;margin-bottom:8px">${p.icon}</div><strong>Ruang ${escH(p.title.toLowerCase())}</strong><br><span style="font-size:13px">${escH(p.extra)}</span></div></div>`;
+  }
+  const introExtra=p.kind==='intro'?`<div class="flip-callout"><strong>Kenali bidang ini</strong><br>${escH(p.extra)}<br><br><em>Maklumat ini ialah draf umum dan perlu disemak oleh unit atau organisasi berkenaan.</em></div>`:'';
+  pageArea.innerHTML=`<article class="flip-page"><div class="flip-content"><div class="flip-kicker">${p.kicker}</div><div class="flip-icon">${p.icon}</div><h4>${escH(p.title)}</h4><p>${escH(p.body)}</p>${introExtra}${media}</div></article>`;
+  document.getElementById('flipCount').textContent=`Halaman ${activePageIndex+1} daripada ${pages.length}`;
+  document.getElementById('flipPrev').disabled=activePageIndex===0;
+  document.getElementById('flipNext').disabled=activePageIndex===pages.length-1;
+}
 function openBook(id){
-  const b = BOOKS.find(x=>x.id===id); if(!b) return;
-  document.getElementById('bmHd').style.background = b.color;
-  document.getElementById('bmHd').innerHTML = `
-    <span class="ic" aria-hidden="true">${b.icon}</span>
-    <div><span class="kk">Booth ${b.no} · ${escH(b.sub)}</span><h3 id="bmTitle">${escH(b.title)}</h3></div>`;
-  document.getElementById('bmBd').innerHTML = `
-    <h4>Tujuan</h4>
-    <p>${escH(b.tujuan)}</p>
-    <h4>Maklumat utama</h4>
-    <ul>${b.poin.map(p=>`<li>${escH(p)}</li>`).join('')}</ul>
-    <h4>Bahan booth</h4>
-    <div class="res">${RES.map(([k,l,ic])=>{
-      const p = b.bahan[k];
-      return `<div><b>${ic} ${l}</b>${p ? `<a href="${escH(p)}" target="_blank" rel="noopener">Buka</a>` : 'Akan dimuat naik'}</div>`;
-    }).join('')}</div>
-    <div class="src">Sumber rujukan yang dipercayai untuk booth ini akan ditambah kemudian.</div>`;
+  const b=BOOKS.find(x=>x.id===id); if(!b)return;
+  activeBookId=id; activePageIndex=0;
+  const sheet=document.querySelector('#bm .sheet');
+  sheet.classList.add('book-open');
+  document.getElementById('bmHd').style.background=b.color;
+  document.getElementById('bmHd').innerHTML=`<span class="ic" aria-hidden="true">${b.icon}</span><div><span class="kk">Booth ${b.no} · ${escH(b.sub)}</span><h3 id="bmTitle">${escH(b.title)}</h3></div>`;
+  document.getElementById('bmBd').innerHTML=`<div class="book-topbar"><strong>BUKU PENDIDIKAN</strong><span>Selak halaman untuk meneroka</span></div><div class="book-pages" id="bmPageArea"></div><div class="flip-controls"><button type="button" id="flipPrev" disabled>← Sebelum</button><span class="flip-count" id="flipCount">Halaman 1 daripada 4</span><button type="button" id="flipNext">Seterusnya →</button></div>`;
+  renderFlipPage();
+  document.getElementById('flipPrev').addEventListener('click',()=>{if(activePageIndex>0){activePageIndex--;renderFlipPage()}});
+  document.getElementById('flipNext').addEventListener('click',()=>{if(activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage()}});
   document.getElementById('bm').classList.add('open');
 }
 function closeBook(){ document.getElementById('bm').classList.remove('open'); }
 document.getElementById('bmClose').addEventListener('click', closeBook);
 document.getElementById('bm').addEventListener('click', e=>{ if(e.target.id==='bm') closeBook(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeBook(); });
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') closeBook();
+  const modal=document.getElementById('bm');
+  if(modal.classList.contains('open') && activeBookId){
+    const b=BOOKS.find(x=>x.id===activeBookId);
+    if(e.key==='ArrowRight' && activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage();}
+    if(e.key==='ArrowLeft' && activePageIndex>0){activePageIndex--;renderFlipPage();}
+  }
+});
 document.getElementById('bsearch').addEventListener('input', e=>renderShelves(e.target.value));
 renderShelves();
 
