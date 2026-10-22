@@ -968,8 +968,8 @@ start();
   const playlist = [
     {title:'Angin Ahmar aka Strok', description:'Kenali tanda strok dan bertindak segera.', src:'assets/video/Angin%20Ahmar%20aka%20Strok.mp4'},
     {title:'Garam dan Darah Tinggi', description:'Fahami kaitan pengambilan garam dengan tekanan darah tinggi.', src:'assets/video/Garam%20dan%20Darah%20Tinggi.mp4'},
-    {title:'Kurangkan Pengambilan Gula Harian', description:'Kurangkan gula harian untuk kesihatan yang lebih baik.', src:'assets/video/Kurangkan%20Pengambilan%20Gula%20Harian.mp4'},
     {title:'Gula dan Diabetes', description:'Kenali hubungan gula, diabetes dan penjagaan kesihatan.', src:'assets/video/Gula%20dan%20Diabetes.mp4'}
+    {title:'Kurangkan Pengambilan Gula Harian', description:'Kurangkan gula harian untuk kesihatan yang lebih baik.', src:'assets/video/Kurangkan%20Pengambilan%20Gula%20Harian.mp4'},
   ];
   const empty=document.getElementById('healthTvEmpty');
   const current=document.getElementById('healthTvCurrent');
@@ -1033,10 +1033,16 @@ start();
     } else video.pause();
   });
   video.addEventListener('pause',()=>{if(!video.ended)playBtn.textContent='▶ Main';});
+  function syncMuteLabel(){
+    muteBtn.textContent = video.muted ? '🔊 Hidupkan bunyi' : '🔇 Matikan bunyi';
+    muteBtn.setAttribute('aria-label', video.muted ? 'Hidupkan bunyi' : 'Matikan bunyi');
+  }
+  syncMuteLabel();
   muteBtn.addEventListener('click',()=>{
-    video.muted=!video.muted;
-    muteBtn.textContent=video.muted?'🔇 Bunyi: Senyap':'🔊 Bunyi: Hidup';
-    status.textContent=video.muted?'Dimainkan secara senyap':'Bunyi dihidupkan';
+    video.muted = !video.muted;
+    syncMuteLabel();
+    const status=document.getElementById('healthTvStatus');
+    if(status) status.textContent = video.muted ? 'Bunyi dimatikan' : 'Bunyi dihidupkan';
   });
   restartBtn.addEventListener('click',()=>{video.currentTime=0;video.play().then(()=>{empty.style.display='none';}).catch(()=>{});});
   list.addEventListener('click',e=>{
