@@ -148,6 +148,25 @@ img{max-width:100%;display:block}
 .placeholder{background:#f1f6ff;border:2px dashed #9fb8e3;border-radius:16px;padding:14px;color:#3c5879;font-size:14px}
 
 /* ---------- Galeri buku album ---------- */
+/* Galeri Program: kulit album tertutup dahulu, klik untuk membuka album flip sebenar */
+#galeri .book-wrap{max-width:860px}
+#galeri .album-cover{position:relative;display:flex;width:100%;aspect-ratio:1.38/1;flex-direction:column;align-items:center;justify-content:center;gap:clamp(7px,1.5vw,16px);overflow:hidden;cursor:pointer;border:clamp(7px,1.4vw,13px) ridge #d8a53a;border-radius:24px;background:radial-gradient(ellipse at 50% 28%,#1e4fa8 0%,#12377f 48%,#071b49 100%);color:#fff4c9;box-shadow:inset 0 0 0 3px #ffe7a0,inset 0 0 0 10px rgba(216,165,58,.28),0 18px 0 #8e5d19,0 30px 42px rgba(0,0,0,.34);text-align:center;padding:24px 16px;transition:transform .25s,filter .25s}
+#galeri .album-cover::before{content:"";position:absolute;inset:12px;border:2px solid #f3d27b;border-radius:13px;pointer-events:none}
+#galeri .album-cover::after{content:"";position:absolute;inset:21px;border:1px solid rgba(255,232,164,.55);border-radius:9px;pointer-events:none}
+#galeri .album-cover:hover,#galeri .album-cover:focus-visible{transform:translateY(-3px);filter:brightness(1.12);outline:3px solid #ffe8a4;outline-offset:4px}
+#galeri .album-cover-ornament{font-size:clamp(16px,3vw,28px);color:#ffdf79;letter-spacing:5px;text-shadow:0 2px 10px rgba(255,210,87,.4)}
+#galeri .album-cover-emblem{display:grid;place-items:center;width:clamp(64px,11vw,104px);aspect-ratio:1;border-radius:50%;border:3px solid #f5d16e;background:linear-gradient(145deg,#fff0b7,#e4ad35);font-size:clamp(34px,6vw,56px);box-shadow:0 0 0 6px rgba(245,209,110,.15),0 8px 18px rgba(0,0,0,.28)}
+#galeri .album-cover-kicker{font-size:clamp(10px,1.7vw,14px);font-weight:800;letter-spacing:clamp(1px,.4vw,3px);color:#f8d981}
+#galeri .album-cover strong{font-family:var(--display);font-size:clamp(24px,5.6vw,48px);line-height:1.12;letter-spacing:.4px;text-shadow:0 3px 0 #734b12,0 5px 12px rgba(0,0,0,.5)}
+#galeri .album-cover-year{font-size:clamp(16px,3vw,24px);font-weight:900;letter-spacing:4px;color:#fff}
+#galeri .album-cover-hint{margin-top:4px;padding:8px 15px;border-radius:999px;background:linear-gradient(120deg,#ffe9a3,#f3bd3e);color:#102b60;font-size:clamp(10px,1.7vw,13px);font-weight:900;letter-spacing:1px;box-shadow:0 4px 0 #97631b}
+#galeri .album-cover.bottom{margin-top:0}
+#galeri .book-wrap.album-closed .book-stage,#galeri .book-wrap.album-closed .book-ctrl{display:none}
+#galeri .book-wrap.album-open .album-cover{display:none}
+#galeri .book-wrap.album-open .book-stage{display:block;animation:albumReveal .55s ease both}
+#galeri .book-wrap.album-open .book-ctrl{display:flex;animation:albumReveal .65s ease both}
+@keyframes albumReveal{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:520px){#galeri .album-cover{aspect-ratio:1/1.05;gap:10px;padding:22px 12px}#galeri .album-cover strong{font-size:clamp(22px,7vw,34px)}#galeri .book-wrap{max-width:100%}}
 .book-wrap{position:relative;max-width:720px;margin:0 auto}
 .book{position:relative;width:100%;aspect-ratio:1.45/1;perspective:1800px;margin:0 auto}
 .leaf{position:absolute;top:0;right:0;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.4,.1,.2,1);cursor:pointer}
@@ -708,8 +727,16 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
     <!-- Galeri buku album -->
     <section id="galeri" aria-labelledby="gal-h" style="margin-bottom:34px">
       <h2 class="sec-title" id="gal-h">📖 Galeri Program</h2>
-      <p class="sec-sub">Selak album dengan ketik anak panah atau tunggu gambar bertukar sendiri.</p>
-      <div class="book-wrap">
+      <div class="book-wrap album-closed" id="albumWrap">
+        <button class="album-cover" id="albumCover" type="button" aria-label="Buka album Galeri Program HSAH 2026">
+          <span class="album-cover-ornament" aria-hidden="true">✦　❖　✦</span>
+          <span class="album-cover-emblem" aria-hidden="true">📖</span>
+          <span class="album-cover-kicker">KENANGAN &amp; KEBERSAMAAN</span>
+          <strong>GALERI PROGRAM</strong>
+          <span class="album-cover-year">HSAH · 2026</span>
+          <span class="album-cover-hint">KETIK UNTUK MEMBUKA</span>
+          <span class="album-cover-ornament bottom" aria-hidden="true">✦　❖　✦</span>
+        </button>
         <div class="book-stage">
           <div class="book" id="book" aria-live="polite">
             <div class="book-base"></div>
@@ -1092,21 +1119,31 @@ function render(){
 function next(){ cur = cur>=LEAVES ? 0 : cur+1; render(); }
 function prev(){ cur = cur<=0 ? LEAVES : cur-1; render(); }
 
-function start(){ stop(); timer = setInterval(next, 4500); }
+const albumWrap = document.getElementById('albumWrap');
+const albumCover = document.getElementById('albumCover');
+let albumOpened = false;
+function start(){ stop(); if(albumOpened) timer = setInterval(next, 4500); }
 function stop(){ if(timer){ clearInterval(timer); timer=null; } }
 
-document.getElementById('nextPg').addEventListener('click',()=>{ next(); start(); });
-document.getElementById('prevPg').addEventListener('click',()=>{ prev(); start(); });
+albumCover.addEventListener('click',()=>{
+  if(albumOpened) return;
+  albumOpened = true;
+  albumWrap.classList.remove('album-closed');
+  albumWrap.classList.add('album-open');
+  render();
+  start();
+});
+document.getElementById('nextPg').addEventListener('click',()=>{ if(!albumOpened)return; next(); start(); });
+document.getElementById('prevPg').addEventListener('click',()=>{ if(!albumOpened)return; prev(); start(); });
 book.parentElement.addEventListener('mouseenter', stop);
 book.parentElement.addEventListener('mouseleave', start);
 book.parentElement.addEventListener('touchstart', stop, {passive:true});
 document.addEventListener('keydown', e=>{
-  if(!document.getElementById('galeri').getBoundingClientRect().height) return;
+  if(!albumOpened || !document.getElementById('galeri').getBoundingClientRect().height) return;
   if(e.key==='ArrowRight'){ next(); start(); }
   if(e.key==='ArrowLeft'){ prev(); start(); }
 });
 render();
-start();
 </script>
 
 <script>
