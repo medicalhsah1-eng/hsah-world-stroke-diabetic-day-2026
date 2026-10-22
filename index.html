@@ -432,6 +432,21 @@ body.larger-text main p,body.larger-text main li{font-size:1.12em;line-height:1.
 }
 
 </style>
+<style>
+
+/* Playlist safety fix: always show all items as full-width vertical rows */
+.health-tv-next,.health-tv-side-column,.health-tv-playlist{min-width:0;width:100%;box-sizing:border-box}
+.health-tv-playlist{display:flex!important;flex-direction:column!important;align-items:stretch;gap:9px}
+.health-tv-item{display:grid!important;grid-template-columns:34px minmax(0,1fr)!important;align-items:center;gap:10px;width:100%;min-width:0;box-sizing:border-box;white-space:normal;text-align:left}
+.health-tv-item .item-title{display:block;min-width:0;overflow-wrap:break-word;word-break:normal;white-space:normal;line-height:1.35;font-size:13px}
+.health-tv-item .item-state{display:block;line-height:1.3}
+@media(max-width:760px){
+ .health-tv-content-grid{grid-template-columns:minmax(0,1fr)!important}
+ .health-tv-playlist{display:flex!important;flex-direction:column!important}
+ .health-tv-item{grid-template-columns:32px minmax(0,1fr)!important}
+}
+
+</style>
 </head>
 <body id="atas">
 <div id="loading-screen" aria-label="Memuatkan laman"><img src="logo-program.png" alt="Logo sambutan"></div>
@@ -968,8 +983,8 @@ start();
   const playlist = [
     {title:'Angin Ahmar aka Strok', description:'Kenali tanda strok dan bertindak segera.', src:'assets/video/Angin%20Ahmar%20aka%20Strok.mp4'},
     {title:'Garam dan Darah Tinggi', description:'Fahami kaitan pengambilan garam dengan tekanan darah tinggi.', src:'assets/video/Garam%20dan%20Darah%20Tinggi.mp4'},
-    {title:'Gula dan Diabetes', description:'Kenali hubungan gula, diabetes dan penjagaan kesihatan.', src:'assets/video/Gula%20dan%20Diabetes.mp4'}
-    {title:'Kurangkan Pengambilan Gula Harian', description:'Kurangkan gula harian untuk kesihatan yang lebih baik.', src:'assets/video/Kurangkan%20Pengambilan%20Gula%20Harian.mp4'},
+    {title:'Gula dan Diabetes', description:'Kenali hubungan gula, diabetes dan penjagaan kesihatan.', src:'assets/video/Gula%20dan%20Diabetes.mp4'},
+    {title:'Kurangkan Pengambilan Gula Harian', description:'Kurangkan gula harian untuk kesihatan yang lebih baik.', src:'assets/video/Kurangkan%20Pengambilan%20Gula%20Harian.mp4'}
   ];
   const empty=document.getElementById('healthTvEmpty');
   const current=document.getElementById('healthTvCurrent');
@@ -980,7 +995,7 @@ start();
   const playBtn=document.getElementById('healthTvPlay');
   const muteBtn=document.getElementById('healthTvMute');
   const restartBtn=document.getElementById('healthTvRestart');
-  let index=0, hasLoaded=false;
+  let index=0, hasLoaded=false, soundEnabled=false;
 
   count.textContent=playlist.length+' video';
   list.innerHTML=playlist.map((item,i)=>`<button type="button" class="health-tv-item" data-index="${i}" aria-current="${i===0?'true':'false'}"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="item-title">${item.title}<span class="item-state">${i===0?'Pertama dalam senarai':'Pilih untuk main'}</span></span></button>`).join('');
@@ -1001,7 +1016,8 @@ start();
     const item=playlist[index];
     video.pause();
     video.src=item.src;
-    video.muted=true;
+    video.muted=!soundEnabled;
+    syncMuteLabel();
     video.load();
     empty.style.display='flex';
     hasLoaded=false;
@@ -1012,7 +1028,7 @@ start();
       const tryPlay=()=>{
         const p=video.play();
         if(p && p.then){
-          p.then(()=>{empty.style.display='none';hasLoaded=true;status.textContent='Dimainkan secara senyap';playBtn.textContent='Ⅱ Jeda';})
+          p.then(()=>{empty.style.display='none';hasLoaded=true;status.textContent=video.muted?'Dimainkan secara senyap':'Bunyi dihidupkan';playBtn.textContent='Ⅱ Jeda';})
            .catch(()=>{status.textContent='Tekan Main untuk memulakan video';});
         }
       };
@@ -1034,15 +1050,15 @@ start();
   });
   video.addEventListener('pause',()=>{if(!video.ended)playBtn.textContent='▶ Main';});
   function syncMuteLabel(){
-    muteBtn.textContent = video.muted ? '🔊 Hidupkan bunyi' : '🔇 Matikan bunyi';
-    muteBtn.setAttribute('aria-label', video.muted ? 'Hidupkan bunyi' : 'Matikan bunyi');
+    muteBtn.textContent=video.muted?'🔊 Hidupkan bunyi':'🔇 Matikan bunyi';
+    muteBtn.setAttribute('aria-label',video.muted?'Hidupkan bunyi':'Matikan bunyi');
   }
   syncMuteLabel();
   muteBtn.addEventListener('click',()=>{
-    video.muted = !video.muted;
+    video.muted=!video.muted;
+    soundEnabled=!video.muted;
     syncMuteLabel();
-    const status=document.getElementById('healthTvStatus');
-    if(status) status.textContent = video.muted ? 'Bunyi dimatikan' : 'Bunyi dihidupkan';
+    status.textContent=video.muted?'Bunyi dimatikan':'Bunyi dihidupkan';
   });
   restartBtn.addEventListener('click',()=>{video.currentTime=0;video.play().then(()=>{empty.style.display='none';}).catch(()=>{});});
   list.addEventListener('click',e=>{
