@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1e5fd6">
-<meta name="build-version" content="HSAH-2026-home-art-refresh-20261021">
+<meta name="build-version" content="HSAH-2026-education-books-20261113">
 <title>HSAH World Diabetes &amp; World Stroke Day 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0b2a6b; --blue:#1e5fd6; --sky:#3d8bff; --red:#d7262f; --red2:#a71b22;
@@ -501,6 +501,21 @@ body.larger-text main p,body.larger-text main li{font-size:1.12em;line-height:1.
  .health-tv-item{grid-template-columns:32px minmax(0,1fr)!important}
 }
 
+
+/* Tipografi minimalis untuk bahan bacaan dalam buku digital sahaja */
+.bm{font-family:"Lato",Arial,sans-serif}
+.bm .book-topbar span,.bm .flip-count{font-family:"Lato",Arial,sans-serif}
+.bm .flip-content{text-align:left}
+.bm .flip-content h4{font-family:var(--display);font-weight:700;letter-spacing:-.35px}
+.bm .flip-kicker{font-family:"Lato",Arial,sans-serif;font-size:11px;letter-spacing:1.2px}
+.bm .flip-body{font-size:15.5px;line-height:1.75;color:#30445d;text-align:left;white-space:normal}
+.bm .flip-body p{margin:0 0 13px;font:inherit;line-height:inherit;color:inherit}
+.bm .flip-focus{padding-left:22px;margin:8px 0 0;color:#30445d}
+.bm .flip-focus li{font-size:15.5px;line-height:1.65;margin:0 0 12px;padding-left:4px}
+.bm .pdf-preview{display:block;padding:0;overflow:hidden;border:1px solid #e2e8f0;background:#fff}
+.bm .pdf-preview iframe{display:block;width:100%;height:420px;border:0;background:#fff}
+@media(max-width:560px){.bm .pdf-preview iframe{height:360px}.bm .flip-body,.bm .flip-focus li{font-size:15px}}
+
 </style>
 <style>
 /* Restore previously approved Psiko-Pendidikan flip-book styles */
@@ -955,111 +970,276 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
    contoh: poster:'assets/psiko/pt-poster.jpg', pdf:'assets/psiko/pt.pdf', video:'assets/psiko/pt.mp4'
    Kandungan perlu disemak pakar HSAH sebelum diterbitkan. */
 const BOOKS = [
-  { id:'pt', no:1, title:'Physiotherapy', sub:'PT', icon:'🦽', color:'#1e5fd6', h:200,
-    tujuan:'Fisioterapi menilai dan membantu memulihkan pergerakan serta fungsi fizikal melalui intervensi berasaskan penilaian. Dalam pemulihan strok, tumpuan boleh merangkumi mobiliti, kekuatan, keseimbangan, kawalan postur dan pergerakan yang selamat.',
-    poin:['Pemulihan pergerakan, kekuatan dan mobiliti.','Latihan keseimbangan serta strategi mengurangkan risiko jatuh.'],
-    rujukan:'Rujukan profesional: World Physiotherapy – policy statements dan resources berkaitan amalan fisioterapi.',
-    bahan:[
-      {title:'Aktiviti Fizikal dan Senaman',file:'assets/education/pt/Aktiviti%20fizikal%20dan%20senaman.pdf'},
-      {title:'Bed Mobility',file:'assets/education/pt/Bed%20mobility.pdf'},
-      {title:'Senaman Pesakit Stroke',file:'assets/education/pt/Senaman%20pesakit%20stroke.pdf'}
-    ] },
-  { id:'ot', no:2, title:'Occupational Therapy', sub:'OT', icon:'🧩', color:'#e5353d', h:215,
-    tujuan:'Terapi Cara Kerja membantu individu melakukan aktiviti kehidupan harian yang bermakna dengan lebih selamat dan berdikari. Selepas strok, intervensi boleh memberi tumpuan kepada penjagaan diri, fungsi tangan, aktiviti domestik, kognitif, penyesuaian aktiviti dan persekitaran.',
-    poin:['Pemulihan kemahiran aktiviti kehidupan harian (ADL/IADL).','Penyesuaian aktiviti dan persekitaran untuk meningkatkan keselamatan serta penyertaan.'],
-    rujukan:'Rujukan profesional: AOTA – Occupational Therapy Practice Framework (OTPF–4) dan Standards of Practice; WFOT – resources on occupational therapy practice.',
-    bahan:[
-      {title:'Pendidikan Kesihatan: Strok',file:'assets/education/ot/Stroke.pdf'},
-      {title:'Pendidikan Kesihatan: Diabetes',file:'assets/education/ot/Diabetes.pdf'}
-    ] },
-  { id:'ph', no:3, title:'Pharmacy', sub:'Farmasi', icon:'💊', color:'#2a4fb0', h:190,
-    tujuan:'Perkhidmatan Farmasi menyokong penggunaan ubat yang berkualiti, selamat dan berkesan. Ahli farmasi membantu menyemak terapi ubat, memberi penerangan tentang dos dan cara pengambilan serta mengenal pasti isu berkaitan ubat.',
-    poin:['Penggunaan ubat secara rasional dan selamat.','Penerangan dos, cara pengambilan, interaksi dan pematuhan rawatan.'],
-    rujukan:'Rujukan profesional: Pharmacy Board Malaysia – Code of Conduct dan panduan amalan profesional.' , bahan:[] },
-  { id:'de', no:4, title:'Diabetic Educator', sub:'DE', icon:'📊', color:'#ff7d8a', h:205,
-    tujuan:'Pendidik Diabetes membimbing individu dan keluarga membina pengetahuan serta kemahiran penjagaan kendiri diabetes. Pendidikan boleh merangkumi pemantauan glukosa, pemakanan, aktiviti fizikal, ubat, penjagaan kaki dan tindakan apabila berlaku kecemasan berkaitan diabetes.',
-    poin:['Pendidikan dan kemahiran pengurusan diabetes kendiri.','Pemantauan glukosa, penggunaan ubat dan penjagaan kaki.'],
-    rujukan:'Rujukan profesional: International Diabetes Federation – diabetes education resources; gunakan panduan klinikal diabetes yang berkuat kuasa.', bahan:[] },
-  { id:'psy', no:5, title:'Psychiatry', sub:'PSY', icon:'🧠', color:'#35b977', h:185,
-    tujuan:'Perkhidmatan Psikiatri menyediakan penilaian, diagnosis, rawatan dan susulan bagi masalah kesihatan mental. Sokongan kesihatan mental penting dalam penjagaan strok dan diabetes kerana perubahan emosi, kemurungan, keresahan atau kesukaran penyesuaian boleh mempengaruhi pemulihan dan pengurusan penyakit.',
-    poin:['Penilaian dan rawatan kesihatan mental.','Sokongan emosi serta kesinambungan penjagaan.'],
-    rujukan:'Rujukan profesional: Malaysian Psychiatric Association – maklumat dan sumber pendidikan profesional.', bahan:[] },
-  { id:'diet', no:6, title:'Dietitian', sub:'Pemakanan', icon:'🍎', color:'#f5b82e', h:200,
-    tujuan:'Perkhidmatan Dietetik menggunakan terapi pemakanan perubatan untuk menilai keperluan pemakanan dan merancang intervensi mengikut keadaan serta keperluan individu. Dalam diabetes dan strok, pengurusan pemakanan boleh melibatkan kawalan glukosa, tekanan darah, lipid, berat badan dan keselamatan pemakanan.',
-    poin:['Penilaian dan perancangan pemakanan individu.','Pengurusan pemakanan bagi diabetes, darah tinggi dan dislipidemia.'],
-    rujukan:'Rujukan profesional: Malaysian Dietitians’ Association – sumber pendidikan dan amalan dietetik.',
-    bahan:[
-      {title:'Diet untuk Dislipidemia',file:'assets/education/diet/Diet%20untuk%20Dislipidemia.pdf'},
-      {title:'Diet untuk Penghidap Darah Tinggi',file:'assets/education/diet/Diet%20untuk%20Penghidap%20Darah%20Tinggi.pdf'},
-      {title:'Diet untuk Pesakit Diabetes Mellitus',file:'assets/education/diet/Diet%20untuk%20Pesakit%20Diabetes%20Mellitus.pdf'},
-      {title:'Pemakanan Melalui Tiub',file:'assets/education/diet/Pemakanan%20Melalui%20Tiub.pdf'}
-    ] },
-  { id:'st', no:7, title:'Speech Therapy', sub:'ST · Hospital Pantai', icon:'💬', color:'#7b5cd6', h:220,
-    tujuan:'Terapi Pertuturan-Bahasa membantu individu yang mengalami kesukaran komunikasi, pertuturan, bahasa, suara atau penelanan. Selepas strok, penilaian dan intervensi boleh menyokong komunikasi berfungsi serta pengurusan disfagia dan keselamatan makan/minum.',
-    poin:['Sokongan komunikasi, pertuturan dan bahasa.','Penilaian serta pengurusan masalah penelanan mengikut keperluan.'],
-    rujukan:'Rujukan profesional: Malaysian Association of Speech-Language and Hearing (MASH) – sumber dan maklumat profesion.', bahan:[] },
-  { id:'hp', no:8, title:'Hospital Pantai', sub:'Waktu Emas', icon:'🏥', color:'#1e5fd6', h:195,
-    tujuan:'Perkhidmatan hospital menyokong pengesanan, penilaian dan rawatan segera. Bagi strok, tindakan pantas apabila tanda amaran muncul amat penting untuk mendapatkan rawatan kecemasan.',
-    poin:['Kenali tanda strok menggunakan kaedah FAST.','Hubungi 999 dengan segera apabila tanda strok dikesan.'], bahan:[] },
-  { id:'ang', no:9, title:'Angels', sub:'Sukarelawan', icon:'👼', color:'#d7262f', h:210,
-    tujuan:'Angels Initiative menyokong usaha meningkatkan kesedaran dan kualiti penjagaan strok melalui pendidikan, kerjasama serta penglibatan komuniti dan pasukan kesihatan.',
-    poin:['Kesedaran tentang tanda dan faktor risiko strok.','Sokongan komuniti untuk tindakan pantas mendapatkan rawatan.'], bahan:[] }
+  {
+    "id": "pt",
+    "no": 1,
+    "title": "Physiotherapy",
+    "sub": "PT",
+    "icon": "🦽",
+    "color": "#1e5fd6",
+    "h": 200,
+    "intro": "Fisioterapi merupakan profesion kesihatan yang memberi tumpuan kepada pemulihan dan pengoptimuman fungsi pergerakan fizikal. Bagi pesakit strok, fisioterapi membantu meningkatkan kekuatan otot, keseimbangan, koordinasi dan keupayaan bergerak. Bagi pesakit diabetes, intervensi turut memberi tumpuan kepada kecergasan fizikal, aktiviti fizikal dan keupayaan pergerakan bagi mengekalkan kesihatan serta mengurangkan risiko komplikasi.",
+    "focus": [
+      "Kekuatan dan daya tahan otot.",
+      "Keseimbangan dan koordinasi.",
+      "Pergerakan dan mobiliti.",
+      "Latihan berjalan dan pemindahan posisi.",
+      "Senaman terapeutik dan aktiviti fizikal."
+    ],
+    "bahan": [
+      {
+        "title": "Aktiviti fizikal dan senaman",
+        "path": "assets/education/pt/Aktiviti%20fizikal%20dan%20senaman.pdf"
+      },
+      {
+        "title": "Bed mobility",
+        "path": "assets/education/pt/Bed%20mobility.pdf"
+      },
+      {
+        "title": "Senaman pesakit stroke",
+        "path": "assets/education/pt/Senaman%20pesakit%20stroke.pdf"
+      }
+    ]
+  },
+  {
+    "id": "ot",
+    "no": 2,
+    "title": "Occupational Therapy",
+    "sub": "OT",
+    "icon": "🧩",
+    "color": "#e5353d",
+    "h": 215,
+    "intro": "Terapi Cara Kerja membantu individu mencapai tahap keberdikarian dan penyertaan optimum dalam kehidupan seharian berdasarkan keupayaan serta limitasi sedia ada. Pendekatan OT merangkumi aspek fizikal, sensori, kognitif, emosi, sosial dan spiritual.\n\nBagi pesakit strok, OT membantu memulihkan fungsi anggota, koordinasi, sensori dan kemahiran kognitif termasuk ingatan, tumpuan, perancangan, penyelesaian masalah serta metakognitif (keupayaan menyedari, memantau dan menilai proses pemikiran serta tindakan sendiri).\n\nBagi pesakit diabetes, OT memberi tumpuan kepada kesan komplikasi seperti kebas atau kehilangan sensasi yang boleh menjejaskan keselamatan dan aktiviti harian. OT turut membantu pesakit membina kesedaran kendiri, insight dan motivasi melalui pelaksanaan rutin harian yang disesuaikan dengan limitasi sedia ada, sekali gus meningkatkan keupayaan mengurus keadaan dan mengekalkan kefungsian.\n\nIntervensi OT merangkumi latihan aktiviti kehidupan harian, strategi kompensasi, penggunaan alat bantuan dan pengubahsuaian persekitaran. Matlamatnya adalah membantu individu kembali kepada peranan bermakna seperti bekerja, memandu, belajar, mengurus rumah dan menyertai aktiviti komuniti mengikut keupayaan masing-masing.",
+    "focus": [
+      "Pemulihan aktiviti kehidupan harian dan penjagaan diri.",
+      "Fungsi fizikal, tangan, koordinasi dan pemprosesan sensori.",
+      "Fungsi kognitif dan metakognitif.",
+      "Pendedahan berperingkat (graded exposure) dan latihan penyesuaian terhadap aktiviti serta rutin harian berdasarkan toleransi dan keupayaan pesakit.",
+      "Keselamatan dan adaptasi aktiviti akibat perubahan sensasi.",
+      "Kembali bekerja, memandu, belajar dan menyertai komuniti.",
+      "Penggunaan alat bantuan serta pengubahsuaian aktiviti dan persekitaran."
+    ],
+    "bahan": [
+      {
+        "title": "Stroke",
+        "path": "assets/education/ot/Stroke.pdf"
+      },
+      {
+        "title": "Diabetes",
+        "path": "assets/education/ot/Diabetes.pdf"
+      }
+    ]
+  },
+  {
+    "id": "ph",
+    "no": 3,
+    "title": "Pharmacy",
+    "sub": "Farmasi",
+    "icon": "💊",
+    "color": "#2a4fb0",
+    "h": 190,
+    "intro": "Farmasi merupakan profesion kesihatan yang bertanggungjawab memastikan penggunaan ubat-ubatan secara selamat, berkesan dan bersesuaian dengan keperluan pesakit. Bagi pesakit strok dan diabetes, ahli farmasi membantu pesakit memahami fungsi ubat, dos, cara pengambilan, kesan sampingan serta kepentingan pematuhan rawatan.",
+    "focus": [
+      "Pendidikan penggunaan ubat yang betul.",
+      "Semakan dos dan keselamatan ubat.",
+      "Pematuhan terhadap rejimen rawatan.",
+      "Pengenalpastian kesan sampingan dan interaksi ubat.",
+      "Pengurusan ubat bagi penyakit kronik dan pencegahan komplikasi."
+    ],
+    "bahan": []
+  },
+  {
+    "id": "de",
+    "no": 4,
+    "title": "Diabetic Educator",
+    "sub": "DE",
+    "icon": "📊",
+    "color": "#ff7d8a",
+    "h": 205,
+    "intro": "Pendidikan Diabetes memberi tumpuan kepada pembentukan pengetahuan dan kemahiran pesakit untuk mengurus diabetes secara kendiri. Pesakit dibimbing memahami keadaan kesihatan, memantau paras glukosa darah, mengamalkan gaya hidup sihat serta mengenal pasti tanda amaran komplikasi.",
+    "focus": [
+      "Pemantauan paras glukosa darah.",
+      "Pendidikan pengambilan ubat dan insulin.",
+      "Penjagaan kaki dan pencegahan komplikasi.",
+      "Pengurusan pemakanan dan aktiviti fizikal.",
+      "Kemahiran pengurusan diabetes secara kendiri."
+    ],
+    "bahan": []
+  },
+  {
+    "id": "psy",
+    "no": 5,
+    "title": "Psychiatry",
+    "sub": "PSY",
+    "icon": "🧠",
+    "color": "#35b977",
+    "h": 185,
+    "intro": "Psikiatri merupakan bidang perubatan yang memberi tumpuan kepada penilaian, diagnosis dan rawatan masalah kesihatan mental. Perkhidmatan ini merangkumi pengurusan gangguan emosi, pemikiran, tingkah laku dan fungsi mental. Bagi pesakit strok atau diabetes, masalah seperti kemurungan, kebimbangan, tekanan dan perubahan emosi juga boleh mempengaruhi proses rawatan serta pemulihan.",
+    "focus": [
+      "Penilaian dan rawatan gangguan kesihatan mental.",
+      "Pengurusan kemurungan dan kebimbangan.",
+      "Penilaian perubahan emosi, pemikiran dan tingkah laku.",
+      "Rawatan farmakologi dan pemantauan kesihatan mental.",
+      "Sokongan terhadap kesejahteraan mental pesakit."
+    ],
+    "bahan": []
+  },
+  {
+    "id": "diet",
+    "no": 6,
+    "title": "Dietitian",
+    "sub": "Pemakanan",
+    "icon": "🍎",
+    "color": "#f5b82e",
+    "h": 200,
+    "intro": "Dietetik merupakan profesion kesihatan yang memberi tumpuan kepada pemakanan terapeutik bagi membantu mencegah, mengurus dan mengawal masalah kesihatan melalui pemakanan yang bersesuaian. Bagi pesakit diabetes, pengurusan pemakanan membantu mengawal paras glukosa darah. Bagi pesakit strok, pemakanan turut menyokong pemulihan, kesihatan kardiovaskular dan keperluan nutrisi individu.",
+    "focus": [
+      "Perancangan pemakanan mengikut keadaan kesihatan.",
+      "Pengurusan pemakanan bagi diabetes.",
+      "Pengawalan tekanan darah dan paras lipid melalui pemakanan.",
+      "Pemakanan bagi pesakit strok.",
+      "Pemakanan melalui tiub dan pengubahsuaian tekstur makanan apabila diperlukan."
+    ],
+    "bahan": [
+      {
+        "title": "Diet untuk Dislipidemia",
+        "path": "assets/education/diet/Diet%20untuk%20Dislipidemia.pdf"
+      },
+      {
+        "title": "Diet untuk Penghidap Darah Tinggi",
+        "path": "assets/education/diet/Diet%20untuk%20Penghidap%20Darah%20Tinggi.pdf"
+      },
+      {
+        "title": "Pemakanan Melalui Tiub",
+        "path": "assets/education/diet/Pemakanan%20Melalui%20Tiub.pdf"
+      }
+    ]
+  },
+  {
+    "id": "st",
+    "no": 7,
+    "title": "Speech Therapy",
+    "sub": "ST · Hospital Pantai",
+    "icon": "💬",
+    "color": "#7b5cd6",
+    "h": 220,
+    "intro": "Terapi Pertuturan dan Bahasa memberi tumpuan kepada penilaian dan intervensi terhadap masalah komunikasi serta gangguan menelan. Selepas strok, seseorang mungkin mengalami kesukaran bertutur, memahami bahasa, menyebut perkataan atau menyampaikan keperluan. Mereka juga mungkin mengalami disfagia, iaitu kesukaran dalam proses menelan yang boleh menjejaskan keselamatan pengambilan makanan dan minuman.",
+    "focus": [
+      "Kemahiran pertuturan dan artikulasi.",
+      "Kefahaman dan penggunaan bahasa.",
+      "Komunikasi ekspresif dan reseptif.",
+      "Penilaian serta pengurusan gangguan menelan (dysphagia).",
+      "Strategi komunikasi alternatif dan sokongan komunikasi apabila diperlukan."
+    ],
+    "bahan": []
+  },
+  {
+    "id": "hp",
+    "no": 8,
+    "title": "Hospital Pantai",
+    "sub": "Waktu Emas",
+    "icon": "🏥",
+    "color": "#1e5fd6",
+    "h": 195,
+    "intro": "Hospital Pantai menyediakan perkhidmatan penjagaan kesihatan yang merangkumi pemeriksaan, pengesanan, rawatan dan pemantauan pelbagai masalah kesihatan. Dalam konteks program ini, penglibatan hospital memberi peluang kepada masyarakat mendapatkan maklumat berkaitan faktor risiko strok dan diabetes serta kepentingan pemeriksaan kesihatan dan rawatan awal.",
+    "focus": [
+      "Kesedaran tentang faktor risiko strok dan diabetes.",
+      "Pemeriksaan dan saringan kesihatan.",
+      "Kepentingan pengesanan awal.",
+      "Pendidikan kesihatan dan pencegahan komplikasi."
+    ],
+    "bahan": []
+  },
+  {
+    "id": "ang",
+    "no": 9,
+    "title": "Angels",
+    "sub": "Sukarelawan",
+    "icon": "👼",
+    "color": "#d7262f",
+    "h": 210,
+    "intro": "Angels Initiative merupakan inisiatif antarabangsa yang memberi tumpuan kepada peningkatan kualiti penjagaan strok melalui pendidikan, latihan dan kerjasama antara profesional kesihatan. Inisiatif ini menyokong usaha mempercepatkan pengenalpastian gejala strok, tindakan kecemasan dan penyampaian rawatan strok yang berkualiti.",
+    "focus": [
+      "Kesedaran mengenali tanda dan gejala strok.",
+      "Kepentingan tindakan kecemasan yang pantas.",
+      "Pendidikan dan latihan profesional kesihatan.",
+      "Peningkatan kualiti perkhidmatan penjagaan strok.",
+      "Kerjasama dalam meningkatkan kesedaran komuniti."
+    ],
+    "bahan": []
+  }
 ];
-
 const escH = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
 function renderShelves(q=''){
-  const s=q.trim().toLowerCase();
-  const list=BOOKS.filter(b=>!s||(b.title+' '+b.sub+' '+b.tujuan).toLowerCase().includes(s));
-  const box=document.getElementById('shelves');
-  if(!list.length){box.innerHTML='<p class="bnone">Tiada bahan dijumpai. Cuba perkataan lain.</p>';return;}
-  let html='';
-  for(let i=0;i<list.length;i+=3){
-    html+=`<div class="shelf">${list.slice(i,i+3).map(b=>`
+  const s = q.trim().toLowerCase();
+  const list = BOOKS.filter(b => !s || (b.title+' '+b.sub+' '+b.tujuan).toLowerCase().includes(s));
+  const box = document.getElementById('shelves');
+  if(!list.length){ box.innerHTML = '<p class="bnone">Tiada bahan dijumpai. Cuba perkataan lain.</p>'; return; }
+  let html = '';
+  for(let i=0; i<list.length; i+=3){
+    html += `<div class="shelf">${list.slice(i,i+3).map(b=>`
       <button class="spine" data-id="${b.id}" style="background:${b.color};height:${b.h}px" aria-label="Buka ${escH(b.title)}">
-        <span class="no">${String(b.no).padStart(2,'0')}</span><span class="ic" aria-hidden="true">${b.icon}</span><span class="sv">${escH(b.title)}</span>
+        <span class="no">${String(b.no).padStart(2,'0')}</span>
+        <span class="ic" aria-hidden="true">${b.icon}</span>
+        <span class="sv">${escH(b.title)}</span>
       </button>`).join('')}</div><div class="board"></div>`;
   }
-  box.innerHTML=html;
-  box.querySelectorAll('.spine').forEach(el=>el.addEventListener('click',()=>openBook(el.dataset.id)));
+  box.innerHTML = html;
+  box.querySelectorAll('.spine').forEach(el => el.addEventListener('click', ()=>openBook(el.dataset.id)));
 }
-let activeBookId=null,activePageIndex=0;
+
+let activeBookId = null, activePageIndex = 0;
 function buildBookPages(b){
-  const pages=[{kind:'intro',kicker:'Pengenalan profesion',icon:b.icon,title:b.title,body:b.tujuan,extra:b.poin.join(' '),reference:b.rujukan||''}];
-  b.bahan.forEach(item=>pages.push({kind:'pdf',kicker:'Bahan bacaan',icon:'📄',title:item.title,body:'Baca dokumen pendidikan ini. Gunakan butang di bawah untuk membuka paparan penuh atau memuat turun PDF.',resource:item.file}));
+  const pages = [
+    {kind:'intro', kicker:'Pengenalan profesion / persatuan', icon:b.icon, title:'Pengenalan', body:b.intro},
+    {kind:'focus', kicker:'Skop peranan', icon:'✦', title:'Fokus', items:b.focus}
+  ];
+  (b.bahan || []).forEach(doc => pages.push({kind:'pdf',kicker:'Bahan bacaan',icon:'📄',title:doc.title,body:'Bahan bacaan pendidikan berkaitan bidang ini.',resource:doc.path}));
   return pages;
 }
 function renderFlipPage(){
-  const b=BOOKS.find(x=>x.id===activeBookId);if(!b)return;
-  const pages=buildBookPages(b),p=pages[activePageIndex],pageArea=document.getElementById('bmPageArea');
-  let media='';
-  if(p.resource){const src=escH(p.resource);media=`<div class="flip-material" style="display:block"><iframe src="${src}#view=FitH" title="${escH(p.title)}" style="width:100%;height:360px;border:0;border-radius:8px;background:#fff"></iframe></div><div class="flip-actions"><a href="${src}" target="_blank" rel="noopener">Buka PDF</a><a class="light" href="${src}" download>Muat turun PDF</a></div>`;}
-  const introExtra=p.kind==='intro'?`<div class="flip-callout"><strong>Bidang tumpuan</strong><br>${escH(p.extra)}${p.reference?`<br><br><strong>Rujukan profesional</strong><br>${escH(p.reference)}`:''}</div>`:'';
-  pageArea.innerHTML=`<article class="flip-page"><div class="flip-content"><div class="flip-kicker">${p.kicker}</div><div class="flip-icon">${p.icon}</div><h4>${escH(p.title)}</h4><p>${escH(p.body)}</p>${introExtra}${media}</div></article>`;
+  const b=BOOKS.find(x=>x.id===activeBookId); if(!b)return;
+  const pages=buildBookPages(b), p=pages[activePageIndex];
+  const pageArea=document.getElementById('bmPageArea');
+  let content='';
+  if(p.kind==='focus'){
+    content=`<ul class="flip-focus">${p.items.map(item=>`<li>${escH(item)}</li>`).join('')}</ul>`;
+  }else if(p.kind==='pdf' && p.resource){
+    const src=escH(p.resource);
+    content=`<div class="flip-material pdf-preview"><iframe src="${src}#toolbar=1&navpanes=0" title="${escH(p.title)}" loading="lazy"></iframe></div><div class="flip-actions"><a href="${src}" target="_blank" rel="noopener">Buka PDF</a><a class="light" href="${src}" download>Muat turun PDF</a></div>`;
+  }
+  pageArea.innerHTML=`<article class="flip-page"><div class="flip-content"><div class="flip-kicker">${p.kicker}</div><div class="flip-icon">${p.icon}</div><h4>${escH(p.title)}</h4>${p.body?`<div class="flip-body">${escH(p.body).replace(/\n\n/g,'</p><p>').replace(/\n/g,' ')}</div>`:''}${content}</div></article>`;
   document.getElementById('flipCount').textContent=`Halaman ${activePageIndex+1} daripada ${pages.length}`;
   document.getElementById('flipPrev').disabled=activePageIndex===0;
   document.getElementById('flipNext').disabled=activePageIndex===pages.length-1;
 }
 function openBook(id){
-  const b=BOOKS.find(x=>x.id===id);if(!b)return;
-  activeBookId=id;activePageIndex=0;
-  document.querySelector('#bm .sheet').classList.add('book-open');
+  const b=BOOKS.find(x=>x.id===id); if(!b)return;
+  activeBookId=id; activePageIndex=0;
+  const sheet=document.querySelector('#bm .sheet');
+  sheet.classList.add('book-open');
   document.getElementById('bmHd').style.background=b.color;
   document.getElementById('bmHd').innerHTML=`<span class="ic" aria-hidden="true">${b.icon}</span><div><span class="kk">Booth ${b.no} · ${escH(b.sub)}</span><h3 id="bmTitle">${escH(b.title)}</h3></div>`;
-  document.getElementById('bmBd').innerHTML=`<div class="book-topbar"><strong>BUKU PENDIDIKAN</strong><span>Selak halaman untuk membaca</span></div><div class="book-pages" id="bmPageArea"></div><div class="flip-controls"><button type="button" id="flipPrev" disabled>← Sebelum</button><span class="flip-count" id="flipCount"></span><button type="button" id="flipNext">Seterusnya →</button></div>`;
+  document.getElementById('bmBd').innerHTML=`<div class="book-topbar"><strong>BUKU PENDIDIKAN</strong><span>Selak halaman untuk meneroka</span></div><div class="book-pages" id="bmPageArea"></div><div class="flip-controls"><button type="button" id="flipPrev" disabled>← Sebelum</button><span class="flip-count" id="flipCount">Halaman 1 daripada 2</span><button type="button" id="flipNext">Seterusnya →</button></div>`;
   renderFlipPage();
-  document.getElementById('flipPrev').addEventListener('click',()=>{if(activePageIndex>0){activePageIndex--;renderFlipPage();}});
-  document.getElementById('flipNext').addEventListener('click',()=>{if(activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage();}});
+  document.getElementById('flipPrev').addEventListener('click',()=>{if(activePageIndex>0){activePageIndex--;renderFlipPage()}});
+  document.getElementById('flipNext').addEventListener('click',()=>{if(activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage()}});
   document.getElementById('bm').classList.add('open');
 }
-function closeBook(){document.getElementById('bm').classList.remove('open');}
-document.getElementById('bmClose').addEventListener('click',closeBook);
-document.getElementById('bm').addEventListener('click',e=>{if(e.target.id==='bm')closeBook();});
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')closeBook();
+function closeBook(){ document.getElementById('bm').classList.remove('open'); }
+document.getElementById('bmClose').addEventListener('click', closeBook);
+document.getElementById('bm').addEventListener('click', e=>{ if(e.target.id==='bm') closeBook(); });
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') closeBook();
   const modal=document.getElementById('bm');
-  if(modal.classList.contains('open')&&activeBookId){const b=BOOKS.find(x=>x.id===activeBookId);if(e.key==='ArrowRight'&&activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage();}if(e.key==='ArrowLeft'&&activePageIndex>0){activePageIndex--;renderFlipPage();}}
+  if(modal.classList.contains('open') && activeBookId){
+    const b=BOOKS.find(x=>x.id===activeBookId);
+    if(e.key==='ArrowRight' && activePageIndex<buildBookPages(b).length-1){activePageIndex++;renderFlipPage();}
+    if(e.key==='ArrowLeft' && activePageIndex>0){activePageIndex--;renderFlipPage();}
+  }
 });
-document.getElementById('bsearch').addEventListener('input',e=>renderShelves(e.target.value));
+document.getElementById('bsearch').addEventListener('input', e=>renderShelves(e.target.value));
 renderShelves();
 
 /* ---------- Menu ---------- */
