@@ -25,7 +25,7 @@ dialog::backdrop{background:#081d2ccc;backdrop-filter:blur(4px)}
 .page-content{padding:clamp(22px,5vw,52px);max-width:760px;margin:auto;width:100%;text-align:center;transform-origin:left center;backface-visibility:hidden}
 .page-kicker{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:#1c8c89;font-weight:800}.page h3{font-size:clamp(1.5rem,4vw,2.3rem);line-height:1.15;color:#123653;margin:12px 0}.page p{font-size:1rem;line-height:1.75;color:#4c626d;max-width:620px;margin:10px auto}.page .illustration{font-size:4rem;margin:10px}
 .reader-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;background:white;border-top:1px solid #e1e9e9}.reader-controls button,.action{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer}.navbtn{background:#e8f0f2;color:#123653}.navbtn:disabled{opacity:.4;cursor:not-allowed}.counter{font-size:.88rem;color:#58707b;text-align:center}.actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}.action{background:#123653;color:white;text-decoration:none;display:inline-block}.action.secondary{background:#e5eff0;color:#123653}
-.pdf-wrap{margin:18px auto 0;max-width:100%}.pdf-wrap iframe{width:100%;height:55vh;min-height:360px;border:1px solid #d9e2e2;border-radius:8px;background:#fff}.empty-material{margin-top:24px;color:#70818a;font-style:italic}
+.pdf-wrap{margin:18px auto 0;max-width:100%}.pdf-wrap iframe{width:100%;height:55vh;min-height:360px;border:1px solid #d9e2e2;border-radius:8px;background:#fff}
 .page.turn-next .page-content{animation:paperFlipNext .48s ease both}.page.turn-prev .page-content{animation:paperFlipPrev .48s ease both}
 .page.page-leave-next .page-content{animation:paperLeaveNext .22s ease-in both}.page.page-leave-prev .page-content{animation:paperLeavePrev .22s ease-in both}
 @keyframes paperFlipNext{0%{transform:rotateY(-72deg);opacity:.45}100%{transform:rotateY(0);opacity:1}}
@@ -40,10 +40,10 @@ dialog::backdrop{background:#081d2ccc;backdrop-filter:blur(4px)}
 <header>
  <div class="eyebrow">HSAH · World Stroke &amp; Diabetes Day 2026</div>
  <h1>Perpustakaan Digital Kesihatan</h1>
- <p>Kenali profesion kesihatan, terokai bahan pendidikan dan tingkatkan pengetahuan anda melalui koleksi digital.</p>
+ <p>Kenali profesion kesihatan dan tingkatkan pengetahuan melalui bahan pendidikan yang disediakan.</p>
 </header>
 <main>
- <section class="intro"><h2>Selamat datang ke rak ilmu</h2><p>Pilih sebuah buku untuk mengenali profesion kesihatan dan membaca bahan pendidikan yang disediakan. Selak halaman menggunakan butang atau leret skrin.</p></section>
+ <section class="intro"><h2>Selamat datang ke rak ilmu</h2><p>Pilih sebuah buku untuk mengenali peranan perkhidmatan kesihatan dan membaca bahan pendidikan. Selak halaman menggunakan butang atau leret skrin.</p></section>
  <div class="shelf-heading"><h2>Rak buku pendidikan</h2><span>Tekan buku untuk mula membaca</span></div>
  <section class="shelf" id="shelf" aria-label="Rak buku pendidikan"></section>
 </main>
@@ -55,32 +55,36 @@ dialog::backdrop{background:#081d2ccc;backdrop-filter:blur(4px)}
 </dialog>
 <script>
 const books = [
- {name:"Fisioterapi",icon:"🦿",color:"b1",intro:"Fisioterapi membantu meningkatkan pergerakan, kekuatan, keseimbangan dan keupayaan fizikal bagi menyokong fungsi serta aktiviti harian.",materials:[]},
- {name:"Terapi Cara Kerja (OT)",icon:"👐",color:"b2",intro:"Terapi Cara Kerja membantu individu melaksanakan aktiviti harian dengan lebih berdikari melalui pemulihan kemahiran, penyesuaian aktiviti dan persekitaran.",materials:[
+ {name:"Fisioterapi",icon:"🦿",color:"b1",intro:"Fisioterapi membantu memulihkan dan meningkatkan pergerakan, kekuatan, keseimbangan serta keupayaan fizikal. Selepas strok, intervensi fisioterapi boleh merangkumi latihan mobiliti, pergerakan di atas katil dan senaman yang sesuai untuk menyokong fungsi harian.",materials:[
+  {title:"Aktiviti Fizikal dan Senaman",file:"assets/education/pt/Aktiviti%20fizikal%20dan%20senaman.pdf"},
+  {title:"Bed Mobility (Pergerakan di Atas Katil)",file:"assets/education/pt/Bed%20mobility.pdf"},
+  {title:"Senaman Pesakit Strok",file:"assets/education/pt/Senaman%20pesakit%20stroke.pdf"}
+ ]},
+ {name:"Terapi Cara Kerja (OT)",icon:"👐",color:"b2",intro:"Terapi Cara Kerja membantu individu menyertai aktiviti harian yang bermakna dan meningkatkan keupayaan berdikari. Intervensi boleh melibatkan latihan kemahiran, penyesuaian aktiviti serta pengubahsuaian persekitaran.",materials:[
   {title:"Pendidikan Kesihatan: Strok",file:"assets/education/ot/Stroke.pdf"},
   {title:"Pendidikan Kesihatan: Diabetes",file:"assets/education/ot/Diabetes.pdf"}
  ]},
- {name:"Farmasi",icon:"💊",color:"b3",intro:"Farmasi memastikan penggunaan ubat yang selamat dan berkesan melalui pengurusan ubat serta pendidikan kepada pesakit dan keluarga.",materials:[]},
- {name:"Diabetic Educator",icon:"🩸",color:"b4",intro:"Pendidik Diabetes membimbing individu memahami diabetes dan mengurus kesihatan kendiri, termasuk pemantauan glukosa serta penjagaan harian.",materials:[]},
- {name:"Psikiatri",icon:"🧠",color:"b5",intro:"Perkhidmatan Psikiatri menyediakan penilaian, rawatan dan sokongan bagi individu yang mengalami masalah kesihatan mental.",materials:[]},
- {name:"Dietetik",icon:"🥗",color:"b6",intro:"Dietetik menggunakan terapi pemakanan untuk membantu pengurusan kesihatan dan penyakit melalui pemilihan makanan serta perancangan diet yang sesuai.",materials:[
+ {name:"Farmasi",icon:"💊",color:"b3",intro:"Perkhidmatan Farmasi memastikan penggunaan ubat yang berkualiti, selamat dan berkesan. Ahli farmasi turut memberi maklumat serta kaunseling berkaitan ubat bagi membantu pesakit mengurus rawatan.",materials:[]},
+ {name:"Diabetic Educator",icon:"🩸",color:"b4",intro:"Pendidik Diabetes membantu individu memahami diabetes dan membina kemahiran pengurusan kendiri, termasuk pemantauan glukosa, pemakanan, aktiviti fizikal, ubat-ubatan dan penjagaan kaki.",materials:[]},
+ {name:"Psikiatri",icon:"🧠",color:"b5",intro:"Perkhidmatan Psikiatri menyediakan penilaian, diagnosis, rawatan dan pemulihan bagi individu yang mengalami masalah kesihatan mental. Rawatan disesuaikan dengan keperluan individu dan boleh melibatkan pendekatan multidisiplin.",materials:[]},
+ {name:"Dietetik",icon:"🥗",color:"b6",intro:"Perkhidmatan Dietetik menggunakan terapi pemakanan perubatan untuk membantu mencegah dan mengurus penyakit. Pegawai Dietetik menilai keperluan pemakanan serta merancang intervensi diet yang sesuai dengan keadaan kesihatan individu.",materials:[
   {title:"Diet untuk Dislipidemia",file:"assets/education/diet/Diet%20untuk%20Dislipidemia.pdf"},
   {title:"Diet untuk Penghidap Darah Tinggi",file:"assets/education/diet/Diet%20untuk%20Penghidap%20Darah%20Tinggi.pdf"},
   {title:"Diet untuk Pesakit Diabetes Mellitus",file:"assets/education/diet/Diet%20untuk%20Pesakit%20Diabetes%20Mellitus.pdf"},
   {title:"Pemakanan Melalui Tiub",file:"assets/education/diet/Pemakanan%20Melalui%20Tiub.pdf"}
  ]},
- {name:"Terapi Pertuturan",icon:"🗣️",color:"b7",intro:"Terapi Pertuturan-Bahasa menilai dan menyokong kemahiran komunikasi, bahasa, pertuturan serta fungsi menelan mengikut keperluan individu.",materials:[]},
- {name:"Hospital Pantai",icon:"🏥",color:"b8",intro:"Ruang pengenalan kepada perkhidmatan dan sumbangan Hospital Pantai sebagai rakan kerjasama program.",materials:[]},
- {name:"Angels Initiative",icon:"👼",color:"b9",intro:"Angels Initiative menyokong usaha meningkatkan penjagaan strok melalui pendidikan, kerjasama dan penambahbaikan kualiti rawatan.",materials:[]}
+ {name:"Terapi Pertuturan",icon:"🗣️",color:"b7",intro:"Terapi Pertuturan-Bahasa menilai, mendiagnosis dan mengurus masalah komunikasi serta menelan. Perkhidmatan ini merangkumi aspek pertuturan, bahasa, suara, komunikasi dan keselamatan penelanan.",materials:[]},
+ {name:"Hospital Pantai",icon:"🏥",color:"b8",intro:"Hospital Pantai merupakan rakan kerjasama program. Bahagian ini disediakan untuk memperkenalkan sumbangan rakan kolaborasi dalam menyokong pendidikan dan kesedaran kesihatan.",materials:[]},
+ {name:"Angels Initiative",icon:"👼",color:"b9",intro:"Angels Initiative ialah inisiatif peningkatan penjagaan strok yang menyokong hospital dan komuniti melalui pendidikan, kerjasama serta usaha memperkukuh kualiti rawatan strok.",materials:[]}
 ];
 const shelf=document.querySelector("#shelf"),dlg=document.querySelector("#reader"),pageEl=document.querySelector("#page");
 let activeBook=null,activeIndex=0,flipBusy=false;
 books.forEach((b,i)=>{const btn=document.createElement("button");btn.className=`book ${b.color}`;btn.innerHTML=`<span class="spine"></span><span class="num">BUKU ${String(i+1).padStart(2,"0")}</span><span class="symbol">${b.icon}</span><strong>${b.name}</strong><small>Tekan untuk buka ↗</small>`;btn.addEventListener("click",()=>openBook(i));shelf.appendChild(btn)});
-function pageData(b,index){if(index===0)return {intro:true,type:"PENGENALAN PROFESION",icon:b.icon,title:b.name,desc:b.intro};return {type:"BAHAN BACAAN",icon:"📖",title:b.materials[index-1].title,file:b.materials[index-1].file}}
+function pageData(b,index){if(index===0)return {intro:true,type:"PENGENALAN",icon:b.icon,title:b.name,desc:b.intro};return {type:"BAHAN BACAAN",icon:"📖",title:b.materials[index-1].title,file:b.materials[index-1].file}}
 function renderPage(direction="none"){
  const b=books[activeBook],d=pageData(b,activeIndex),total=b.materials.length+1;
  document.querySelector("#bookTitle").textContent=b.name;
- const materialView=d.file?`<div class="pdf-wrap"><iframe title="${d.title}" src="${d.file}#view=FitH" loading="lazy"></iframe><div class="actions"><a class="action" href="${d.file}" target="_blank" rel="noopener">Buka PDF</a><a class="action secondary" href="${d.file}" download>Muat turun</a></div></div>`:"<p class='empty-material'>Bahan bacaan belum dimuat naik.</p>";
+ const materialView=d.file?`<div class="pdf-wrap"><iframe title="${d.title}" src="${d.file}#view=FitH" loading="lazy"></iframe><div class="actions"><a class="action" href="${d.file}" target="_blank" rel="noopener">Buka PDF</a><a class="action secondary" href="${d.file}" download>Muat turun</a></div></div>`:"";
  pageEl.innerHTML=`<div class="page-content"><div class="page-kicker">${d.type}</div><div class="illustration">${d.icon}</div><h3>${d.title}</h3><p>${d.desc||""}</p>${materialView}</div>`;
  pageEl.classList.remove("turn-next","turn-prev","page-leave-next","page-leave-prev");
  if(direction!=="none"){void pageEl.offsetWidth;pageEl.classList.add(direction==="next"?"turn-next":"turn-prev");}
