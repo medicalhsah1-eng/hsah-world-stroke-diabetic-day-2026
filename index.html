@@ -362,6 +362,9 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 @media(prefers-reduced-motion:reduce){.stats-panel{transition:none}}
 
 /* ---------- Statistik: premium translucent neon glass ---------- */
+/* Visual-only: the tab is dimmed/hidden while the popup is open. */
+body:has(.stats-panel.open) .stats-tab{opacity:0;pointer-events:none}
+
 .stats-backdrop{
   position:fixed;inset:0;z-index:79;opacity:0;visibility:hidden;pointer-events:none;
   background:rgba(2,10,24,.34);
@@ -1699,13 +1702,10 @@ render();
   const panel=document.getElementById('statsPanel');
   const close=document.getElementById('statsClose');
   const updatedAt=document.getElementById('statsUpdatedAt');
-  const backdrop=document.getElementById('statsBackdrop');
 
   function setStats(open){
     if(!panel || !tab) return;
     panel.classList.toggle('open',open);
-    backdrop?.classList.toggle('open',open);
-    backdrop?.setAttribute('aria-hidden',String(!open));
     panel.setAttribute('aria-hidden',String(!open));
     tab.setAttribute('aria-expanded',String(open));
   }
@@ -1717,8 +1717,7 @@ render();
   const fmt = n => Number(n||0).toLocaleString('ms-MY');
   function show(id,value){
     const el=document.getElementById(id);
-    if(!el || value===undefined || value===null || value==='') return;
-    el.textContent=fmt(value);
+    if(el) el.textContent=fmt(value);
   }
   function showUpdated(value){
     if(!updatedAt) return;
@@ -1728,7 +1727,6 @@ render();
 
   // JSONP avoids browser CORS restrictions when calling Google Apps Script from GitHub Pages.
   function loadStats(){
-    showUpdated(new Date());
     const callbackName='__hsahStatsCallback_'+Date.now();
     const script=document.createElement('script');
     let finished=false;
@@ -1751,8 +1749,7 @@ render();
         show('videoViews',data.videoViews);
         show('materialDownloads',data.materialDownloads);
         show('uniqueVisitors',data.uniqueVisitors);
-        show('pageViews',data.pageViews ?? data.totalViews ?? data.screenPageViews);
-        showUpdated(data.updatedAt || new Date());
+        showUpdated(data.updatedAt);
       } else {
         console.error('GA4 statistics response:',data && data.error ? data.error : 'No data');
       }
