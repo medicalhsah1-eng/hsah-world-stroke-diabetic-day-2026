@@ -977,10 +977,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="stats-panel" id="statsPanel" role="dialog" aria-label="Statistik aktiviti" aria-hidden="true">
   <button class="stats-close" id="statsClose" type="button" aria-label="Tutup statistik">×</button>
   <div class="stats-head"><span class="stats-symbol" aria-hidden="true">▥</span><div>Statistik Aktiviti<div class="stats-sub">HSAH World Stroke &amp; Diabetic Day 2026</div></div></div>
-  <div class="stats-metric visitors"><span class="metric-icon" aria-hidden="true">●</span><div><b>Pengunjung Aktif Sekarang</b><strong id="activeUsers">—</strong></div></div>
-  <div class="stats-metric visitors"><span class="metric-icon" aria-hidden="true">♙</span><div><b>Pengunjung Unik (30 hari)</b><strong id="uniqueVisitors">—</strong></div></div>
-  <div class="stats-metric video"><span class="metric-icon" aria-hidden="true">▶</span><div><b>Tontonan Video (30 hari)</b><strong id="videoViews">—</strong></div></div>
-  <div class="stats-metric download"><span class="metric-icon" aria-hidden="true">↓</span><div><b>Muat Turun Bahan (30 hari)</b><strong id="materialDownloads">—</strong></div></div>
+  <div class="stats-metric video"><span class="metric-icon" aria-hidden="true">▶</span><div><b>Tontonan Video</b><strong id="videoViews">—</strong></div></div>
+  <div class="stats-metric download"><span class="metric-icon" aria-hidden="true">↓</span><div><b>Muat Turun Bahan</b><strong id="materialDownloads">—</strong></div></div>
+  <div class="stats-metric visitors"><span class="metric-icon" aria-hidden="true">♙</span><div><b>Pengunjung Unik</b><strong id="uniqueVisitors">—</strong></div></div>
   <p class="stats-updated">Dikemas kini: <time id="statsUpdatedAt">—</time></p>
 </section>
 <button class="install-action" id="installButton" type="button" hidden aria-label="Pasang aplikasi HSAH 2026" title="Pasang aplikasi">
@@ -1064,6 +1063,14 @@ const BOOKS = [
         "path": "assets/education/ot/Stroke.pdf"
       },
       {
+        "title": "Post Stroke Anxiety, Stress dan Kemurungan",
+        "path": "assets/education/ot/Post%20Stroke%20Anzieti%20Stres%20Kemurungan.pdf"
+      },
+      {
+        "title": "Post Stroke Dementia",
+        "path": "assets/education/ot/Post%20Stroke%20Dementia.pdf"
+      },
+      {
         "title": "Diabetes",
         "path": "assets/education/ot/Diabetes.pdf"
       }
@@ -1128,7 +1135,16 @@ const BOOKS = [
       "Pengurusan pemakanan dan aktiviti fizikal.",
       "Kemahiran pengurusan diabetes secara kendiri."
     ],
-    "bahan": []
+    "bahan": [
+      {
+        "title": "Buku Panduan Obesiti Infografik",
+        "path": "assets/education/de/Buku%20Panduan%20Obesiti%20Infografik.pdf"
+      },
+      {
+        "title": "World Diabetes Day (WDD)",
+        "path": "assets/education/de/WDD.pdf"
+      }
+    ]
   },
   {
     "id": "psy",
@@ -1176,6 +1192,10 @@ const BOOKS = [
       {
         "title": "Pemakanan Melalui Tiub",
         "path": "assets/education/diet/Pemakanan%20Melalui%20Tiub.pdf"
+      },
+      {
+        "title": "Diet untuk Pesakit Diabetes Mellitus",
+        "path": "assets/education/diet/Diet%20untuk%20Pesakit%20Diabetes%20Mellitus.pdf"
       }
     ]
   },
@@ -1212,7 +1232,12 @@ const BOOKS = [
       "Kepentingan pengesanan awal.",
       "Pendidikan kesihatan dan pencegahan komplikasi."
     ],
-    "bahan": []
+    "bahan": [
+      {
+        "title": "Spotting BEFAST",
+        "path": "assets/education/hpantai/Spotting%20BEFAST.pdf"
+      }
+    ]
   },
   {
     "id": "ang",
@@ -1538,8 +1563,7 @@ render();
 <script>
 /* ---------- Statistik langsung GA4 & pemasangan PWA ---------- */
 (()=>{
-  // Endpoint Web App GA4 yang baru disahkan berfungsi.
-  const GA4_STATS_URL = "https://script.google.com/macros/s/AKfycbz9C1gHXqlw5nm65Nkfgrzp3kvdI1XrG47D2bXWf-zepiH2zZvd-YiDJs26ywqq75c/exec";
+  const GA4_STATS_URL = "https://script.google.com/macros/s/AKfycbyGSmrxD2oo4SoRyEudelrTPi5syDbdrqORFmtRIn6jnCG2OxZA3--iLTC2p8q1m2h5/exec";
   const tab=document.getElementById('statsTab');
   const panel=document.getElementById('statsPanel');
   const close=document.getElementById('statsClose');
@@ -1567,21 +1591,39 @@ render();
     updatedAt.textContent=new Intl.DateTimeFormat('ms-MY',{timeZone:'Asia/Kuala_Lumpur',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true}).format(d);
   }
 
-  async function loadStats(){
-    try{
-      const response=await fetch(GA4_STATS_URL,{method:'GET',cache:'no-store',redirect:'follow'});
-      if(!response.ok) throw new Error('HTTP '+response.status);
-      const data=await response.json();
-      if(!data || data.success!==true) throw new Error(data && data.error ? data.error : 'Respons GA4 tidak sah');
-      show('activeUsers',data.activeUsers);
-      show('uniqueVisitors',data.uniqueVisitors);
-      show('videoViews',data.videoViews);
-      show('materialDownloads',data.materialDownloads);
-      showUpdated(data.updatedAt);
-    }catch(error){
-      console.error('Tidak dapat memuatkan statistik GA4 HSAH:',error);
-      // Kekalkan tanda — jika pelayar menyekat sambungan silang domain.
+  // JSONP avoids browser CORS restrictions when calling Google Apps Script from GitHub Pages.
+  function loadStats(){
+    const callbackName='__hsahStatsCallback_'+Date.now();
+    const script=document.createElement('script');
+    let finished=false;
+    const timeout=setTimeout(()=>finish(false),15000);
+    function finish(ok){
+      if(finished) return;
+      finished=true;
+      clearTimeout(timeout);
+      try{delete window[callbackName];}catch(e){window[callbackName]=undefined;}
+      script.remove();
+      if(!ok){
+        ['videoViews','materialDownloads','uniqueVisitors'].forEach(id=>{
+          const el=document.getElementById(id);
+          if(el && el.textContent==='—') el.textContent='—';
+        });
+      }
     }
+    window[callbackName]=(data)=>{
+      if(data && data.success){
+        show('videoViews',data.videoViews);
+        show('materialDownloads',data.materialDownloads);
+        show('uniqueVisitors',data.uniqueVisitors);
+        showUpdated(data.updatedAt);
+      } else {
+        console.error('GA4 statistics response:',data && data.error ? data.error : 'No data');
+      }
+      finish(true);
+    };
+    script.onerror=()=>finish(false);
+    script.src=GA4_STATS_URL+'?callback='+encodeURIComponent(callbackName)+'&_='+Date.now();
+    document.head.appendChild(script);
   }
   loadStats();
 
