@@ -7,7 +7,7 @@
 <meta name="description" content="HSAH World Diabetes & World Stroke Day 2026 — maklumat kesihatan, video dan bahan psikopendidikan.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/pwa-icon-192.png">
-<meta name="build-version" content="HSAH-2026-education-books-20261113">
+<meta name="build-version" content="HSAH-2026-pharmacy-glass-stats-pwa-20261113-v2">
 <title>HSAH World Diabetes &amp; World Stroke Day 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -345,13 +345,13 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 .stats-sub{font-size:11px;color:#d5e9ff;margin-top:2px;font-weight:400}
 .stats-metric{display:flex;align-items:center;gap:13px;margin-top:13px;padding:12px;border:1px solid rgba(255,255,255,.18);border-radius:17px;background:rgba(255,255,255,.09);box-shadow:inset 0 1px rgba(255,255,255,.08)}
 .stats-metric .metric-icon{width:48px;height:48px;flex:0 0 48px;border-radius:50%;display:grid;place-items:center;font-size:23px;background:rgba(85,151,255,.3)}
-.stats-metric.video .metric-icon{background:rgba(144,93,255,.4)}.stats-metric.download .metric-icon{background:rgba(24,194,130,.35)}
-.stats-metric b{display:block;font-size:13px}.stats-metric strong{display:block;font:800 25px var(--display);line-height:1.2;margin-top:2px}.stats-note{font-size:10px;color:#d0e1f7;margin:12px 2px 0;line-height:1.5}
-.install-action{position:fixed;right:12px;bottom:14px;z-index:79;border:1px solid rgba(255,255,255,.65);border-radius:999px;padding:10px 15px;background:rgba(9,43,99,.82);color:#fff;font:700 12px var(--display);box-shadow:0 7px 22px rgba(0,0,0,.24),0 0 15px rgba(52,177,255,.25);backdrop-filter:blur(12px);cursor:pointer}
+.stats-metric.video .metric-icon{background:rgba(144,93,255,.4)}.stats-metric.download .metric-icon{background:rgba(24,194,130,.35)}.stats-metric.visitors .metric-icon{background:rgba(38,145,255,.38)}
+.stats-metric b{display:block;font-size:13px}.stats-metric strong{display:block;font:800 25px var(--display);line-height:1.2;margin-top:2px}.stats-updated{font-size:10px;color:#e4efff;margin:12px 2px 0}.stats-note{font-size:10px;color:#d0e1f7;margin:7px 2px 0;line-height:1.5}
+.install-action{position:fixed;right:14px;bottom:14px;z-index:79;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.72);border-radius:50%;padding:0;background:rgba(9,43,99,.58);color:#fff;box-shadow:0 7px 22px rgba(0,0,0,.22),0 0 15px rgba(52,177,255,.28);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);cursor:pointer}.install-action svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.install-action:focus-visible{outline:3px solid #f5b82e;outline-offset:3px}
 .install-action[hidden]{display:none}
 .totop{position:fixed;right:14px;bottom:68px;width:48px;height:48px;border-radius:50%;border:3px solid var(--white);background:var(--red);color:var(--white);font-size:22px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:30;box-shadow:0 8px 18px rgba(0,0,0,.25)}
 .totop.show{display:flex}
-@media(max-width:560px){.stats-panel{right:10px;width:min(320px,calc(100vw - 20px));padding:17px}.stats-tab{top:44%;padding:12px 7px}.install-action{right:10px;bottom:12px}.totop{right:10px;bottom:62px}}
+@media(max-width:560px){.stats-panel{right:10px;width:min(320px,calc(100vw - 20px));padding:17px}.stats-tab{top:44%;padding:12px 7px}.install-action{right:12px;bottom:12px;width:42px;height:42px}.totop{right:10px;bottom:62px}}
 @media(prefers-reduced-motion:reduce){.stats-panel{transition:none}}
 
 /* ---------- Logo loading screen ---------- */
@@ -682,7 +682,6 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
     <a href="#health-tv">📺 HSAH Health TV</a>
     <a href="#bahan">📚 Rak Bahan Pendidikan</a>
     <button type="button" class="menu-action" id="displaySetting">Aa&nbsp; Besarkan tulisan</button>
-    <button type="button" class="menu-action" id="installMenu">＋&nbsp; Simpan ke Telefon</button>
   </nav>
 </header>
 
@@ -968,9 +967,13 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
   <div class="stats-head"><span class="stats-symbol" aria-hidden="true">▥</span><div>Statistik Aktiviti<div class="stats-sub">HSAH World Stroke &amp; Diabetic Day 2026</div></div></div>
   <div class="stats-metric video"><span class="metric-icon" aria-hidden="true">▶</span><div><b>Tontonan Video</b><strong id="videoViews">—</strong></div></div>
   <div class="stats-metric download"><span class="metric-icon" aria-hidden="true">↓</span><div><b>Muat Turun Bahan</b><strong id="materialDownloads">—</strong></div></div>
-  <p class="stats-note">Statistik akan dipaparkan selepas sambungan analitik laman diaktifkan. Angka tidak dipaparkan sementara data sebenar belum tersedia.</p>
+  <div class="stats-metric visitors"><span class="metric-icon" aria-hidden="true">👥</span><div><b>Pengunjung Unik</b><strong id="uniqueVisitors">—</strong></div></div>
+  <p class="stats-updated">Dikemas kini: <time id="statsUpdatedAt">—</time></p>
+  <p class="stats-note">Angka statistik akan dipaparkan selepas sambungan analitik laman diaktifkan. Data sebenar belum tersedia buat masa ini.</p>
 </section>
-<button class="install-action" id="installButton" type="button" hidden>＋ Simpan ke Telefon</button>
+<button class="install-action" id="installButton" type="button" hidden aria-label="Pasang aplikasi HSAH 2026" title="Pasang aplikasi">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"/></svg>
+</button>
 <button class="totop" id="totop" aria-label="Kembali ke atas">↑</button>
 
 <script>
@@ -1070,7 +1073,32 @@ const BOOKS = [
       "Pengenalpastian kesan sampingan dan interaksi ubat.",
       "Pengurusan ubat bagi penyakit kronik dan pencegahan komplikasi."
     ],
-    "bahan": []
+    "bahan": [
+      {
+        "title": "Amalkan Konsep 5B dan Cara Pengambilan Ubat",
+        "path": "assets/education/pharmacy/Amalkan%20Konsep%205B%20dan%20Cara%20Pengambilan%20Ubat%20.pdf"
+      },
+      {
+        "title": "Infografik Hari Strok Sedunia BEFAST",
+        "path": "assets/education/pharmacy/Infografik%20Hari%20Strok%20Sedunia%20BEFAST.pdf"
+      },
+      {
+        "title": "Kenali dan Semak Ubat Berdaftar",
+        "path": "assets/education/pharmacy/Kenali%20dan%20Semak%20Ubat%20Berdaftar.pdf"
+      },
+      {
+        "title": "Panduan Penyimpanan Ubat yang Selamat di Rumah",
+        "path": "assets/education/pharmacy/Panduan%20Penyimpanan%20Ubat%20yang%20Selamat%20di%20Rumah.pdf"
+      },
+      {
+        "title": "Pelupusan Ubat Secara Selamat (MyMediSAFE)",
+        "path": "assets/education/pharmacy/Pelupusan%20Ubat%20Secara%20Selamat%20(MyMediSAFE).pdf"
+      },
+      {
+        "title": "Ramadan",
+        "path": "assets/education/pharmacy/Ramadan.pdf"
+      }
+    ]
   },
   {
     "id": "de",
@@ -1500,13 +1528,18 @@ render();
 (()=>{
   const tab=document.getElementById('statsTab'), panel=document.getElementById('statsPanel'), close=document.getElementById('statsClose');
   function setStats(open){panel.classList.toggle('open',open);panel.setAttribute('aria-hidden',String(!open));tab.setAttribute('aria-expanded',String(open));}
+  const updatedAt=document.getElementById('statsUpdatedAt');
+  if(updatedAt){
+    const now=new Date();
+    updatedAt.textContent=new Intl.DateTimeFormat('ms-MY',{timeZone:'Asia/Kuala_Lumpur',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true}).format(now);
+  }
   tab?.addEventListener('click',()=>setStats(!panel.classList.contains('open')));
   close?.addEventListener('click',()=>{setStats(false);tab.focus();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel?.classList.contains('open')){setStats(false);tab.focus();}});
   document.addEventListener('click',e=>{if(panel?.classList.contains('open')&&!panel.contains(e.target)&&!tab.contains(e.target))setStats(false);});
 
   let deferredPrompt=null;
-  const installButtons=[document.getElementById('installButton'),document.getElementById('installMenu')].filter(Boolean);
+  const installButtons=[document.getElementById('installButton')].filter(Boolean);
   const standalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
   function showInstall(){installButtons.forEach(b=>b.hidden=false);}
   if(!standalone) showInstall();
