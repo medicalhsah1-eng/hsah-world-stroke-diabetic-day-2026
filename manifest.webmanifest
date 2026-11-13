@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "HSAH 2026 — World Stroke & Diabetic Day",
+  "short_name": "HSAH 2026",
+  "description": "Maklumat kesihatan, video dan bahan psikopendidikan HSAH.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b2a6b",
+  "theme_color": "#0b2a6b",
+  "icons": [
+    {
+      "src": "assets/pwa-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
