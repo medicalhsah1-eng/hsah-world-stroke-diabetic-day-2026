@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1e5fd6">
+<meta name="theme-color" content="#0b2a6b">
+<meta name="description" content="HSAH World Diabetes & World Stroke Day 2026 — maklumat kesihatan, video dan bahan psikopendidikan.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/pwa-icon-192.png">
 <meta name="build-version" content="HSAH-2026-education-books-20261113">
 <title>HSAH World Diabetes &amp; World Stroke Day 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -331,12 +334,25 @@ footer .footer-divider{height:1px;background:rgba(255,255,255,.16);max-width:720
 footer .footer-org{font-size:12px;color:#e8f0ff;margin:0 auto 8px}
 footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 
-/* ---------- Mascot & back to top ---------- */
-.mascot{position:fixed;right:14px;bottom:14px;width:92px;height:92px;border-radius:50%;background:var(--white);border:5px solid var(--gold);box-shadow:0 10px 24px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:44px;text-decoration:none;z-index:30;overflow:hidden}
-.mascot img{width:100%;height:100%;object-fit:cover}
-.mascot:hover{transform:scale(1.05)}
-.totop{position:fixed;right:118px;bottom:24px;width:56px;height:56px;border-radius:50%;border:4px solid var(--white);background:var(--red);color:var(--white);font-size:22px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:30;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+/* ---------- Statistik terapung glassmorphism ---------- */
+.stats-tab{position:fixed;right:0;top:48%;transform:translateY(-50%);z-index:80;border:1px solid rgba(125,225,255,.8);border-right:0;border-radius:18px 0 0 18px;padding:14px 9px;background:rgba(7,35,83,.72);color:#fff;box-shadow:0 0 18px rgba(39,190,255,.42),inset 0 0 18px rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;font:700 12px var(--display);letter-spacing:.6px}
+.stats-tab .stats-tab-label{writing-mode:vertical-rl;transform:rotate(180deg)}
+.stats-panel{position:fixed;right:18px;top:50%;transform:translateY(-50%) translateX(18px);width:min(340px,calc(100vw - 34px));z-index:81;padding:20px;border:1px solid rgba(155,229,255,.75);border-radius:24px;background:linear-gradient(145deg,rgba(10,48,102,.88),rgba(5,20,53,.78));color:#fff;box-shadow:0 18px 55px rgba(0,0,0,.38),0 0 24px rgba(47,190,255,.25),inset 0 1px rgba(255,255,255,.2);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
+.stats-panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(-50%) translateX(0)}
+.stats-head{display:flex;align-items:center;gap:10px;padding:0 34px 14px 0;border-bottom:1px solid rgba(255,255,255,.15);font:700 19px var(--display)}
+.stats-head .stats-symbol{font-size:28px;color:#75dcff}
+.stats-close{position:absolute;right:14px;top:10px;border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer;line-height:1}
+.stats-sub{font-size:11px;color:#d5e9ff;margin-top:2px;font-weight:400}
+.stats-metric{display:flex;align-items:center;gap:13px;margin-top:13px;padding:12px;border:1px solid rgba(255,255,255,.18);border-radius:17px;background:rgba(255,255,255,.09);box-shadow:inset 0 1px rgba(255,255,255,.08)}
+.stats-metric .metric-icon{width:48px;height:48px;flex:0 0 48px;border-radius:50%;display:grid;place-items:center;font-size:23px;background:rgba(85,151,255,.3)}
+.stats-metric.video .metric-icon{background:rgba(144,93,255,.4)}.stats-metric.download .metric-icon{background:rgba(24,194,130,.35)}
+.stats-metric b{display:block;font-size:13px}.stats-metric strong{display:block;font:800 25px var(--display);line-height:1.2;margin-top:2px}.stats-note{font-size:10px;color:#d0e1f7;margin:12px 2px 0;line-height:1.5}
+.install-action{position:fixed;right:12px;bottom:14px;z-index:79;border:1px solid rgba(255,255,255,.65);border-radius:999px;padding:10px 15px;background:rgba(9,43,99,.82);color:#fff;font:700 12px var(--display);box-shadow:0 7px 22px rgba(0,0,0,.24),0 0 15px rgba(52,177,255,.25);backdrop-filter:blur(12px);cursor:pointer}
+.install-action[hidden]{display:none}
+.totop{position:fixed;right:14px;bottom:68px;width:48px;height:48px;border-radius:50%;border:3px solid var(--white);background:var(--red);color:var(--white);font-size:22px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:30;box-shadow:0 8px 18px rgba(0,0,0,.25)}
 .totop.show{display:flex}
+@media(max-width:560px){.stats-panel{right:10px;width:min(320px,calc(100vw - 20px));padding:17px}.stats-tab{top:44%;padding:12px 7px}.install-action{right:10px;bottom:12px}.totop{right:10px;bottom:62px}}
+@media(prefers-reduced-motion:reduce){.stats-panel{transition:none}}
 
 /* ---------- Logo loading screen ---------- */
 #loading-screen{
@@ -666,6 +682,7 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
     <a href="#health-tv">📺 HSAH Health TV</a>
     <a href="#bahan">📚 Rak Bahan Pendidikan</a>
     <button type="button" class="menu-action" id="displaySetting">Aa&nbsp; Besarkan tulisan</button>
+    <button type="button" class="menu-action" id="installMenu">＋&nbsp; Simpan ke Telefon</button>
   </nav>
 </header>
 
@@ -915,9 +932,9 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 <!-- Bahan -->
     <article class="card" id="bahan">
       <span class="kick">Bahan</span>
-      <h2>Bahan Psikopendidikan</h2>
-      <p>Pilih mana-mana buku di rak untuk membaca maklumat booth serta bahan psikopendidikan.</p>
-      <input class="bsearch" id="bsearch" type="search" placeholder="Cari booth atau topik…" aria-label="Cari bahan psikopendidikan">
+      <h2>Bahan Psiko-Pendidikan</h2>
+      <p>Ketik mana-mana buku di rak untuk baca info booth. Poster, PDF dan video akan muncul di dalam buku apabila dimuat naik.</p>
+      <input class="bsearch" id="bsearch" type="search" placeholder="Cari booth atau topik…" aria-label="Cari bahan psiko-pendidikan">
       <div class="shelves" id="shelves" aria-live="polite"></div>
     </article>
 
@@ -943,10 +960,17 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
   </div>
 </div>
 
-<a class="mascot" href="games-all.html" aria-label="Mainkan permainan booth">
-  <img src="assets/mascot.png" alt="" onerror="this.remove()">
-  <span aria-hidden="true">🦸</span>
-</a>
+<button class="stats-tab" id="statsTab" type="button" aria-expanded="false" aria-controls="statsPanel" aria-label="Buka statistik aktiviti">
+  <span aria-hidden="true" style="font-size:22px">▥</span><span class="stats-tab-label">STATISTIK AKTIVITI</span><span aria-hidden="true">‹</span>
+</button>
+<section class="stats-panel" id="statsPanel" role="dialog" aria-label="Statistik aktiviti" aria-hidden="true">
+  <button class="stats-close" id="statsClose" type="button" aria-label="Tutup statistik">×</button>
+  <div class="stats-head"><span class="stats-symbol" aria-hidden="true">▥</span><div>Statistik Aktiviti<div class="stats-sub">HSAH World Stroke &amp; Diabetic Day 2026</div></div></div>
+  <div class="stats-metric video"><span class="metric-icon" aria-hidden="true">▶</span><div><b>Tontonan Video</b><strong id="videoViews">—</strong></div></div>
+  <div class="stats-metric download"><span class="metric-icon" aria-hidden="true">↓</span><div><b>Muat Turun Bahan</b><strong id="materialDownloads">—</strong></div></div>
+  <p class="stats-note">Statistik akan dipaparkan selepas sambungan analitik laman diaktifkan. Angka tidak dipaparkan sementara data sebenar belum tersedia.</p>
+</section>
+<button class="install-action" id="installButton" type="button" hidden>＋ Simpan ke Telefon</button>
 <button class="totop" id="totop" aria-label="Kembali ke atas">↑</button>
 
 <script>
@@ -1023,14 +1047,6 @@ const BOOKS = [
       {
         "title": "Stroke",
         "path": "assets/education/ot/Stroke.pdf"
-      },
-      {
-        "title": "Post Stroke Anxiety, Stress dan Kemurungan",
-        "path": "assets/education/ot/Post%20Stroke%20Anzieti%20Stres%20Kemurungan.pdf"
-      },
-      {
-        "title": "Post Stroke Dementia",
-        "path": "assets/education/ot/Post%20Stroke%20Dementia.pdf"
       },
       {
         "title": "Diabetes",
@@ -1118,10 +1134,6 @@ const BOOKS = [
         "path": "assets/education/diet/Diet%20untuk%20Penghidap%20Darah%20Tinggi.pdf"
       },
       {
-        "title": "Diet untuk Pesakit Diabetes Mellitus",
-        "path": "assets/education/diet/Diet%20untuk%20Pesakit%20Diabetes%20Mellitus.pdf"
-      },
-      {
         "title": "Pemakanan Melalui Tiub",
         "path": "assets/education/diet/Pemakanan%20Melalui%20Tiub.pdf"
       }
@@ -1160,12 +1172,7 @@ const BOOKS = [
       "Kepentingan pengesanan awal.",
       "Pendidikan kesihatan dan pencegahan komplikasi."
     ],
-    "bahan": [
-      {
-        "title": "Spotting BEFAST",
-        "path": "assets/education/hpantai/Spotting%20BEFAST.pdf"
-      }
-    ]
+    "bahan": []
   },
   {
     "id": "ang",
@@ -1486,6 +1493,33 @@ render();
 })();
 </script>
 
+
+
+<script>
+/* ---------- Statistik terapung & pemasangan PWA ---------- */
+(()=>{
+  const tab=document.getElementById('statsTab'), panel=document.getElementById('statsPanel'), close=document.getElementById('statsClose');
+  function setStats(open){panel.classList.toggle('open',open);panel.setAttribute('aria-hidden',String(!open));tab.setAttribute('aria-expanded',String(open));}
+  tab?.addEventListener('click',()=>setStats(!panel.classList.contains('open')));
+  close?.addEventListener('click',()=>{setStats(false);tab.focus();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel?.classList.contains('open')){setStats(false);tab.focus();}});
+  document.addEventListener('click',e=>{if(panel?.classList.contains('open')&&!panel.contains(e.target)&&!tab.contains(e.target))setStats(false);});
+
+  let deferredPrompt=null;
+  const installButtons=[document.getElementById('installButton'),document.getElementById('installMenu')].filter(Boolean);
+  const standalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
+  function showInstall(){installButtons.forEach(b=>b.hidden=false);}
+  if(!standalone) showInstall();
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;showInstall();});
+  async function install(){
+    if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;return;}
+    const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+    alert(isIOS?'Untuk simpan laman ini: tekan butang Share di Safari, kemudian pilih “Add to Home Screen”.':'Untuk simpan laman ini: buka menu pelayar (⋮) dan pilih “Install app” atau “Add to Home screen”, jika tersedia.');
+  }
+  installButtons.forEach(b=>b.addEventListener('click',install));
+  if('serviceWorker' in navigator && location.protocol.startsWith('http')) window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(err=>console.warn('PWA service worker:',err)));
+})();
+</script>
 
 </body>
 </html>
