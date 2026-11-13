@@ -361,6 +361,109 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 @media(max-width:560px){.stats-panel{right:10px;width:min(320px,calc(100vw - 20px));padding:17px}.stats-tab{top:44%;padding:12px 7px}.install-action{right:12px;bottom:12px;width:42px;height:42px}.totop{right:10px;bottom:62px}}
 @media(prefers-reduced-motion:reduce){.stats-panel{transition:none}}
 
+/* ---------- Statistik: premium translucent neon glass ---------- */
+.stats-backdrop{
+  position:fixed;inset:0;z-index:79;opacity:0;visibility:hidden;pointer-events:none;
+  background:rgba(2,10,24,.34);
+  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);
+  transition:opacity .24s ease,visibility .24s ease;
+}
+.stats-backdrop.open{opacity:1;visibility:visible;pointer-events:auto}
+.stats-tab{z-index:82}
+.stats-panel{
+  position:fixed;left:50%;right:auto;top:50%;
+  width:min(960px,calc(100vw - 36px));max-height:min(90vh,760px);
+  overflow-y:auto;transform:translate(-50%,-47%) scale(.97);
+  padding:clamp(20px,3vw,34px);
+  border:1.5px solid transparent;border-radius:32px;
+  background:
+    linear-gradient(145deg,rgba(5,28,48,.86),rgba(2,17,31,.78)) padding-box,
+    linear-gradient(120deg,#27f3ed,#00d6ff 28%,#8e68ff 62%,#00efa0) border-box;
+  color:#f5fcff;
+  box-shadow:0 24px 80px rgba(0,0,0,.48),0 0 34px rgba(0,231,220,.22),
+    inset 0 1px 0 rgba(255,255,255,.22);
+  -webkit-backdrop-filter:blur(28px) saturate(145%);backdrop-filter:blur(28px) saturate(145%);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .24s ease,transform .24s ease,visibility .24s;
+}
+.stats-panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.stats-panel:after{
+  content:"";position:absolute;left:5%;right:5%;bottom:0;height:3px;border-radius:50%;
+  background:linear-gradient(90deg,transparent,#00f5e4,#00e99b,#a76aff,transparent);
+  filter:blur(5px);pointer-events:none
+}
+.stats-close{
+  position:absolute;right:18px;top:16px;width:42px;height:42px;display:grid;place-items:center;
+  border:1px solid rgba(116,236,255,.65);border-radius:50%;
+  background:rgba(5,31,52,.62);color:#efffff;font-size:27px;line-height:1;
+  box-shadow:0 0 16px rgba(0,218,255,.22),inset 0 1px rgba(255,255,255,.2);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+}
+.stats-close:hover{background:rgba(0,203,207,.22);box-shadow:0 0 22px rgba(0,235,222,.45)}
+.stats-head{display:flex;align-items:center;gap:18px;padding:0 54px 20px 0;border-bottom:1px solid rgba(92,239,236,.35)}
+.stats-head .stats-symbol{width:58px;height:58px;display:grid;place-items:center;flex:0 0 58px;color:#20eee2}
+.stats-head .stats-symbol svg{width:46px;height:46px;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 8px rgba(0,239,226,.6))}
+.stats-heading-copy{min-width:0;flex:1}
+.stats-title-line{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font:800 clamp(23px,4vw,38px)/1.15 var(--display);letter-spacing:-.7px}
+.stats-live{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid rgba(0,244,143,.8);border-radius:999px;background:rgba(0,207,117,.12);color:#22f58c;font:800 15px var(--body);letter-spacing:.2px;box-shadow:0 0 18px rgba(0,237,126,.16)}
+.stats-live i{width:10px;height:10px;border-radius:50%;background:#00f58a;box-shadow:0 0 10px #00f58a}
+.stats-sub{margin-top:9px;color:#d5e9f5;font-size:clamp(12px,1.8vw,17px);font-weight:500;letter-spacing:.1px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:24px}
+.stats-metric{
+  min-width:0;min-height:206px;margin:0;padding:22px 12px 18px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+  text-align:center;border:1px solid rgba(52,232,237,.72);border-radius:26px;
+  background:linear-gradient(155deg,rgba(0,183,205,.23),rgba(4,25,47,.52) 65%,rgba(0,216,178,.12));
+  box-shadow:0 0 20px rgba(0,222,236,.14),inset 0 1px 0 rgba(255,255,255,.22);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  position:relative;overflow:hidden;
+}
+.stats-metric:after{content:"";position:absolute;left:-8%;right:-8%;bottom:-20px;height:42px;border-top:2px solid currentColor;border-radius:50%;opacity:.8;filter:drop-shadow(0 0 7px currentColor);transform:rotate(-5deg);pointer-events:none}
+.stats-metric .metric-icon{width:58px;height:58px;display:grid;place-items:center;flex:0 0 58px;border-radius:0;background:transparent;color:#20eee2;font-size:30px}
+.stats-metric .metric-icon svg{width:54px;height:54px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px currentColor)}
+.stats-metric strong{display:block;margin:0;color:#fff;font:800 clamp(29px,4.2vw,43px)/1.08 var(--display);letter-spacing:.2px;text-shadow:0 2px 16px rgba(255,255,255,.16)}
+.stats-metric b{display:block;margin-top:3px;color:#f2fbff;font:700 clamp(12px,1.5vw,16px)/1.3 var(--body)}
+.stats-metric.visitors{color:#12e8ef;border-color:rgba(18,232,239,.85);background:linear-gradient(150deg,rgba(0,208,222,.27),rgba(3,24,43,.58) 70%,rgba(0,228,225,.16));box-shadow:0 0 22px rgba(0,222,236,.18),inset 0 1px rgba(255,255,255,.24)}
+.stats-metric.impressions{color:#b36cff;border-color:rgba(169,129,255,.88);background:linear-gradient(150deg,rgba(107,91,230,.28),rgba(12,22,52,.6) 70%,rgba(177,77,255,.18));box-shadow:0 0 22px rgba(160,104,255,.2),inset 0 1px rgba(255,255,255,.24)}
+.stats-metric.impressions .metric-icon{color:#a98aff}
+.stats-metric.video{color:#00ed9b;border-color:rgba(0,237,155,.9);background:linear-gradient(150deg,rgba(0,204,130,.28),rgba(3,34,40,.6) 70%,rgba(0,233,130,.18));box-shadow:0 0 22px rgba(0,237,155,.2),inset 0 1px rgba(255,255,255,.24)}
+.stats-metric.video .metric-icon{color:#00efb1}
+.stats-metric.download{color:#19dff2;border-color:rgba(25,223,242,.85);background:linear-gradient(150deg,rgba(0,171,218,.25),rgba(3,25,45,.6) 70%,rgba(0,213,229,.16));box-shadow:0 0 22px rgba(0,211,236,.18),inset 0 1px rgba(255,255,255,.24)}
+.stats-updated{
+  display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  width:max-content;max-width:100%;margin:22px auto 0;padding:10px 20px;
+  border:1px solid rgba(0,222,219,.6);border-radius:999px;
+  background:linear-gradient(100deg,rgba(0,177,192,.17),rgba(0,215,150,.15));
+  color:#eafaff;font-size:14px;font-weight:700;
+  box-shadow:0 0 18px rgba(0,219,205,.12),inset 0 1px rgba(255,255,255,.14)
+}
+.stats-updated .updated-icon{font-size:22px;color:#28eee1}
+.stats-updated time{font-variant-numeric:tabular-nums;color:#fff;font-weight:800}
+@media(max-width:700px){
+  .stats-panel{width:calc(100vw - 24px);max-height:88vh;padding:20px 15px;border-radius:25px}
+  .stats-head{gap:10px;padding-right:42px;padding-bottom:15px}
+  .stats-head .stats-symbol{width:42px;height:42px;flex-basis:42px}
+  .stats-head .stats-symbol svg{width:36px;height:36px}
+  .stats-title-line{font-size:clamp(19px,5vw,27px);gap:9px}
+  .stats-live{font-size:12px;padding:5px 11px}
+  .stats-sub{font-size:11px}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+  .stats-metric{min-height:145px;padding:14px 8px;border-radius:20px;gap:5px}
+  .stats-metric .metric-icon{width:43px;height:43px;flex-basis:43px}
+  .stats-metric .metric-icon svg{width:41px;height:41px}
+  .stats-metric strong{font-size:clamp(25px,7vw,34px)}
+  .stats-metric b{font-size:12px}
+  .stats-updated{margin-top:16px;padding:9px 13px;font-size:11px;gap:8px;border-radius:17px}
+  .stats-close{right:11px;top:10px;width:36px;height:36px}
+}
+@media(max-width:370px){
+  .stats-grid{gap:8px}
+  .stats-metric{min-height:132px}
+  .stats-metric b{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.stats-panel,.stats-backdrop{transition:none}}
+
+
 /* ---------- Logo loading screen ---------- */
 #loading-screen{
   position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
@@ -974,13 +1077,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button class="stats-tab" id="statsTab" type="button" aria-expanded="false" aria-controls="statsPanel" aria-label="Buka statistik aktiviti">
   <span aria-hidden="true" style="font-size:22px">▥</span><span class="stats-tab-label">STATISTIK AKTIVITI</span><span aria-hidden="true">‹</span>
 </button>
-<section class="stats-panel" id="statsPanel" role="dialog" aria-label="Statistik aktiviti" aria-hidden="true">
+<div class="stats-backdrop" id="statsBackdrop" aria-hidden="true"></div>
+<section class="stats-panel" id="statsPanel" role="dialog" aria-label="Statistik Pengunjung" aria-modal="true" aria-hidden="true">
   <button class="stats-close" id="statsClose" type="button" aria-label="Tutup statistik">×</button>
-  <div class="stats-head"><span class="stats-symbol" aria-hidden="true">▥</span><div>Statistik Aktiviti<div class="stats-sub">HSAH World Stroke &amp; Diabetic Day 2026</div></div></div>
-  <div class="stats-metric video"><span class="metric-icon" aria-hidden="true">▶</span><div><b>Tontonan Video</b><strong id="videoViews">—</strong></div></div>
-  <div class="stats-metric download"><span class="metric-icon" aria-hidden="true">↓</span><div><b>Muat Turun Bahan</b><strong id="materialDownloads">—</strong></div></div>
-  <div class="stats-metric visitors"><span class="metric-icon" aria-hidden="true">♙</span><div><b>Pengunjung Unik</b><strong id="uniqueVisitors">—</strong></div></div>
-  <p class="stats-updated">Dikemas kini: <time id="statsUpdatedAt">—</time></p>
+  <div class="stats-head">
+    <span class="stats-symbol" aria-hidden="true">
+      <svg viewBox="0 0 32 32"><path d="M5 26V18M13 26V12M21 26V6M29 26V2" /></svg>
+    </span>
+    <div class="stats-heading-copy">
+      <div class="stats-title-line"><span>Statistik Pengunjung</span><span class="stats-live"><i></i> Live</span></div>
+      <div class="stats-sub">HSAH World Stroke &amp; Diabetic Day 2026</div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stats-metric visitors">
+      <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M17 22a7 7 0 1 0 0-14 7 7 0 0 0 0 14Zm15 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM3 39c0-7 6-12 14-12s14 5 14 12v2H3v-2Zm25-12c9-1 17 4 17 12v2H34v-2c0-5-2-9-6-12Z"/></svg></span>
+      <strong id="uniqueVisitors">—</strong><b>Jumlah Pengunjung</b>
+    </div>
+    <div class="stats-metric impressions">
+      <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M3 24s8-14 21-14 21 14 21 14-8 14-21 14S3 24 3 24Z"/><circle cx="24" cy="24" r="7"/></svg></span>
+      <strong id="pageViews">—</strong><b>Jumlah Paparan</b>
+    </div>
+    <div class="stats-metric video">
+      <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="30" rx="7"/><path d="m20 17 12 7-12 7V17Z"/></svg></span>
+      <strong id="videoViews">—</strong><b>Tontonan Video</b>
+    </div>
+    <div class="stats-metric download">
+      <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v26m0 0 10-10m-10 10L14 20M7 34v7h34v-7"/></svg></span>
+      <strong id="materialDownloads">—</strong><b>Muat Turun Bahan</b>
+    </div>
+  </div>
+  <div class="stats-updated">
+    <span class="updated-icon" aria-hidden="true">◷</span>
+    <span>Kemas Kini Terakhir</span>
+    <time id="statsUpdatedAt">—</time>
+  </div>
 </section>
 <button class="install-action" id="installButton" type="button" hidden aria-label="Pasang aplikasi HSAH 2026" title="Pasang aplikasi">
   <img src="logo-program.png" alt="" aria-hidden="true" style="width:27px;height:27px;object-fit:contain;border-radius:50%">
@@ -1568,10 +1699,13 @@ render();
   const panel=document.getElementById('statsPanel');
   const close=document.getElementById('statsClose');
   const updatedAt=document.getElementById('statsUpdatedAt');
+  const backdrop=document.getElementById('statsBackdrop');
 
   function setStats(open){
     if(!panel || !tab) return;
     panel.classList.toggle('open',open);
+    backdrop?.classList.toggle('open',open);
+    backdrop?.setAttribute('aria-hidden',String(!open));
     panel.setAttribute('aria-hidden',String(!open));
     tab.setAttribute('aria-expanded',String(open));
   }
@@ -1583,7 +1717,8 @@ render();
   const fmt = n => Number(n||0).toLocaleString('ms-MY');
   function show(id,value){
     const el=document.getElementById(id);
-    if(el) el.textContent=fmt(value);
+    if(!el || value===undefined || value===null || value==='') return;
+    el.textContent=fmt(value);
   }
   function showUpdated(value){
     if(!updatedAt) return;
@@ -1593,6 +1728,7 @@ render();
 
   // JSONP avoids browser CORS restrictions when calling Google Apps Script from GitHub Pages.
   function loadStats(){
+    showUpdated(new Date());
     const callbackName='__hsahStatsCallback_'+Date.now();
     const script=document.createElement('script');
     let finished=false;
@@ -1615,7 +1751,8 @@ render();
         show('videoViews',data.videoViews);
         show('materialDownloads',data.materialDownloads);
         show('uniqueVisitors',data.uniqueVisitors);
-        showUpdated(data.updatedAt);
+        show('pageViews',data.pageViews ?? data.totalViews ?? data.screenPageViews);
+        showUpdated(data.updatedAt || new Date());
       } else {
         console.error('GA4 statistics response:',data && data.error ? data.error : 'No data');
       }
