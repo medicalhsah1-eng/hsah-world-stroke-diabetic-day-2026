@@ -1753,10 +1753,11 @@ render();
     }
     window[callbackName]=(data)=>{
       if(data && data.success){
+        // Pemetaan tepat mengikut empat panel statistik.
+        show('uniqueVisitors',data.uniqueVisitors);
+        show('pageViews',data.pageViews);
         show('videoViews',data.videoViews);
         show('materialDownloads',data.materialDownloads);
-        show('uniqueVisitors',data.uniqueVisitors);
-        show('pageViews',data.pageViews ?? data.totalViews ?? data.screenPageViews);
         showUpdated(data.updatedAt || new Date());
       } else {
         console.error('GA4 statistics response:',data && data.error ? data.error : 'No data');
