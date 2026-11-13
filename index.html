@@ -355,6 +355,11 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 .stats-metric.video .metric-icon{background:rgba(144,93,255,.4)}.stats-metric.download .metric-icon{background:rgba(24,194,130,.35)}.stats-metric.visitors .metric-icon{background:rgba(38,145,255,.38)}
 .stats-metric b{display:block;font-size:13px}.stats-metric strong{display:block;font:800 25px var(--display);line-height:1.2;margin-top:2px}.stats-updated{font-size:10px;color:#e4efff;margin:12px 2px 0}.stats-note{font-size:10px;color:#d0e1f7;margin:7px 2px 0;line-height:1.5}
 .install-action{position:fixed;right:14px;bottom:14px;z-index:79;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.72);border-radius:50%;padding:0;background:rgba(9,43,99,.58);color:#fff;box-shadow:0 7px 22px rgba(0,0,0,.22),0 0 15px rgba(52,177,255,.28);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);cursor:pointer}.install-action svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.install-action:focus-visible{outline:3px solid #f5b82e;outline-offset:3px}
+/* Ikon pemasangan terapung: gerakan lembut tanpa mengubah fungsi klik */
+@keyframes installIconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.install-action:not([hidden]){animation:installIconFloat 2.8s ease-in-out infinite;will-change:transform}
+.install-action:not([hidden]):hover,.install-action:not([hidden]):focus-visible{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.install-action:not([hidden]){animation:none;will-change:auto}}
 .install-action[hidden]{display:none}
 .totop{position:fixed;right:14px;bottom:68px;width:48px;height:48px;border-radius:50%;border:3px solid var(--white);background:var(--red);color:var(--white);font-size:22px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:30;box-shadow:0 8px 18px rgba(0,0,0,.25)}
 .totop.show{display:flex}
@@ -362,9 +367,6 @@ footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 @media(prefers-reduced-motion:reduce){.stats-panel{transition:none}}
 
 /* ---------- Statistik: premium translucent neon glass ---------- */
-/* Visual-only: the tab is dimmed/hidden while the popup is open. */
-body:has(.stats-panel.open) .stats-tab{opacity:0;pointer-events:none}
-
 .stats-backdrop{
   position:fixed;inset:0;z-index:79;opacity:0;visibility:hidden;pointer-events:none;
   background:rgba(2,10,24,.34);
@@ -372,7 +374,7 @@ body:has(.stats-panel.open) .stats-tab{opacity:0;pointer-events:none}
   transition:opacity .24s ease,visibility .24s ease;
 }
 .stats-backdrop.open{opacity:1;visibility:visible;pointer-events:auto}
-.stats-tab{z-index:82}
+.stats-tab{z-index:82;pointer-events:auto;cursor:pointer;touch-action:manipulation}
 .stats-panel{
   position:fixed;left:50%;right:auto;top:50%;
   width:min(960px,calc(100vw - 36px));max-height:min(90vh,760px);
@@ -1116,8 +1118,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <time id="statsUpdatedAt">—</time>
   </div>
 </section>
-<button class="install-action" id="installButton" type="button" hidden aria-label="Pasang aplikasi HSAH 2026" title="Pasang aplikasi">
-  <img src="logo-program.png" alt="" aria-hidden="true" style="width:27px;height:27px;object-fit:contain;border-radius:50%">
+<button class="install-action" id="installButton" type="button" hidden aria-label="Muat turun atau pasang aplikasi HSAH 2026" title="Muat turun / pasang aplikasi">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>
 </button>
 <button class="totop" id="totop" aria-label="Kembali ke atas">↑</button>
 
@@ -1702,10 +1704,13 @@ render();
   const panel=document.getElementById('statsPanel');
   const close=document.getElementById('statsClose');
   const updatedAt=document.getElementById('statsUpdatedAt');
+  const backdrop=document.getElementById('statsBackdrop');
 
   function setStats(open){
     if(!panel || !tab) return;
     panel.classList.toggle('open',open);
+    backdrop?.classList.toggle('open',open);
+    backdrop?.setAttribute('aria-hidden',String(!open));
     panel.setAttribute('aria-hidden',String(!open));
     tab.setAttribute('aria-expanded',String(open));
   }
@@ -1717,7 +1722,8 @@ render();
   const fmt = n => Number(n||0).toLocaleString('ms-MY');
   function show(id,value){
     const el=document.getElementById(id);
-    if(el) el.textContent=fmt(value);
+    if(!el || value===undefined || value===null || value==='') return;
+    el.textContent=fmt(value);
   }
   function showUpdated(value){
     if(!updatedAt) return;
@@ -1727,6 +1733,7 @@ render();
 
   // JSONP avoids browser CORS restrictions when calling Google Apps Script from GitHub Pages.
   function loadStats(){
+    showUpdated(new Date());
     const callbackName='__hsahStatsCallback_'+Date.now();
     const script=document.createElement('script');
     let finished=false;
@@ -1749,7 +1756,8 @@ render();
         show('videoViews',data.videoViews);
         show('materialDownloads',data.materialDownloads);
         show('uniqueVisitors',data.uniqueVisitors);
-        showUpdated(data.updatedAt);
+        show('pageViews',data.pageViews ?? data.totalViews ?? data.screenPageViews);
+        showUpdated(data.updatedAt || new Date());
       } else {
         console.error('GA4 statistics response:',data && data.error ? data.error : 'No data');
       }
