@@ -341,133 +341,33 @@ footer .footer-divider{height:1px;background:rgba(255,255,255,.16);max-width:720
 footer .footer-org{font-size:12px;color:#e8f0ff;margin:0 auto 8px}
 footer .copyright{font-size:11px;color:#c5d7f5;margin:0}
 
-/* ---------- Statistik terapung glassmorphism ---------- */
-.stats-tab{position:fixed;right:0;top:48%;transform:translateY(-50%);z-index:80;border:1px solid rgba(125,225,255,.8);border-right:0;border-radius:18px 0 0 18px;padding:14px 9px;background:rgba(7,35,83,.72);color:#fff;box-shadow:0 0 18px rgba(39,190,255,.42),inset 0 0 18px rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;font:700 12px var(--display);letter-spacing:.6px}
+/* ---------- Statistik terapung: reka bentuk glass neon ---------- */
+.stats-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:80;border:1px solid rgba(64,238,230,.8);border-right:0;border-radius:18px 0 0 18px;padding:14px 9px;background:rgba(5,38,75,.88);color:#fff;box-shadow:0 0 18px rgba(39,230,220,.3),inset 0 0 18px rgba(255,255,255,.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;font:700 12px var(--display);letter-spacing:.6px}
 .stats-tab .stats-tab-label{writing-mode:vertical-rl;transform:rotate(180deg)}
-.stats-panel{position:fixed;right:18px;top:50%;transform:translateY(-50%) translateX(18px);width:min(340px,calc(100vw - 34px));z-index:81;padding:20px;border:1px solid rgba(155,229,255,.75);border-radius:24px;background:linear-gradient(145deg,rgba(10,48,102,.88),rgba(5,20,53,.78));color:#fff;box-shadow:0 18px 55px rgba(0,0,0,.38),0 0 24px rgba(47,190,255,.25),inset 0 1px rgba(255,255,255,.2);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
-.stats-panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(-50%) translateX(0)}
-.stats-head{display:flex;align-items:center;gap:10px;padding:0 34px 14px 0;border-bottom:1px solid rgba(255,255,255,.15);font:700 19px var(--display)}
-.stats-head .stats-symbol{font-size:28px;color:#75dcff}
-.stats-close{position:absolute;right:14px;top:10px;border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer;line-height:1}
-.stats-sub{font-size:11px;color:#d5e9ff;margin-top:2px;font-weight:400}
-.stats-metric{display:flex;align-items:center;gap:13px;margin-top:13px;padding:12px;border:1px solid rgba(255,255,255,.18);border-radius:17px;background:rgba(255,255,255,.09);box-shadow:inset 0 1px rgba(255,255,255,.08)}
-.stats-metric .metric-icon{width:48px;height:48px;flex:0 0 48px;border-radius:50%;display:grid;place-items:center;font-size:23px;background:rgba(85,151,255,.3)}
-.stats-metric.video .metric-icon{background:rgba(144,93,255,.4)}.stats-metric.download .metric-icon{background:rgba(24,194,130,.35)}.stats-metric.visitors .metric-icon{background:rgba(38,145,255,.38)}
-.stats-metric b{display:block;font-size:13px}.stats-metric strong{display:block;font:800 25px var(--display);line-height:1.2;margin-top:2px}.stats-updated{font-size:10px;color:#e4efff;margin:12px 2px 0}.stats-note{font-size:10px;color:#d0e1f7;margin:7px 2px 0;line-height:1.5}
-.install-action{position:fixed;right:14px;bottom:14px;z-index:79;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.72);border-radius:50%;padding:0;background:rgba(9,43,99,.58);color:#fff;box-shadow:0 7px 22px rgba(0,0,0,.22),0 0 15px rgba(52,177,255,.28);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);cursor:pointer}.install-action svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.install-action:focus-visible{outline:3px solid #f5b82e;outline-offset:3px}
-/* Ikon pemasangan terapung: gerakan lembut tanpa mengubah fungsi klik */
-@keyframes installIconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.install-action:not([hidden]){animation:installIconFloat 2.8s ease-in-out infinite;will-change:transform}
-.install-action:not([hidden]):hover,.install-action:not([hidden]):focus-visible{animation-play-state:paused}
-@media(prefers-reduced-motion:reduce){.install-action:not([hidden]){animation:none;will-change:auto}}
-.install-action[hidden]{display:none}
+.stats-panel{position:fixed;left:50%;top:50%;right:auto;transform:translate(-50%,-47%) scale(.98);width:min(668px,calc(100vw - 34px));z-index:81;padding:20px;border:1px solid rgba(50,239,226,.9);border-radius:27px;background:linear-gradient(135deg,rgba(4,54,78,.96),rgba(9,35,73,.96) 55%,rgba(0,70,64,.94));color:#f4ffff;box-shadow:0 18px 55px rgba(0,0,0,.42),0 0 28px rgba(34,226,215,.28),inset 0 1px rgba(255,255,255,.18);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s}
+.stats-panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.stats-head{display:flex;align-items:center;gap:13px;padding:0 38px 16px 4px;border-bottom:1px solid rgba(111,242,235,.2);font:800 22px var(--display);letter-spacing:-.4px}
+.stats-head .stats-symbol{font-size:34px;color:#35f4df;text-shadow:0 0 15px rgba(53,244,223,.55)}
+.stats-close{position:absolute;right:15px;top:13px;width:39px;height:39px;border:1px solid rgba(129,235,255,.5);border-radius:50%;background:rgba(2,27,57,.65);color:#fff;font-size:25px;cursor:pointer;line-height:1}
+.stats-sub{font-size:11px;color:#c8e8f0;margin-top:3px;font-weight:600;letter-spacing:0}
+.stats-metric{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;margin-top:16px;min-width:0;min-height:158px;padding:15px 7px;border:1px solid rgba(76,231,230,.55);border-radius:25px;background:linear-gradient(155deg,rgba(8,117,133,.33),rgba(10,45,86,.5));box-shadow:inset 0 1px rgba(255,255,255,.08),0 0 15px rgba(23,210,208,.08);text-align:center;position:relative;overflow:hidden}
+.stats-panel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:12px;row-gap:0}
+.stats-head,.stats-updated{grid-column:1/-1}
+.stats-metric .metric-icon{width:56px;height:56px;flex:0 0 56px;border-radius:4px;display:grid;place-items:center;font-size:31px;color:#38f5e2;background:rgba(0,215,226,.17);text-shadow:0 0 12px #18e8df;box-shadow:0 0 20px rgba(0,225,222,.18)}
+.stats-metric.video{border-color:rgba(48,232,171,.6);background:linear-gradient(155deg,rgba(4,104,91,.42),rgba(10,45,86,.5))}.stats-metric.video .metric-icon{color:#36edb4;background:rgba(23,216,158,.18)}
+.stats-metric.download{border-color:rgba(60,205,239,.62);background:linear-gradient(155deg,rgba(12,91,135,.4),rgba(10,45,86,.5))}.stats-metric.download .metric-icon{color:#35eee0;background:rgba(15,212,213,.18)}
+.stats-metric.visitors:nth-of-type(3){border-color:rgba(171,143,255,.65);background:linear-gradient(155deg,rgba(69,53,128,.45),rgba(10,45,86,.5))}.stats-metric.visitors:nth-of-type(3) .metric-icon{color:#b69aff;background:rgba(151,111,255,.2)}
+.stats-metric b{display:block;font-size:11px;line-height:1.35;font-weight:700;white-space:normal}.stats-metric strong{display:block;font:800 27px var(--display);line-height:1.1;margin-top:1px;color:#fff;text-shadow:0 0 12px rgba(255,255,255,.12)}
+.stats-updated{justify-self:center;border:1px solid rgba(52,231,222,.32);border-radius:28px;background:rgba(13,110,115,.34);padding:12px 18px;margin:17px 0 0;font-size:11px;color:#e5ffff;text-align:center}
+.install-action{position:fixed;right:14px;bottom:14px;z-index:79;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.72);border-radius:50%;padding:0;background:rgba(9,43,99,.72);color:#fff;box-shadow:0 7px 22px rgba(0,0,0,.22),0 0 15px rgba(52,177,255,.28);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);cursor:pointer;animation:downloadFloat 2.2s ease-in-out infinite}
+@keyframes downloadFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.install-action svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.install-action:focus-visible{outline:3px solid #f5b82e;outline-offset:3px}.install-action[hidden]{display:none}
+@media(max-width:520px){.stats-panel{padding:17px 12px;width:calc(100vw - 34px);column-gap:7px;border-radius:23px}.stats-head{font-size:18px;padding-bottom:13px}.stats-head .stats-symbol{font-size:29px}.stats-metric{min-height:142px;margin-top:12px;padding:12px 4px;border-radius:21px;gap:8px}.stats-metric .metric-icon{width:48px;height:48px;flex-basis:48px;font-size:27px}.stats-metric strong{font-size:23px}.stats-metric b{font-size:9px}.stats-updated{font-size:9px;padding:10px 12px;margin-top:14px}}
+@media(prefers-reduced-motion:reduce){.install-action{animation:none}}
 .totop{position:fixed;right:14px;bottom:68px;width:48px;height:48px;border-radius:50%;border:3px solid var(--white);background:var(--red);color:var(--white);font-size:22px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:30;box-shadow:0 8px 18px rgba(0,0,0,.25)}
 .totop.show{display:flex}
 @media(max-width:560px){.stats-panel{right:10px;width:min(320px,calc(100vw - 20px));padding:17px}.stats-tab{top:44%;padding:12px 7px}.install-action{right:12px;bottom:12px;width:42px;height:42px}.totop{right:10px;bottom:62px}}
 @media(prefers-reduced-motion:reduce){.stats-panel{transition:none}}
-
-/* ---------- Statistik: premium translucent neon glass ---------- */
-.stats-backdrop{
-  position:fixed;inset:0;z-index:79;opacity:0;visibility:hidden;pointer-events:none;
-  background:rgba(2,10,24,.34);
-  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);
-  transition:opacity .24s ease,visibility .24s ease;
-}
-.stats-backdrop.open{opacity:1;visibility:visible;pointer-events:auto}
-.stats-tab{z-index:82;pointer-events:auto;cursor:pointer;touch-action:manipulation}
-.stats-panel{
-  position:fixed;left:50%;right:auto;top:50%;
-  width:min(960px,calc(100vw - 36px));max-height:min(90vh,760px);
-  overflow-y:auto;transform:translate(-50%,-47%) scale(.97);
-  padding:clamp(20px,3vw,34px);
-  border:1.5px solid transparent;border-radius:32px;
-  background:
-    linear-gradient(145deg,rgba(5,28,48,.86),rgba(2,17,31,.78)) padding-box,
-    linear-gradient(120deg,#27f3ed,#00d6ff 28%,#8e68ff 62%,#00efa0) border-box;
-  color:#f5fcff;
-  box-shadow:0 24px 80px rgba(0,0,0,.48),0 0 34px rgba(0,231,220,.22),
-    inset 0 1px 0 rgba(255,255,255,.22);
-  -webkit-backdrop-filter:blur(28px) saturate(145%);backdrop-filter:blur(28px) saturate(145%);
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity .24s ease,transform .24s ease,visibility .24s;
-}
-.stats-panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-.stats-panel:after{
-  content:"";position:absolute;left:5%;right:5%;bottom:0;height:3px;border-radius:50%;
-  background:linear-gradient(90deg,transparent,#00f5e4,#00e99b,#a76aff,transparent);
-  filter:blur(5px);pointer-events:none
-}
-.stats-close{
-  position:absolute;right:18px;top:16px;width:42px;height:42px;display:grid;place-items:center;
-  border:1px solid rgba(116,236,255,.65);border-radius:50%;
-  background:rgba(5,31,52,.62);color:#efffff;font-size:27px;line-height:1;
-  box-shadow:0 0 16px rgba(0,218,255,.22),inset 0 1px rgba(255,255,255,.2);
-  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-}
-.stats-close:hover{background:rgba(0,203,207,.22);box-shadow:0 0 22px rgba(0,235,222,.45)}
-.stats-head{display:flex;align-items:center;gap:18px;padding:0 54px 20px 0;border-bottom:1px solid rgba(92,239,236,.35)}
-.stats-head .stats-symbol{width:58px;height:58px;display:grid;place-items:center;flex:0 0 58px;color:#20eee2}
-.stats-head .stats-symbol svg{width:46px;height:46px;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 8px rgba(0,239,226,.6))}
-.stats-heading-copy{min-width:0;flex:1}
-.stats-title-line{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font:800 clamp(23px,4vw,38px)/1.15 var(--display);letter-spacing:-.7px}
-.stats-live{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid rgba(0,244,143,.8);border-radius:999px;background:rgba(0,207,117,.12);color:#22f58c;font:800 15px var(--body);letter-spacing:.2px;box-shadow:0 0 18px rgba(0,237,126,.16)}
-.stats-live i{width:10px;height:10px;border-radius:50%;background:#00f58a;box-shadow:0 0 10px #00f58a}
-.stats-sub{margin-top:9px;color:#d5e9f5;font-size:clamp(12px,1.8vw,17px);font-weight:500;letter-spacing:.1px}
-.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:24px}
-.stats-metric{
-  min-width:0;min-height:206px;margin:0;padding:22px 12px 18px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
-  text-align:center;border:1px solid rgba(52,232,237,.72);border-radius:26px;
-  background:linear-gradient(155deg,rgba(0,183,205,.23),rgba(4,25,47,.52) 65%,rgba(0,216,178,.12));
-  box-shadow:0 0 20px rgba(0,222,236,.14),inset 0 1px 0 rgba(255,255,255,.22);
-  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
-  position:relative;overflow:hidden;
-}
-.stats-metric:after{content:"";position:absolute;left:-8%;right:-8%;bottom:-20px;height:42px;border-top:2px solid currentColor;border-radius:50%;opacity:.8;filter:drop-shadow(0 0 7px currentColor);transform:rotate(-5deg);pointer-events:none}
-.stats-metric .metric-icon{width:58px;height:58px;display:grid;place-items:center;flex:0 0 58px;border-radius:0;background:transparent;color:#20eee2;font-size:30px}
-.stats-metric .metric-icon svg{width:54px;height:54px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px currentColor)}
-.stats-metric strong{display:block;margin:0;color:#fff;font:800 clamp(29px,4.2vw,43px)/1.08 var(--display);letter-spacing:.2px;text-shadow:0 2px 16px rgba(255,255,255,.16)}
-.stats-metric b{display:block;margin-top:3px;color:#f2fbff;font:700 clamp(12px,1.5vw,16px)/1.3 var(--body)}
-.stats-metric.visitors{color:#12e8ef;border-color:rgba(18,232,239,.85);background:linear-gradient(150deg,rgba(0,208,222,.27),rgba(3,24,43,.58) 70%,rgba(0,228,225,.16));box-shadow:0 0 22px rgba(0,222,236,.18),inset 0 1px rgba(255,255,255,.24)}
-.stats-metric.impressions{color:#b36cff;border-color:rgba(169,129,255,.88);background:linear-gradient(150deg,rgba(107,91,230,.28),rgba(12,22,52,.6) 70%,rgba(177,77,255,.18));box-shadow:0 0 22px rgba(160,104,255,.2),inset 0 1px rgba(255,255,255,.24)}
-.stats-metric.impressions .metric-icon{color:#a98aff}
-.stats-metric.video{color:#00ed9b;border-color:rgba(0,237,155,.9);background:linear-gradient(150deg,rgba(0,204,130,.28),rgba(3,34,40,.6) 70%,rgba(0,233,130,.18));box-shadow:0 0 22px rgba(0,237,155,.2),inset 0 1px rgba(255,255,255,.24)}
-.stats-metric.video .metric-icon{color:#00efb1}
-.stats-metric.download{color:#19dff2;border-color:rgba(25,223,242,.85);background:linear-gradient(150deg,rgba(0,171,218,.25),rgba(3,25,45,.6) 70%,rgba(0,213,229,.16));box-shadow:0 0 22px rgba(0,211,236,.18),inset 0 1px rgba(255,255,255,.24)}
-.stats-updated{
-  display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
-  width:max-content;max-width:100%;margin:22px auto 0;padding:10px 20px;
-  border:1px solid rgba(0,222,219,.6);border-radius:999px;
-  background:linear-gradient(100deg,rgba(0,177,192,.17),rgba(0,215,150,.15));
-  color:#eafaff;font-size:14px;font-weight:700;
-  box-shadow:0 0 18px rgba(0,219,205,.12),inset 0 1px rgba(255,255,255,.14)
-}
-.stats-updated .updated-icon{font-size:22px;color:#28eee1}
-.stats-updated time{font-variant-numeric:tabular-nums;color:#fff;font-weight:800}
-@media(max-width:700px){
-  .stats-panel{width:calc(100vw - 24px);max-height:88vh;padding:20px 15px;border-radius:25px}
-  .stats-head{gap:10px;padding-right:42px;padding-bottom:15px}
-  .stats-head .stats-symbol{width:42px;height:42px;flex-basis:42px}
-  .stats-head .stats-symbol svg{width:36px;height:36px}
-  .stats-title-line{font-size:clamp(19px,5vw,27px);gap:9px}
-  .stats-live{font-size:12px;padding:5px 11px}
-  .stats-sub{font-size:11px}
-  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
-  .stats-metric{min-height:145px;padding:14px 8px;border-radius:20px;gap:5px}
-  .stats-metric .metric-icon{width:43px;height:43px;flex-basis:43px}
-  .stats-metric .metric-icon svg{width:41px;height:41px}
-  .stats-metric strong{font-size:clamp(25px,7vw,34px)}
-  .stats-metric b{font-size:12px}
-  .stats-updated{margin-top:16px;padding:9px 13px;font-size:11px;gap:8px;border-radius:17px}
-  .stats-close{right:11px;top:10px;width:36px;height:36px}
-}
-@media(max-width:370px){
-  .stats-grid{gap:8px}
-  .stats-metric{min-height:132px}
-  .stats-metric b{font-size:11px}
-}
-@media(prefers-reduced-motion:reduce){.stats-panel,.stats-backdrop{transition:none}}
-
 
 /* ---------- Logo loading screen ---------- */
 #loading-screen{
@@ -1082,44 +982,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button class="stats-tab" id="statsTab" type="button" aria-expanded="false" aria-controls="statsPanel" aria-label="Buka statistik aktiviti">
   <span aria-hidden="true" style="font-size:22px">▥</span><span class="stats-tab-label">STATISTIK AKTIVITI</span><span aria-hidden="true">‹</span>
 </button>
-<div class="stats-backdrop" id="statsBackdrop" aria-hidden="true"></div>
-<section class="stats-panel" id="statsPanel" role="dialog" aria-label="Statistik Pengunjung" aria-modal="true" aria-hidden="true">
+<section class="stats-panel" id="statsPanel" role="dialog" aria-label="Statistik aktiviti" aria-hidden="true">
   <button class="stats-close" id="statsClose" type="button" aria-label="Tutup statistik">×</button>
-  <div class="stats-head">
-    <span class="stats-symbol" aria-hidden="true">
-      <svg viewBox="0 0 32 32"><path d="M5 26V18M13 26V12M21 26V6M29 26V2" /></svg>
-    </span>
-    <div class="stats-heading-copy">
-      <div class="stats-title-line"><span>Statistik Pengunjung</span><span class="stats-live"><i></i> Live</span></div>
-      <div class="stats-sub">HSAH World Stroke &amp; Diabetic Day 2026</div>
-    </div>
-  </div>
-  <div class="stats-grid">
-    <div class="stats-metric visitors">
-      <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M17 22a7 7 0 1 0 0-14 7 7 0 0 0 0 14Zm15 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14ZM3 39c0-7 6-12 14-12s14 5 14 12v2H3v-2Zm25-12c9-1 17 4 17 12v2H34v-2c0-5-2-9-6-12Z"/></svg></span>
-      <strong id="uniqueVisitors">—</strong><b>Jumlah Pengunjung</b>
-    </div>
-    <div class="stats-metric impressions">
-      <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M3 24s8-14 21-14 21 14 21 14-8 14-21 14S3 24 3 24Z"/><circle cx="24" cy="24" r="7"/></svg></span>
-      <strong id="pageViews">—</strong><b>Jumlah Paparan</b>
-    </div>
-    <div class="stats-metric video">
-      <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="4" y="9" width="40" height="30" rx="7"/><path d="m20 17 12 7-12 7V17Z"/></svg></span>
-      <strong id="videoViews">—</strong><b>Tontonan Video</b>
-    </div>
-    <div class="stats-metric download">
-      <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v26m0 0 10-10m-10 10L14 20M7 34v7h34v-7"/></svg></span>
-      <strong id="materialDownloads">—</strong><b>Muat Turun Bahan</b>
-    </div>
-  </div>
-  <div class="stats-updated">
-    <span class="updated-icon" aria-hidden="true">◷</span>
-    <span>Kemas Kini Terakhir</span>
-    <time id="statsUpdatedAt">—</time>
-  </div>
+  <div class="stats-head"><span class="stats-symbol" aria-hidden="true">▥</span><div>Statistik Pengunjung<div class="stats-sub">HSAH World Stroke &amp; Diabetic Day 2026</div></div></div>
+  <div class="stats-metric visitors"><span class="metric-icon" aria-hidden="true">♙</span><div><b>Jumlah Pengunjung</b><strong id="activeUsers">—</strong></div></div>
+  <div class="stats-metric visitors"><span class="metric-icon" aria-hidden="true">◎</span><div><b>Jumlah Paparan</b><strong id="uniqueVisitors">—</strong></div></div>
+  <div class="stats-metric video"><span class="metric-icon" aria-hidden="true">▷</span><div><b>Tontonan Video</b><strong id="videoViews">—</strong></div></div>
+  <div class="stats-metric download"><span class="metric-icon" aria-hidden="true">↓</span><div><b>Muat Turun Bahan</b><strong id="materialDownloads">—</strong></div></div>
+  <p class="stats-updated">Dikemas kini: <time id="statsUpdatedAt">—</time></p>
 </section>
-<button class="install-action" id="installButton" type="button" hidden aria-label="Muat turun atau pasang aplikasi HSAH 2026" title="Muat turun / pasang aplikasi">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>
+<button class="install-action" id="installButton" type="button" hidden aria-label="Pasang aplikasi HSAH 2026" title="Pasang aplikasi">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 18v3h14v-3"/></svg>
 </button>
 <button class="totop" id="totop" aria-label="Kembali ke atas">↑</button>
 
@@ -1199,14 +1072,6 @@ const BOOKS = [
         "path": "assets/education/ot/Stroke.pdf"
       },
       {
-        "title": "Post Stroke Anxiety, Stress dan Kemurungan",
-        "path": "assets/education/ot/Post%20Stroke%20Anzieti%20Stres%20Kemurungan.pdf"
-      },
-      {
-        "title": "Post Stroke Dementia",
-        "path": "assets/education/ot/Post%20Stroke%20Dementia.pdf"
-      },
-      {
         "title": "Diabetes",
         "path": "assets/education/ot/Diabetes.pdf"
       }
@@ -1271,16 +1136,7 @@ const BOOKS = [
       "Pengurusan pemakanan dan aktiviti fizikal.",
       "Kemahiran pengurusan diabetes secara kendiri."
     ],
-    "bahan": [
-      {
-        "title": "Buku Panduan Obesiti Infografik",
-        "path": "assets/education/de/Buku%20Panduan%20Obesiti%20Infografik.pdf"
-      },
-      {
-        "title": "World Diabetes Day (WDD)",
-        "path": "assets/education/de/WDD.pdf"
-      }
-    ]
+    "bahan": []
   },
   {
     "id": "psy",
@@ -1328,10 +1184,6 @@ const BOOKS = [
       {
         "title": "Pemakanan Melalui Tiub",
         "path": "assets/education/diet/Pemakanan%20Melalui%20Tiub.pdf"
-      },
-      {
-        "title": "Diet untuk Pesakit Diabetes Mellitus",
-        "path": "assets/education/diet/Diet%20untuk%20Pesakit%20Diabetes%20Mellitus.pdf"
       }
     ]
   },
@@ -1368,12 +1220,7 @@ const BOOKS = [
       "Kepentingan pengesanan awal.",
       "Pendidikan kesihatan dan pencegahan komplikasi."
     ],
-    "bahan": [
-      {
-        "title": "Spotting BEFAST",
-        "path": "assets/education/hpantai/Spotting%20BEFAST.pdf"
-      }
-    ]
+    "bahan": []
   },
   {
     "id": "ang",
@@ -1699,18 +1546,16 @@ render();
 <script>
 /* ---------- Statistik langsung GA4 & pemasangan PWA ---------- */
 (()=>{
+  // Endpoint Web App GA4 yang baru disahkan berfungsi.
   const GA4_STATS_URL = "https://script.google.com/macros/s/AKfycbz9C1gHXqlw5nm65Nkfgrzp3kvdI1XrG47D2bXWf-zepiH2zZvd-YiDJs26ywqq75c/exec";
   const tab=document.getElementById('statsTab');
   const panel=document.getElementById('statsPanel');
   const close=document.getElementById('statsClose');
   const updatedAt=document.getElementById('statsUpdatedAt');
-  const backdrop=document.getElementById('statsBackdrop');
 
   function setStats(open){
     if(!panel || !tab) return;
     panel.classList.toggle('open',open);
-    backdrop?.classList.toggle('open',open);
-    backdrop?.setAttribute('aria-hidden',String(!open));
     panel.setAttribute('aria-hidden',String(!open));
     tab.setAttribute('aria-expanded',String(open));
   }
@@ -1722,8 +1567,7 @@ render();
   const fmt = n => Number(n||0).toLocaleString('ms-MY');
   function show(id,value){
     const el=document.getElementById(id);
-    if(!el || value===undefined || value===null || value==='') return;
-    el.textContent=fmt(value);
+    if(el) el.textContent=fmt(value);
   }
   function showUpdated(value){
     if(!updatedAt) return;
@@ -1731,42 +1575,21 @@ render();
     updatedAt.textContent=new Intl.DateTimeFormat('ms-MY',{timeZone:'Asia/Kuala_Lumpur',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true}).format(d);
   }
 
-  // JSONP avoids browser CORS restrictions when calling Google Apps Script from GitHub Pages.
-  function loadStats(){
-    showUpdated(new Date());
-    const callbackName='__hsahStatsCallback_'+Date.now();
-    const script=document.createElement('script');
-    let finished=false;
-    const timeout=setTimeout(()=>finish(false),15000);
-    function finish(ok){
-      if(finished) return;
-      finished=true;
-      clearTimeout(timeout);
-      try{delete window[callbackName];}catch(e){window[callbackName]=undefined;}
-      script.remove();
-      if(!ok){
-        ['videoViews','materialDownloads','uniqueVisitors','pageViews'].forEach(id=>{
-          const el=document.getElementById(id);
-          if(el && el.textContent==='—') el.textContent='—';
-        });
-      }
+  async function loadStats(){
+    try{
+      const response=await fetch(GA4_STATS_URL,{method:'GET',cache:'no-store',redirect:'follow'});
+      if(!response.ok) throw new Error('HTTP '+response.status);
+      const data=await response.json();
+      if(!data || data.success!==true) throw new Error(data && data.error ? data.error : 'Respons GA4 tidak sah');
+      show('activeUsers',data.activeUsers);
+      show('uniqueVisitors',data.uniqueVisitors);
+      show('videoViews',data.videoViews);
+      show('materialDownloads',data.materialDownloads);
+      showUpdated(data.updatedAt);
+    }catch(error){
+      console.error('Tidak dapat memuatkan statistik GA4 HSAH:',error);
+      // Kekalkan tanda — jika pelayar menyekat sambungan silang domain.
     }
-    window[callbackName]=(data)=>{
-      if(data && data.success){
-        // Pemetaan tepat mengikut empat panel statistik.
-        show('uniqueVisitors',data.uniqueVisitors);
-        show('pageViews',data.pageViews);
-        show('videoViews',data.videoViews);
-        show('materialDownloads',data.materialDownloads);
-        showUpdated(data.updatedAt || new Date());
-      } else {
-        console.error('GA4 statistics response:',data && data.error ? data.error : 'No data');
-      }
-      finish(true);
-    };
-    script.onerror=()=>finish(false);
-    script.src=GA4_STATS_URL+'?callback='+encodeURIComponent(callbackName)+'&_='+Date.now();
-    document.head.appendChild(script);
   }
   loadStats();
 
